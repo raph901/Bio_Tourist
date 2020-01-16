@@ -7,10 +7,10 @@ namespace Bio_Tourist.Models
 {
     public class Report
     {
-        public int ID_RAPPORTS { get; set; }
-        public int NUM_RAPPORTS { get; set; }
-        public string TITRE_RAPPORTS { get; set; }
-        public string DATE_RAPPORTS { get; set; }
-        public string DESCRIPTION_RAPPORTS { get; set; }
+        public int ID_REPORT { get; set; }
+        public int NUM_REPORT { get; set; }
+        public string TITLE_REPORT { get; set; }
+        public string DATE_REPORT { get; set; }
+        public string DESCRIPTION_REPORT { get; set; }
     }
 }

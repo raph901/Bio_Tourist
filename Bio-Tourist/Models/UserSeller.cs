@@ -9,7 +9,7 @@ namespace Bio_Tourist.Models
     {
         public partial class T_VENTE_HISTORIQUE
         {
-            public int ID_Vendeur { get; set; }
+            public int ID_SELLER { get; set; }
             public int ID_USER { get; set; }
         }
     }

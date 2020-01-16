@@ -9,7 +9,7 @@ namespace Bio_Tourist.Models
     {
         public class T_VENTE_HISTORIQUE
         {
-            public int ID_CONTROLEUR { get; set; }
+            public int ID_INSPECTOR { get; set; }
             public int ID_USER { get; set; }
         }
     }
