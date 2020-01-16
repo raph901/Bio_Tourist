@@ -176,14 +176,13 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
-    <Content Include="Views\Home\ConnectionSuccessful.cshtml" />
-    <Content Include="Views\Home\ConnectionError.cshtml" />
-    <Content Include="Views\Home\Connection.cshtml" />
+    <Content Include="Views\User\ConnectionSuccessful.cshtml" />
+    <Content Include="Views\User\ConnectionError.cshtml" />
+    <Content Include="Views\User\Connection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Registration\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
