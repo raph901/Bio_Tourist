@@ -1,12 +1,16 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Connection";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<h2>Connection</h2>
+
+<form action="Verify" method="post">
+    
+    <input type="text" name="Username" placeholder="Entrer le nom" />
+    
+    <input type="password" name="Password" placeholder="Entrer le mot de passe" />
+
+    <input type="submit" value="Connexion">
+
+</form>

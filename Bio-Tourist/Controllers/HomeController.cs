@@ -33,43 +33,12 @@ namespace Bio_Tourist.Controllers
 
             return View();
         }
-        [HttpGet]
         public ActionResult Connection()
         {
-            ViewBag.Message = "Your connection page.";
+            ViewBag.Message = "Your connect page.";
 
             return View();
         }
 
-        SqlConnection ConnectionPath = new SqlConnection();
-        SqlCommand ConnectionCommand = new SqlCommand();
-        SqlDataReader ConnectionDataReader;
-
-        void GetConnectionPath()
-        {
-            ConnectionPath.ConnectionString = "data source = MSI\\SQLEXPRESS; Database=BIO_TEST; integrated security = SSPI";
-        }
-
-        [HttpPost]
-        public ActionResult Verify(Models.UserTest Acc)
-        {
-            GetConnectionPath();
-            ConnectionPath.Open();
-
-            ConnectionCommand.Connection = ConnectionPath;
-            ConnectionCommand.CommandText = "SELECT * FROM T_User WHERE Username ='" + Acc.Username + "' AND Password='" + Acc.Password + "'";
-            ConnectionDataReader = ConnectionCommand.ExecuteReader();
-
-            if (ConnectionDataReader.Read())
-            {
-                ConnectionPath.Close();
-                return View("ConnectionSuccessful");
-            }
-            else
-            {
-                ConnectionPath.Close();
-                return View("ConnectionError");
-            }
-        }
     }
 }
