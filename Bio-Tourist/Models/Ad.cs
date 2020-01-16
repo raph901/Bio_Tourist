@@ -7,12 +7,12 @@ namespace Bio_Tourist.Models
 {
     public class Ad
     {
-        public int ID_ANNONCES { get; set; }
-        public string TITRE_ANNONCES { get; set; }
-        public int NUM_ANNONCES { get; set; }
-        public string ADRESSE_ANNONCES { get; set; }
-        public string DATE_ANNONCES { get; set; }
-        public string DESCRIPTION_ANNONCES { get; set; }
+        public int ID_AD { get; set; }
+        public string TITLE_AD { get; set; }
+        public int NUM_AD { get; set; }
+        public string ADRESS_AD { get; set; }
+        public string DATE_AD { get; set; }
+        public string DESCRIPTION_AD { get; set; }
 
     }
 }

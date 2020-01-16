@@ -7,11 +7,11 @@ namespace Bio_Tourist.Models
 {
     public class Product
     {
-        public int ID_PRODUIT { get; set; }
-        public string NOM_PRODUIT { get; set; }
-        public string QUANTITE_PRODUIT { get; set; }
-        public int PRIX_LOT_PRODUIT { get; set; }
-        public int PRIX_UNITAIRE_PRODUIT { get; set; }
-        public string VALEUR_NUTRITIVE_PRODUIT { get; set; }
+        public int ID_PRODUCT { get; set; }
+        public string NOM_PRODUCT { get; set; }
+        public string QUANTITY_PRODUCT { get; set; }
+        public int PRICE_LOT_PRODUCT { get; set; }
+        public int UNIT_PRICE_PRODUCT { get; set; }
+        public string NUTRITIONAL_VALUE_PRODUCT { get; set; }
     }
 }

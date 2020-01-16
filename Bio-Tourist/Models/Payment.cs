@@ -7,7 +7,7 @@ namespace Bio_Tourist.Models
 {
     public class Payment
     {
-        public string ID_PAIEMENT { get; set; }
-        public string DATE_PAIEMENT { get; set; }
+        public string ID_PAYMENT { get; set; }
+        public string DATE_PAYMENT { get; set; }
     }
 }

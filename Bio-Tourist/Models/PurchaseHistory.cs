@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Bio_Tourist.Models
 {
-    public class PurchaseHistory
+    public class Purchase_History
     {
-        public int ID_ACHAT_HISTOIRIQUE { get; set; }
-        public string DATE_ACHAT_HISTOIRIQUE { get; set; }
+        public int ID_PURCHASE_HISTOIRY { get; set; }
+        public string DATE_PURCHASE_HISTOIRY { get; set; }
     }
 }
