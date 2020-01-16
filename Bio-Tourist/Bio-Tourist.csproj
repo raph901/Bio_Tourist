@@ -133,7 +133,6 @@
     <Compile Include="Models\SaleHistory.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserInspector.cs" />
-    <Compile Include="Models\UserRegistation.cs" />
     <Compile Include="Models\UserSeller.cs" />
     <Compile Include="Models\UserTest.cs" />
     <Compile Include="Models\UserTourist.cs" />
