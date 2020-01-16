@@ -1,0 +1,169 @@
+﻿body{
+
+    scroll-behavior: smooth;
+}
+hr{
+    width:60%;
+}
+#HeadImageHome {
+    background-image: url("https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80"); background-size: cover;
+    background-repeat: no-repeat;
+    padding: 320px;
+    width: 100%;
+}
+
+.ContainerHeadHome {
+    position: relative;
+    top: 80px;
+    right: 250px;
+    color: white;
+}
+
+.TitleHeadHome {
+    color: white;
+    font-weight: bold;
+    font-family: 'Baskerville Old Face';
+    text-decoration: overline;
+    font-size: 3em;
+}
+
+.TextHead {
+    font-weight: bold;
+    font-family: 'Bahnschrift';
+}
+
+
+
+.IconePointInterrogation, .IconeOrganic, .IconeStatutes {
+    text-align: center;
+}
+
+.IconeBuyer, .IconeSeller, .IconeController, .IconeGeo {
+
+    text-align:center;
+}
+
+.TitleSectionHome0, .TitleSectionHome1, .TitleSectionHome2, .TitleSectionHome3 {
+    text-align: center;
+    padding-top: 120px;
+    font-family: 'Baskerville Old Face';
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.PositionTitleSectionHome0,.PositionTitleSectionHome1,.PositionTitleSectionHome2,.PositionTitleSectionHome3{
+    padding-bottom:80px;
+}
+
+    #TextSectionHome0, #TextSectionHome1, .TextSectionHome2{
+        font-size: 1.2em;
+        padding-bottom:150px;
+    }
+
+
+
+
+#ButtonInfos {
+    border-radius: 500px;
+    position: absolute;
+    background-color: #30005f;
+    border: 3px dotted white;
+    padding-right: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+    #ButtonInfos:hover {
+        box-shadow:8px 8px 8px white;
+        font-size:1.5em;
+    }
+
+
+#ContainerColor1 {
+    background-color: aliceblue;
+    width: 100%;
+}
+#ContainerColor2 {
+    background-color:antiquewhite;
+    width: 100%;
+}
+
+.H4Description {
+    font-weight: bold;
+    font-family:"Century Schoolbook";
+    text-decoration:underline;
+    font-style:italic;
+}
+
+#PositionStatutes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#ContainerBuyer, .ContainerController, .ContainerSeller {
+    border: 3px black double;
+    border-radius: 50px;
+    width: 370px;
+    padding-left: 18px;
+    padding-bottom: 30px;
+    padding-top:20px;
+}
+#ContainerBuyer:hover {
+    background-color:lightblue;
+    transition: 2s;
+    padding-top:3px;
+    border-color:ActiveBorder;
+   
+    
+}
+    .ContainerController:hover {
+        background-color: wheat;
+        transition: 2s;
+        padding-top: 3px;
+        border-color: ActiveBorder;
+    }
+
+    .ContainerSeller:hover {
+        background-color:lightgoldenrodyellow;
+        transition: 2s;
+        padding-top: 3px;
+        border-color: ActiveBorder;
+    } 
+
+.ImageSeller, .ImageController, .ImageBuyer {
+    width: 320px;
+}
+
+
+.TitleDifferentStatutes {
+    text-align: center;
+    font-family:'Comic Sans MS';
+    font-weight:bold;
+
+}
+
+
+#SubmitBuyer, #SubmitSeller, #SubmitController {
+    position: relative;
+    left: 80px;
+    top: 20px;
+    border: 2px white dotted;
+    border-radius: 10px;
+    background-color: #30005f;
+    color:white;
+}
+    #SubmitBuyer:hover {
+        
+        padding: 5px;
+        box-shadow: 5px 3px 3px #30005f;
+    }
+    #SubmitSeller:hover {
+        padding: 5px;
+        box-shadow: 5px 3px 3px #30005f;
+    }
+    #SubmitController:hover {
+        padding: 5px;
+        box-shadow: 5px 3px 3px #30005f;
+    }
+

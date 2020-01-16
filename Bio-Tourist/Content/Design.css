@@ -1,0 +1,163 @@
+﻿
+body {
+
+    
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 400px;
+}
+#PersonnaliserMenus li:hover {
+  transform:scale(1.5);
+  transition:1s;
+}
+#PersonnaliserMenus li {
+    padding: 0px 50px 0px 0px;
+    position: relative;
+    top:22px;
+    font-size:medium;
+    font-family:'Bahnschrift';
+   text-align:center;
+}
+
+
+#PersonnaliserMenus {
+    font-weight: bold;
+    font-family: sans-serif;
+    display: inline-block;
+    position: relative;
+    left: 100px;
+    bottom:10px;
+
+}
+
+.IconeFlecheDroite, IconeFlecheGauche {
+    position:absolute;
+    bottom:100px;
+}
+
+.IconeFlecheGauche:hover {
+    opacity: 0.5;
+    transition: 3s;
+}
+
+    .IconeFlecheDroite:hover {
+    opacity: 0.5;
+    transition: 2s;
+}
+
+
+    .PanierVersLaDroite {
+        position: absolute;
+        top: 20px;
+        left: 850px;
+    }
+
+.UtilisateurVersLaDroite {
+    position: absolute;
+    top: 31px;
+    left: 920px;
+}
+
+.Container{
+  width:100%;
+  padding-left:50px;
+
+
+}
+.Logo {
+    width: 80px;
+}
+
+.Slogan {
+    width:140px;  
+}
+
+#colorHeader {
+    background-color: #30005f;
+   
+}
+
+    .MenusReduit {
+      
+        position:relative;
+        top:25px;
+        right:30px;
+        position:fixed;
+     
+    }
+
+.ContainerFooter {
+    background-color: #30005f;
+    padding:20px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+Footer {
+    margin-top:200px;
+}
+    
+    /*MEDIA QUERIES */
+
+    /*HEADER*/
+
+@media all and (max-width: 1000px) {
+    #PersonnaliserMenus li {
+        padding : 0px 20px 0px 0px;
+        
+    }
+}
+
+
+@media all and (max-width: 920px) {
+    #PersonnaliserMenus {
+        position: relative;
+        left: 5px;
+     
+    }
+}
+
+@media all and (max-width: 850px) {
+    #PersonnaliserMenus {
+        position: absolute;
+        left:250px;
+        
+    }
+}
+
+@media all and (max-width: 800px) {
+    #PersonnaliserMenus {
+     
+    
+    
+     position:absolute; 
+     left:190px;
+ 
+     
+        
+
+    }
+}
+
+@media all and (max-width: 767px) {
+    #PersonnaliserMenus {
+        position: relative;
+        left: -55px;
+        bottom:40px;
+        height: 0px;
+        padding-top:21px;
+    }
+
+  
+}
