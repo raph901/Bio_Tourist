@@ -7,7 +7,7 @@ namespace Bio_Tourist.Models
 {
     public class SaleHistory
     {
-        public int ID_VENTE_HISTORIQUE { get; set; }
-        public int DATE_VENTE_HISTORIQUE { get; set; }
+        public int ID_SALE_HISTORY { get; set; }
+        public int DATE_SALE_HISTORY { get; set; }
     }
 }

@@ -5,12 +5,12 @@ using System.Web;
 
 namespace Bio_Tourist.Models
 {
-    public class Comments
+    public class Comment
     {
-        public int ID_COMMENTAIRES { get; set; }
-        public string TITRE_COMMENTAIRES { get; set; }
-        public int DATE_COMMENTAIRES { get; set; }
-        public int NOTE_COMMENTAIRES { get; set; }
-        public string DESCRIPTION_COMMENTAIRES { get; set; }
+        public int ID_COMMENT { get; set; }
+        public string TITLE_COMMENT { get; set; }
+        public int DATE_COMMENT { get; set; }
+        public int NOTE_COMMENT { get; set; }
+        public string DESCRIPTION_COMMENT { get; set; }
     }
 }
