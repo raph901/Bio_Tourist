@@ -15,7 +15,7 @@ namespace Bio_Tourist.Models
             public string NAME_STREET { get; set; }
             public int POSTAL_CODE { get; set; }
             public string CITY_USER { get; set; }
-            public string CONTRY_USER { get; set; }
+            public string COUNTRY_USER { get; set; }
             public string EMAIL_USER { get; set; }
             public int NUM_USER { get; set; }
             public string PASSWORD_USER { get; set; }

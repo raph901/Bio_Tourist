@@ -26,7 +26,7 @@ namespace Bio_Tourist.Controllers
         [HttpGet]
         void GetConnectionPath()
         {
-            ConnectionPath.ConnectionString = "data source = MSI\\SQLEXPRESS; Database=BIO_TEST; integrated security = SSPI";
+            ConnectionPath.ConnectionString = "data source = RAPHAËL\\SQLEXPRESS; Database=BioTourist; integrated security = SSPI";
         }
 
         [HttpPost]
@@ -54,13 +54,13 @@ namespace Bio_Tourist.Controllers
 
 
         [HttpPost]
-        public Boolean CheckExist(Models.UserTest p)
+        public Boolean CheckExist(Models.User p)
         {
             GetConnectionPath();
             ConnectionPath.Open();
             SqlCommand CheckCommand = new SqlCommand();
             CheckCommand.Connection = ConnectionPath;
-            CheckCommand.CommandText = "SELECT * FROM T_User WHERE Username ='" + p.Username + "'";
+            CheckCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL_USER ='" + p.EMAIL_USER + "'";
             ConnectionDataReader = CheckCommand.ExecuteReader();
             
             if (ConnectionDataReader.Read())
@@ -76,7 +76,7 @@ namespace Bio_Tourist.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(Models.UserTest p)
+        public ActionResult Register(Models.User p)
         {
             SqlCommand RegisterCommand = new SqlCommand();
 
@@ -90,7 +90,7 @@ namespace Bio_Tourist.Controllers
                 GetConnectionPath();
                 ConnectionPath.Open();
                 RegisterCommand.Connection = ConnectionPath;
-                RegisterCommand.CommandText = "INSERT INTO T_User(Username, Password) VALUES('"+ p.Username +"', '"+ p.Password +"' ) ";          
+                RegisterCommand.CommandText = "INSERT INTO T_USER(CIVILITY_USER , FIRST_NAME_USER , LAST_NAME_USER , AGE_USERS , EMAIL_USER , PASSWORD_USER , NUM_USER , NUM_STREET , NAME_STREET , POSTAL_CODE , CITY_USER , COUNTRY_USER) VALUES('" + p.CIVILITY_USER + "' , '" + p.FIRST_NAME_USER + "' , '" + p.LAST_NAME_USER + "' , '" + p.AGE_USERS + "' , '" + p.EMAIL_USER + "' , '" + p.PASSWORD_USER + "' , '" + p.NUM_USER + "' , '" + p.NUM_STREET + "' , '" + p.NAME_STREET + "' , '" + p.POSTAL_CODE + "' , '" + p.CITY_USER + "' , '" + p.COUNTRY_USER + "' ) ";        
                 RegisterCommand.ExecuteNonQuery();
 
                 ConnectionPath.Close();
