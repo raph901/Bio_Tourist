@@ -4,19 +4,18 @@
 
 @using (Html.BeginForm("Register", "User"))
 {
-    <div>
+    <div runat="server">
         @Html.LabelFor(m => m.CIVILITY_USER)
         @Html.TextBoxFor(m => m.CIVILITY_USER)
         @Html.ValidationMessageFor(m => m.CIVILITY_USER)
     </div>
+    <asp:RequiredFieldValidator runat="server" ControlToValidate="TextBoxFor" Text="Le champ doit être saisi" />
 
     <div>
         @Html.LabelFor(m => m.FIRST_NAME_USER)
         @Html.TextBoxFor(m => m.FIRST_NAME_USER)
         @Html.ValidationMessageFor(m => m.FIRST_NAME_USER)
     </div>
-
- 
 
     <div>
         @Html.LabelFor(m => m.AGE_USERS)
@@ -34,6 +33,12 @@
         @Html.LabelFor(m => m.PASSWORD_USER)
         @Html.PasswordFor(m => m.PASSWORD_USER)
         @Html.ValidationMessageFor(m => m.PASSWORD_USER)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.CONFIRMING_PASSWORD)
+        @Html.PasswordFor(m => m.CONFIRMING_PASSWORD)
+        @Html.ValidationMessageFor(m => m.CONFIRMING_PASSWORD)
     </div>
 
     <div>
@@ -72,5 +77,5 @@
         @Html.ValidationMessageFor(m => m.COUNTRY_USER)
     </div>
 
-    <input type="submit" value="Inscription" />
+    <input asp:Button runat="server" type="submit" value="Inscription" />
 }
