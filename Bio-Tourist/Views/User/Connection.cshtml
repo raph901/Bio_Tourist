@@ -1,19 +1,19 @@
-﻿@model Bio_Tourist.Models.UserTest
+﻿@model Bio_Tourist.Models.User
 
 <h2>Connexion</h2>
 
 @using (Html.BeginForm("Verify","User"))
 {
     <div>
-        @Html.LabelFor(m => m.Username)
-        @Html.TextBoxFor(m => m.Username)
-        @Html.ValidationMessageFor(m => m.Username)
+        @Html.LabelFor(m => m.EMAIL_USER)
+        @Html.TextBoxFor(m => m.EMAIL_USER)
+        @Html.ValidationMessageFor(m => m.EMAIL_USER)
     </div>
 
     <div>
-        @Html.LabelFor(m => m.Password)
-        @Html.PasswordFor(m => m.Password)
-        @Html.ValidationMessageFor(m => m.Password)
+        @Html.LabelFor(m => m.PASSWORD_USER)
+        @Html.PasswordFor(m => m.PASSWORD_USER)
+        @Html.ValidationMessageFor(m => m.PASSWORD_USER)
     </div>
 
     <input type="submit" value="Connexion"/>

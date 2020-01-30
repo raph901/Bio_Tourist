@@ -36,7 +36,7 @@ namespace Bio_Tourist.Controllers
 
                     // Insert chemin + requète sql dans la commande puis execute le reader associé à la commande
             ConnectionCommand.Connection = DbConnection;
-            ConnectionCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL ='" + p.EMAIL_USER + "' AND PASSWORD_USER='" + p.PASSWORD_USER + "'";
+            ConnectionCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL_USER ='" + p.EMAIL_USER + "' AND PASSWORD_USER='" + p.PASSWORD_USER + "'";
             ConnectionDataReader = ConnectionCommand.ExecuteReader();
 
                   
