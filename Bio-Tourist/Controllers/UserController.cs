@@ -22,7 +22,7 @@ namespace Bio_Tourist.Controllers
 
 
         [HttpPost]
-        public ActionResult Verify(Models.UserTest p)
+        public ActionResult Verify(Models.User p)
         // CONNECTION : VERIFIE QUE LE LOGIN/MDP EXISTE DANS LA DB
         {
                     // Déclaration command/reader/path Connection 
@@ -36,7 +36,7 @@ namespace Bio_Tourist.Controllers
 
                     // Insert chemin + requète sql dans la commande puis execute le reader associé à la commande
             ConnectionCommand.Connection = DbConnection;
-            ConnectionCommand.CommandText = "SELECT * FROM T_User WHERE Username ='" + p.Username + "' AND Password='" + p.Password + "'";
+            ConnectionCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL ='" + p.EMAIL_USER + "' AND PASSWORD_USER='" + p.PASSWORD_USER + "'";
             ConnectionDataReader = ConnectionCommand.ExecuteReader();
 
                   
@@ -56,7 +56,7 @@ namespace Bio_Tourist.Controllers
 
 
         [HttpPost]
-        public Boolean CheckExist(Models.UserTest p)
+        public Boolean CheckExist(Models.User p)
         // CHECK SI L'EMAIL EST DEJA DANS LA DB AVANT INSCRIPTION
         {
                     // Déclaration command/path/reader Check    
@@ -70,7 +70,7 @@ namespace Bio_Tourist.Controllers
 
             // Insert chemin + requète sql dans la commande puis execute le reader associé à la commande + Execute le Data Reader
             CheckCommand.Connection = DbConnection;
-            CheckCommand.CommandText = "SELECT * FROM T_User WHERE Username ='" + p.Username + "'";
+            CheckCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL_USER ='" + p.EMAIL_USER + "'";
             CheckDataReader = CheckCommand.ExecuteReader();
 
                     // Si le DR contient 1 ligne --> Connection + Close DbPath
@@ -88,7 +88,7 @@ namespace Bio_Tourist.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(Models.UserTest p)
+        public ActionResult Register(Models.User p)
         // INSCRIPTION ENREGISTRE LES DONNÉES UTILISATEUR DANS LA DB
         {
                     // Déclaration command/path Register 
@@ -109,7 +109,7 @@ namespace Bio_Tourist.Controllers
             {
 
                 RegisterCommand.Connection = DbConnection;
-                RegisterCommand.CommandText = "INSERT INTO T_User(Username, Password) VALUES('"+ p.Username +"', '"+ p.Password +"' ) ";          
+                RegisterCommand.CommandText = "INSERT INTO T_USER(CIVILITY_USER , FIRST_NAME_USER , LAST_NAME_USER , AGE_USERS , EMAIL_USER , PASSWORD_USER , NUM_USER , NUM_STREET , NAME_STREET , POSTAL_CODE , CITY_USER , COUNTRY_USER) VALUES('" + p.CIVILITY_USER + "' , '" + p.FIRST_NAME_USER + "' , '" + p.LAST_NAME_USER + "' , '" + p.AGE_USERS + "' , '" + p.EMAIL_USER + "' , '" + p.PASSWORD_USER + "' , '" + p.NUM_USER + "' , '" + p.NUM_STREET + "' , '" + p.NAME_STREET + "' , '" + p.POSTAL_CODE + "' , '" + p.CITY_USER + "' , '" + p.COUNTRY_USER + "' ) ";
                 RegisterCommand.ExecuteNonQuery();
 
                 DbConnection.Close();
