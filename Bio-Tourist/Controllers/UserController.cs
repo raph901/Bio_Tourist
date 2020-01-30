@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
 using Bio_Tourist.Models;
+using static Bio_Tourist.DbPath.DbPathController;
 
 namespace Bio_Tourist.Controllers
 {
@@ -19,42 +20,35 @@ namespace Bio_Tourist.Controllers
             return View();
         }
 
-        [HttpGet]
-        void GetDbPath()
-        {
-            SqlConnection DbPath = new SqlConnection();
-                    // Chemin de connection à la DB (à mettre dans un fichier a part et --> GitIgnore)
-            DbPath.ConnectionString = "data source = MSI\\SQLEXPRESS; Database=BIO_TEST; integrated security = SSPI";
-        }
 
         [HttpPost]
         public ActionResult Verify(Models.UserTest p)
         // CONNECTION : VERIFIE QUE LE LOGIN/MDP EXISTE DANS LA DB
         {
                     // Déclaration command/reader/path Connection 
-            SqlConnection ConnectionDbPath = new SqlConnection();
             SqlCommand ConnectionCommand = new SqlCommand(); // Créé la commande SQL de connection
             SqlDataReader ConnectionDataReader;
-            
-                    // Récup + Open --> Connection à la DB
-            GetDbPath();
-            ConnectionDbPath.Open();
+
+            // Récup + Open --> Connection à la DB
+            SqlConnection DbConnection = new SqlConnection();
+            DbConnection.ConnectionString = GetDbPath();
+            DbConnection.Open();
 
                     // Insert chemin + requète sql dans la commande puis execute le reader associé à la commande
-            ConnectionCommand.Connection = ConnectionDbPath;
+            ConnectionCommand.Connection = DbConnection;
             ConnectionCommand.CommandText = "SELECT * FROM T_User WHERE Username ='" + p.Username + "' AND Password='" + p.Password + "'";
             ConnectionDataReader = ConnectionCommand.ExecuteReader();
 
                   
             if (ConnectionDataReader.Read()) // Si le DR contient 1 ligne --> Connection + Close DbPath
             {
-                ConnectionDbPath.Close();
+                DbConnection.Close();
                 return View("ConnectionSuccessful");
             }
 
             else // Sinon erreur de connection (travaillé sur les =/= possibilités d'erreur et message) + Close DbPath
             {
-                ConnectionDbPath.Close();
+                DbConnection.Close();
                 return View("ConnectionError");
             }
         }
@@ -68,27 +62,27 @@ namespace Bio_Tourist.Controllers
                     // Déclaration command/path/reader Check    
             SqlCommand CheckCommand = new SqlCommand();
             SqlDataReader CheckDataReader;
-            SqlConnection CheckDbPath = new SqlConnection();
 
-                    // Récup + Open --> Connection à la DB
-            GetDbPath();
-            CheckDbPath.Open();
+            // Récup + Open --> Connection à la DB
+            SqlConnection DbConnection = new SqlConnection();
+            DbConnection.ConnectionString = GetDbPath();
+            DbConnection.Open();
 
-                    // Insert chemin + requète sql dans la commande puis execute le reader associé à la commande + Execute le Data Reader
-            CheckCommand.Connection = CheckDbPath;
+            // Insert chemin + requète sql dans la commande puis execute le reader associé à la commande + Execute le Data Reader
+            CheckCommand.Connection = DbConnection;
             CheckCommand.CommandText = "SELECT * FROM T_User WHERE Username ='" + p.Username + "'";
             CheckDataReader = CheckCommand.ExecuteReader();
 
                     // Si le DR contient 1 ligne --> Connection + Close DbPath
             if (CheckDataReader.Read())
             {
-                CheckDbPath.Close();
+                DbConnection.Close();
                 return true;
             }
                     // Sinon erreur de connection (travaillé sur les =/= possibilités d'erreur et message) + Close DbPath
             else
             {
-                CheckDbPath.Close();
+                DbConnection.Close();
                 return false;
             }
         }
@@ -99,26 +93,26 @@ namespace Bio_Tourist.Controllers
         {
                     // Déclaration command/path Register 
             SqlCommand RegisterCommand = new SqlCommand();
-            SqlConnection RegisterDbPath = new SqlConnection();
+            SqlConnection DbConnection = new SqlConnection();
 
-                    // Récup + Open --> Connection à la DB
-            GetDbPath();
-            RegisterDbPath.Open();
+            // Récup + Open --> Connection à la DB
+            DbConnection.ConnectionString = GetDbPath();
+            DbConnection.Open();
 
             if (CheckExist(p) == true) // Erreur l'email existe déjà (travaillé sur les =/= possibilités d'erreur et message) + Close DbPath
             {
-                RegisterDbPath.Close();
+                DbConnection.Close();
                 return View("InscriptionERROR");
             }
 
             else // Insert chemin + requète sql dans la commande puis execute le reader associé à la commande + Execute la requète
             {
 
-                RegisterCommand.Connection = RegisterDbPath;
+                RegisterCommand.Connection = DbConnection;
                 RegisterCommand.CommandText = "INSERT INTO T_User(Username, Password) VALUES('"+ p.Username +"', '"+ p.Password +"' ) ";          
                 RegisterCommand.ExecuteNonQuery();
 
-                RegisterDbPath.Close();
+                DbConnection.Close();
                 return View("InscriptionOK");
             }
         }
