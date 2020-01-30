@@ -97,9 +97,6 @@ namespace Bio_Tourist.Controllers
                 return false;
             }
         }
-        public ActionResult Create()
-        {
-            return View();
-        }
+
     }
 }
