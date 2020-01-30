@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
+using Bio_Tourist.Models;
+using System;
 
 namespace Bio_Tourist.Controllers
 {
     public class HomeController : Controller
-    {
+    { 
         public ActionResult Index()
         {
+
             return View();
         }
 
@@ -21,12 +23,6 @@ namespace Bio_Tourist.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
         public ActionResult Registration ()
         {
             ViewBag.Message = "Your connect page.";
@@ -70,6 +66,7 @@ namespace Bio_Tourist.Controllers
                 ConnectionPath.Close();
                 return View("ConnectionError");
             }
+
         }
     }
 }
