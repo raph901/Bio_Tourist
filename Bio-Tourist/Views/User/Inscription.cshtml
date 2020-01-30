@@ -1,20 +1,87 @@
-﻿@model Bio_Tourist.Models.UserTest
-
+﻿@using System.Web.UI.WebControls
+@model Bio_Tourist.Models.User
+<script language="javascript" type="text/javascript" src="../../Scripts/javascript.js"></script>
 <h2>Inscription</h2>
 
 @using (Html.BeginForm("Register", "User"))
 {
-    <div>
-        @Html.LabelFor(m => m.Username)
-        @Html.TextBoxFor(m => m.Username)
-        @Html.ValidationMessageFor(m => m.Username)
+
+
+    <div runat="server">
+
+        Genre:
+
+        @Html.DropDownListFor(x => x.CIVILITY_USER, new List<SelectListItem>
+        {
+            new SelectListItem() {Text = "Homme", Value="GenreH"},
+            new SelectListItem() {Text = "Femme", Value="GenreF"}
+        })
+        @Html.ValidationMessageFor(m => m.CIVILITY_USER)
     </div>
 
     <div>
-        @Html.LabelFor(m => m.Password)
-        @Html.PasswordFor(m => m.Password)
-        @Html.ValidationMessageFor(m => m.Password)
+        @Html.TextBoxFor(m => m.LAST_NAME_USER, new { @class = "form-control", placeholder = "Nom", required = "required", TextReader = "holala" })
+        @Html.ValidationMessageFor(m => m.LAST_NAME_USER)
     </div>
 
-    <input type="submit" value="Inscription" />
+    <div>
+        @Html.TextBoxFor(m => m.FIRST_NAME_USER, new { @class = "form-control", placeholder = "Prénom", required = "required" })
+        @Html.ValidationMessageFor(m => m.FIRST_NAME_USER)
+    </div>
+
+    <div>
+        @Html.TextBoxFor(m => m.AGE_USERS, new { @class = "form-control", placeholder = "Age", required = "required" })
+        @Html.ValidationMessageFor(m => m.AGE_USERS)
+    </div>
+
+    <div>
+        @Html.TextBoxFor(m => m.EMAIL_USER, new { @class = "form-control", placeholder = "Email", required = "required" })
+        @Html.ValidationMessageFor(m => m.EMAIL_USER)
+    </div>
+
+    <div>
+        @Html.TextBoxFor(m => m.PASSWORD_USER, new { @class = "form-control", placeholder = "PASSWORD_USER", name = "PASSWORD_USER", id = "PASSWORD_USER", type = "PASSWORD" })
+        @Html.ValidationMessageFor(m => m.PASSWORD_USER)
+    </div>
+
+    <div>
+        @Html.TextBoxFor(m => m.CONFIRMING_PASSWORD, new { @class = "form-control", placeholder = "CONFIRMING_PASSWORD", type = "PASSWORD", name = "CONFIRMING_PASSWORD", id = "CONFIRMING_PASSWORD", onblur = "checkPassword();" })
+        @Html.ValidationMessageFor(m => m.CONFIRMING_PASSWORD)
+    </div>
+
+    <label>
+        <span id='message'></span>
+    </label>
+
+    <div>
+        @Html.TextBoxFor(m => m.NUM_USER, new { @class = "form-control", placeholder = "Numero de Télephone", required = "required" })
+        @Html.ValidationMessageFor(m => m.NUM_USER)
+    </div>
+
+    <div>
+        @Html.TextBoxFor(m => m.NUM_STREET, new { @class = "form-control", placeholder = "Numero de la Rue", required = "required" })
+        @Html.ValidationMessageFor(m => m.NUM_STREET)
+    </div>
+
+    <div>
+        @Html.TextBoxFor(m => m.NAME_STREET, new { @class = "form-control", placeholder = "Nom de la Rue", required = "required" })
+        @Html.ValidationMessageFor(m => m.NAME_STREET)
+    </div>
+
+    <div>
+        @Html.TextBoxFor(m => m.POSTAL_CODE, new { @class = "form-control", placeholder = "Code Postal", required = "required" })
+        @Html.ValidationMessageFor(m => m.POSTAL_CODE)
+    </div>
+
+    <div>
+        @Html.TextBoxFor(m => m.CITY_USER, new { @class = "form-control", placeholder = "Ville", required = "required" })
+        @Html.ValidationMessageFor(m => m.CITY_USER)
+    </div>
+
+    <div>
+        @Html.TextBoxFor(m => m.COUNTRY_USER, new { @class = "form-control", placeholder = "Pays", required = "required" })
+        @Html.ValidationMessageFor(m => m.COUNTRY_USER)
+    </div>
+
+    <input asp:Button runat="server" type="submit" value="Inscription" />
 }
