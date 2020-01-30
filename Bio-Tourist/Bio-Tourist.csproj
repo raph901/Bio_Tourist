@@ -185,7 +185,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DbPath\" />
     <Folder Include="Views\Registration\" />
   </ItemGroup>
   <ItemGroup>
