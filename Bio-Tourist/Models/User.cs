@@ -26,12 +26,7 @@ namespace Bio_Tourist.Models
             public string COUNTRY_USER { get; set; }
             public string EMAIL_USER { get; set; }
             public int NUM_USER { get; set; }
-
-            [DataType(DataType.Password)]
             public string PASSWORD_USER { get; set; }
-
-            [DataType(DataType.Password)]
-            [Compare("PASSWORD_USER")]
             public string CONFIRMING_PASSWORD { get; set; }
             public string CIVILITY_USER { get; set; }
 
