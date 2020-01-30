@@ -47,7 +47,7 @@ namespace Bio_Tourist.Controllers
         }
 
         [HttpPost]
-        public ActionResult Verify(Models.UserTest Acc)
+        public ActionResult Verify(UserTest Acc)
         {
             GetConnectionPath();
             ConnectionPath.Open();
