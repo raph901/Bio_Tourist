@@ -45,12 +45,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,6 +128,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADO\ADO_Role.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -130,6 +139,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Ad.cs" />
+    <Compile Include="Models\Cls_Role.cs" />
     <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
@@ -148,6 +158,17 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\FondEcranContact.jpg" />
+    <Content Include="Content\Images\HeadPageAccueil.jpg" />
+    <Content Include="Content\Images\ImageBuyer.jpg" />
+    <Content Include="Content\Images\ImageController.jpg" />
+    <Content Include="Content\Images\ImagePortfolio.jpg" />
+    <Content Include="Content\Images\ImagePortfolio1.jpg" />
+    <Content Include="Content\Images\ImageSeller.jpg" />
+    <Content Include="Content\Images\LogoBio.png" />
+    <Content Include="Content\Images\LogoFormulaireContact.gif" />
+    <Content Include="Content\Images\LogoFormulaireContact.jpg" />
+    <Content Include="Content\Images\SloganBio.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -186,10 +207,10 @@
     <Content Include="Views\User\Inscription.cshtml" />
     <Content Include="Views\User\InscriptionOK.cshtml" />
     <Content Include="Views\User\InscriptionError.cshtml" />
+    <Content Include="Views\Basket\Panier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DbPath\" />
     <Folder Include="Views\Registration\" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +225,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

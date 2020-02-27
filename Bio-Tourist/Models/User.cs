@@ -16,6 +16,7 @@ namespace Bio_Tourist.Models
     {
 
             public int ID_USER { get; set; }
+            public int ID_ROLE { get; set; }
             public string LAST_NAME_USER { get; set; }
             public string FIRST_NAME_USER { get; set; }
             public int AGE_USERS { get; set; }
@@ -29,7 +30,7 @@ namespace Bio_Tourist.Models
             public string PASSWORD_USER { get; set; }
             public string CONFIRMING_PASSWORD { get; set; }
             public string CIVILITY_USER { get; set; }
-
+            public string ROLE_USER { get; set; }
 
     }
 }

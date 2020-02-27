@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Panier";
+}
+
+<h2>Panier</h2>
+@model Bio_Tourist.Models.Ad
+
+
+
+
+<div class="container">
+    <!--Création d'une zone de travail propre -->
+
+    <button> @Html.ActionLink("Ajouter", "AdAnnounces", "Seller") </button>
+
+
+    <div class="row">
+
+        <div class="col-12 row testcol">
+
+
+            <div class="col-2 testcol1">
+
+                <img src=".../" value="Ajouter une image" name="PictureAnnounces" alt="Image" />
+
+
+
+            </div>
+            <div class="col-5 testcol1">
+
+                <p> Titre de l'annonce : </p>
+                <p> Date de l'annonce : </p>
+                <p> Adresse : </p>
+                <p> Ville :</p>
+                <p> Description :</p>
+
+
+
+            </div>
+            <div class="col-2 testcol1">
+
+                <p> Quantités : </p>
+
+
+            </div>
+            <div class="col-3 testcol1">
+                <p> <button class="btn btn-primary"> Supprimer </button> </p>
+                <p> <button class="btn btn-primary"> Modifier </button></p>
+
+                <p> Prix € :</p>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
