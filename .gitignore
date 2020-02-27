@@ -5,6 +5,7 @@
 
 #exlution du dossier bin
 /Bio_Tourist/bin
+/Bio_Tourist/DbPaths
 
 # User-specific files
 *.rsuser
