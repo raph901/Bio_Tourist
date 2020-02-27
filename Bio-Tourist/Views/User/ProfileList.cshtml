@@ -1,54 +1,49 @@
-﻿@Model Bio_Tourist.Models.User
+﻿@model Bio_Tourist.Models.User
 
     <div class="container container-fluid">
-        @if (Model.ProfileModel == null)
+        @if (Session["SessionEmail"] != null)
         {
             <h2>Vous êtes connecté avec le compte @Session["SessionEmail"]</h2>
-        }
-        
-        
-        
-        <table class="table table-responsive table-hover table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>LAST_NAME_USER</th>
-                    <th>FIRST_NAME_USER</th>
-                    <th>AGE_USERS</th>
-                    <th>NUM_STREET</th>
-                    <th>NAME_STREET</th>
-                    <th>POSTAL_CODE</th>
-                    <th>CITY_USER</th>
-                    <th>COUNTRY_USER</th>
-                    <th>EMAIL_USER</th>
-                    <th>CIVILITY_USER</th>
-                </tr>
-            </thead>
-            <tbody>
 
-                @if (Model.ProfileModel != null)
-                {
-                    foreach (var ProfileDetails in Model.ProfileModel)
+            <table class="table table-responsive table-hover table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>LAST_NAME_USER</th>
+                        <th>FIRST_NAME_USER</th>
+                        <th>AGE_USERS</th>
+                        <th>NUM_STREET</th>
+                        <th>NAME_STREET</th>
+                        <th>POSTAL_CODE</th>
+                        <th>CITY_USER</th>
+                        <th>COUNTRY_USER</th>
+                        <th>EMAIL_USER</th>
+                        <th>CIVILITY_USER</th>
+                    </tr>
+                </thead>
+                <tbody>
+               
+                    @foreach (var ProfileDetails in Model.ProfileModel)
                     {
-                        <tr>
-                            <td>@ProfileDetails.LAST_NAME_USER</td>
-                            <td>@ProfileDetails.FIRST_NAME_USER</td>
-                            <td>@ProfileDetails.AGE_USERS</td>
-                            <td>@ProfileDetails.NUM_STREET</td>
-                            <td>@ProfileDetails.NAME_STREET</td>
-                            <td>@ProfileDetails.POSTAL_CODE</td>
-                            <td>@ProfileDetails.CITY_USER</td>
-                            <td>@ProfileDetails.COUNTRY_USER</td>
-                            <td>@ProfileDetails.EMAIL_USER</td>
-                            <td>@ProfileDetails.CIVILITY_USER</td>
-                        </tr>
+                            <tr>
+                                <td>@ProfileDetails.LAST_NAME_USER</td>
+                                <td>@ProfileDetails.FIRST_NAME_USER</td>
+                                <td>@ProfileDetails.AGE_USERS</td>
+                                <td>@ProfileDetails.NUM_STREET</td>
+                                <td>@ProfileDetails.NAME_STREET</td>
+                                <td>@ProfileDetails.POSTAL_CODE</td>
+                                <td>@ProfileDetails.CITY_USER</td>
+                                <td>@ProfileDetails.COUNTRY_USER</td>
+                                <td>@ProfileDetails.EMAIL_USER</td>
+                                <td>@ProfileDetails.CIVILITY_USER</td>
+                            </tr>
                     }
-                }
-            </tbody>
-        </table>
+                    }
+                </tbody>
+            </table>
+        }
 
-        
         @if (Model.ProfileModel == null)
         {
-            <h2>Vous n'êtes pas conneter</h2>
+            <h2 class="text-danger">Vous n'êtes pas conneter</h2>
         }
     </div>
