@@ -7,7 +7,7 @@ namespace Bio_Tourist.Models
 {
     public class User
     {
-        public int ID_USER { get; set; }
+            public int ID_USER { get; set; }
             public string LAST_NAME_USER { get; set; }
             public string FIRST_NAME_USER { get; set; }
             public int AGE_USERS { get; set; }

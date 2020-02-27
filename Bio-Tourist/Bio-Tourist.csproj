@@ -120,7 +120,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InspectorController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DbPath\DbPathController.cs" />
     <Compile Include="Global.asax.cs">
@@ -182,10 +184,13 @@
     <Content Include="Views\User\Inscription.cshtml" />
     <Content Include="Views\User\InscriptionOK.cshtml" />
     <Content Include="Views\User\InscriptionError.cshtml" />
+    <Content Include="Views\Inspector\Report.cshtml" />
+    <Content Include="Views\Inspector\ReportSendOk.cshtml" />
+    <Content Include="Views\Inspector\ReportSendError.cshtml" />
+    <Content Include="Views\Admin\ReportList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Registration\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

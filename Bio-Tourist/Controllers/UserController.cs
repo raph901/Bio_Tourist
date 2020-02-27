@@ -29,7 +29,7 @@ namespace Bio_Tourist.Controllers
             SqlCommand ConnectionCommand = new SqlCommand(); // Créé la commande SQL de connection
             SqlDataReader ConnectionDataReader;
 
-            // Récup + Open --> Connection à la DB
+                    // Récup + Open --> Connection à la DB
             SqlConnection DbConnection = new SqlConnection();
             DbConnection.ConnectionString = GetDbPath();
             DbConnection.Open();
@@ -91,11 +91,11 @@ namespace Bio_Tourist.Controllers
         public ActionResult Register(Models.User p)
         // INSCRIPTION ENREGISTRE LES DONNÉES UTILISATEUR DANS LA DB
         {
-                    // Déclaration command/path Register 
+                // Déclaration command/connexion Register 
             SqlCommand RegisterCommand = new SqlCommand();
             SqlConnection DbConnection = new SqlConnection();
 
-            // Récup + Open --> Connection à la DB
+                // Récup + Open --> Connection à la DB
             DbConnection.ConnectionString = GetDbPath();
             DbConnection.Open();
 
