@@ -138,7 +138,6 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserInspector.cs" />
     <Compile Include="Models\UserSeller.cs" />
-    <Compile Include="Models\UserTest.cs" />
     <Compile Include="Models\UserTourist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -147,6 +146,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Design.css" />
+    <Content Include="Content\DesignContact.css" />
+    <Content Include="Content\DesignIndex.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -188,6 +190,7 @@
     <Content Include="Views\Inspector\ReportSendOk.cshtml" />
     <Content Include="Views\Inspector\ReportSendError.cshtml" />
     <Content Include="Views\Admin\ReportList.cshtml" />
+    <Content Include="Views\User\ProfileList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

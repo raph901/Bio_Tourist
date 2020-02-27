@@ -19,7 +19,9 @@ namespace Bio_Tourist.Models
             public string EMAIL_USER { get; set; }
             public int NUM_USER { get; set; }
             public string PASSWORD_USER { get; set; }
-            public int CONFIRMING_PASSWORD { get; set; }
+            public string CONFIRMING_PASSWORD { get; set; }
             public string CIVILITY_USER { get; set; }
+
+            public List<User> ProfileModel { get; set; }
     }
 }

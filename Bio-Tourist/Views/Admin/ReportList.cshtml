@@ -4,16 +4,14 @@
     ViewBag.Title = "ReportList";
 }
 
-<h2>ReportList</h2>
-
-<div class="container container-fluid">
-    <table class="table table-responsive table-hover table-striped">
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th class="text-center">NUM_REPORT</th>
-                <th class="text-center">TITLE_REPORT</th>
-                <th class="text-center">DATE_REPORT</th>
-                <th class="text-center">DESCRIPTION_REPORT</th>
+                <th>TITLE_REPORT</th>
+                <th >DATE_REPORT</th>
+                <th>DESCRIPTION_REPORT</th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +20,7 @@
                 <tr>
                     <td class="text-center">@ReportDetails.NUM_REPORT</td>
                     <td>@ReportDetails.TITLE_REPORT</td>
-                    <td class="text-center">@ReportDetails.DATE_REPORT</td>
+                    <td>@ReportDetails.DATE_REPORT</td>
                     <td>@ReportDetails.DESCRIPTION_REPORT</td>
                 </tr>
             }
