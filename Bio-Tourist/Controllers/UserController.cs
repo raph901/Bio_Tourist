@@ -43,7 +43,7 @@ namespace Bio_Tourist.Controllers
             {
                 DbConnection.Close();
                 Session["SessionEmail"] = p.EMAIL_USER;
-                return RedirectToAction("UserProfile", "User", new { SessionUsername = p.EMAIL_USER });              
+                return RedirectToAction("UserProfile", "User", new { SessionUsername = p.EMAIL_USER});              
             }
 
             else // Sinon erreur de connection (travaillé sur les =/= possibilités d'erreur et message) + Close DbPath
