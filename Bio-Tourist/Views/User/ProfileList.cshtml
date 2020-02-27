@@ -1,6 +1,7 @@
 ﻿@model Bio_Tourist.Models.User
 
     <div class="container container-fluid">
+
         @if (Session["SessionEmail"] != null)
         {
             <h2>Vous êtes connecté avec le compte @Session["SessionEmail"]</h2>
@@ -21,7 +22,8 @@
                     </tr>
                 </thead>
                 <tbody>
-               
+                    
+
                     @foreach (var ProfileDetails in Model.ProfileModel)
                     {
                             <tr>
@@ -36,13 +38,12 @@
                                 <td>@ProfileDetails.EMAIL_USER</td>
                                 <td>@ProfileDetails.CIVILITY_USER</td>
                             </tr>
-                    }
-                    }
+                    }                   
                 </tbody>
             </table>
         }
 
-        @if (Model.ProfileModel == null)
+        @if (Session["SessionEmail"] == null)
         {
             <h2 class="text-danger">Vous n'êtes pas conneter</h2>
         }

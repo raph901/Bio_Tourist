@@ -19,6 +19,7 @@ namespace Bio_Tourist.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Verify(Models.User p)
         // CONNECTION : VERIFIE QUE LE LOGIN/MDP EXISTE DANS LA DB
@@ -41,8 +42,8 @@ namespace Bio_Tourist.Controllers
             if (ConnectionDataReader.Read()) // Si le DR contient 1 ligne --> Connection + Close DbPath
             {
                 DbConnection.Close();
-                Session["SessionUsername"] = p.EMAIL_USER;
-                return RedirectToAction("ProfileList", "User", new { SessionUsername = p.EMAIL_USER });              
+                Session["SessionEmail"] = p.EMAIL_USER;
+                return RedirectToAction("UserProfile", "User", new { SessionUsername = p.EMAIL_USER });              
             }
 
             else // Sinon erreur de connection (travaillé sur les =/= possibilités d'erreur et message) + Close DbPath
@@ -116,7 +117,7 @@ namespace Bio_Tourist.Controllers
             }
         }
 
-        public ActionResult ProfileList(User us)
+        public ActionResult UserProfile(User us)
         {
             // Déclaration command/reader/path Connection 
             SqlCommand ConnectionCommand = new SqlCommand(); // Créé la commande SQL de connection
@@ -129,7 +130,7 @@ namespace Bio_Tourist.Controllers
 
             // Insert chemin + requète sql dans la commande puis execute le reader associé à la commande
             ConnectionCommand.Connection = DbConnection;
-            ConnectionCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL_USER = '" + Session["SessionEM"] + "'";
+            ConnectionCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL_USER = '" + Session["SessionEmail"] + "'";
             ProfileListDataReader = ConnectionCommand.ExecuteReader();
 
 
