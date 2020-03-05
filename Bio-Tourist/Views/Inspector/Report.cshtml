@@ -1,0 +1,39 @@
+﻿@model Bio_Tourist.Models.Report
+
+@{
+    ViewBag.Title = "Report";
+}
+
+<h2>Report</h2>
+
+@using (Html.BeginForm("RegisterReport", "Inspector"))
+{
+<div>
+    <div>
+        @Html.LabelFor(m => m.NUM_REPORT)
+        @Html.TextBoxFor(m => m.NUM_REPORT)
+        @Html.ValidationMessageFor(m => m.NUM_REPORT)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.TITLE_REPORT)
+        @Html.TextBoxFor(m => m.TITLE_REPORT)
+        @Html.ValidationMessageFor(m => m.TITLE_REPORT)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.DATE_REPORT)
+        @Html.TextBoxFor(m => m.DATE_REPORT)
+        @Html.ValidationMessageFor(m => m.DATE_REPORT)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.DESCRIPTION_REPORT)
+        @Html.TextBoxFor(m => m.DESCRIPTION_REPORT)
+        @Html.ValidationMessageFor(m => m.DESCRIPTION_REPORT)
+    </div>
+</div>
+
+    <input type="submit" value="Envoyer le rapport" />
+}
+

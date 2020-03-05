@@ -1,0 +1,29 @@
+﻿@model Bio_Tourist.Models.Report
+
+@{
+    ViewBag.Title = "ReportList";
+}
+
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th class="text-center">NUM_REPORT</th>
+                <th>TITLE_REPORT</th>
+                <th >DATE_REPORT</th>
+                <th>DESCRIPTION_REPORT</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ReportDetails in Model.ReportModel)
+            {
+                <tr>
+                    <td class="text-center">@ReportDetails.NUM_REPORT</td>
+                    <td>@ReportDetails.TITLE_REPORT</td>
+                    <td>@ReportDetails.DATE_REPORT</td>
+                    <td>@ReportDetails.DESCRIPTION_REPORT</td>
+                </tr>
+            }
+        </tbody>
+    </table>        
+</div>
