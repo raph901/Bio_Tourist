@@ -40,7 +40,7 @@ namespace Bio_Tourist.Controllers
 
         [HttpPost]
         public ActionResult Verify(Models.User p)
-        // CONNECTION : VERIFIE QUE LE LOGIN/MDP EXISTE DANS LA DB
+        // CONNECTION : VERIFIE QUE LE LOGIN/MDP EXISTE DANS LA DB //
         {
             // Déclaration command/reader/path Connection 
             SqlCommand ConnectionCommand = new SqlCommand(); // Créé la commande SQL de connection
