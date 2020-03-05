@@ -46,6 +46,8 @@
 
                             <ul class="nav navbar-nav">
 
+
+
                                 <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
 
                                 <li>@Html.ActionLink("S'inscrire", "Inscription", "User")</li>
@@ -54,9 +56,10 @@
 
                                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
-                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                                
+                                @if (Session["SessionEmail"] != null)
+                                {
                                 <li>@Html.ActionLink("Ton profil", "UserProfile", "User")</li>
+                                }                              
 
                                 <li class="IconeFlecheGauche">
                                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
