@@ -12,16 +12,30 @@ namespace Bio_Tourist.Controllers
 {
     public class UserController : Controller
     {
-        private object elseif;
+        //private object elseif;
 
         public ActionResult Inscription() // Return la view correspondante suite à un appel
         {
-            return View();
+            if (Session["SessionEmail"] != null)
+            {
+                return View("ProfileList");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult Connection() // Return la view correspondante suite à un appel
         {
-            return View();
+            if (Session["SessionEmail"] != null)
+            {
+                return View("ProfileList");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpPost]
@@ -47,6 +61,7 @@ namespace Bio_Tourist.Controllers
             {
                 DbConnection.Close();
                 Session["SessionEmail"] = p.EMAIL_USER;
+                Session["SessionRole"] = p.ROLE_USER;
                 return RedirectToAction("UserProfile", "User", new { SessionUsername = p.EMAIL_USER});              
             }
 
