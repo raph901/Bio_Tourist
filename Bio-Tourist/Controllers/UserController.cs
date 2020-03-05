@@ -12,16 +12,30 @@ namespace Bio_Tourist.Controllers
 {
     public class UserController : Controller
     {
-        private object elseif;
+        //private object elseif;
 
         public ActionResult Inscription() // Return la view correspondante suite à un appel
         {
-            return View();
+            if (Session["SessionEmail"] != null)
+            {
+                return View("ProfileList");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult Connection() // Return la view correspondante suite à un appel
         {
-            return View();
+            if (Session["SessionEmail"] != null)
+            {
+                return View("ProfileList");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpPost]
@@ -47,6 +61,7 @@ namespace Bio_Tourist.Controllers
             {
                 DbConnection.Close();
                 Session["SessionEmail"] = p.EMAIL_USER;
+                Session["SessionRole"] = p.ROLE_USER;
                 return RedirectToAction("UserProfile", "User", new { SessionUsername = p.EMAIL_USER});              
             }
 
@@ -114,7 +129,7 @@ namespace Bio_Tourist.Controllers
             {
 
                 RegisterCommand.Connection = DbConnection;
-                RegisterCommand.CommandText = "INSERT INTO T_USER(CIVILITY_USER , FIRST_NAME_USER , LAST_NAME_USER , AGE_USERS , EMAIL_USER , PASSWORD_USER , NUM_USER , NUM_STREET , NAME_STREET , POSTAL_CODE , CITY_USER , COUNTRY_USER, ID_ROLES) VALUES('" + p.CIVILITY_USER + "' , '" + p.FIRST_NAME_USER + "' , '" + p.LAST_NAME_USER + "' , '" + p.AGE_USERS + "' , '" + p.EMAIL_USER + "' , '" + p.PASSWORD_USER + "' , '" + p.NUM_USER + "' , '" + p.NUM_STREET + "' , '" + p.NAME_STREET + "' , '" + p.POSTAL_CODE + "' , '" + p.CITY_USER + "' , '" + p.COUNTRY_USER + "','" + p.ID_ROLE+ "' ) ";
+                RegisterCommand.CommandText = "INSERT INTO T_USER(CIVILITY_USER , FIRST_NAME_USER , LAST_NAME_USER , AGE_USERS , EMAIL_USER , PASSWORD_USER , NUM_USER , NUM_STREET , NAME_STREET , POSTAL_CODE , CITY_USER , COUNTRY_USER , ID_ROLE) VALUES('" + p.CIVILITY_USER + "' , '" + p.FIRST_NAME_USER + "' , '" + p.LAST_NAME_USER + "' , '" + p.AGE_USERS + "' , '" + p.EMAIL_USER + "' , '" + p.PASSWORD_USER + "' , '" + p.NUM_USER + "' , '" + p.NUM_STREET + "' , '" + p.NAME_STREET + "' , '" + p.POSTAL_CODE + "' , '" + p.CITY_USER + "' , '" + p.COUNTRY_USER + "' , '" + p.ID_ROLE + "' ) ";
                 RegisterCommand.ExecuteNonQuery();
                 DbConnection.Close();
                 return View("InscriptionOK");
