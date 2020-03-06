@@ -1,0 +1,105 @@
+﻿
+body {
+
+    
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 400px;
+}
+#PersonnaliserMenus li:hover {
+  transform:scale(1.5);
+  transition:1s;
+}
+#PersonnaliserMenus li {
+    padding: 0px 50px 0px 0px;
+    position: relative;
+    top:22px;
+    font-size:medium;
+    font-family:'Bahnschrift';
+   text-align:center;
+}
+
+
+
+
+
+    .PanierVersLaDroite {
+        position: absolute;
+        top: 20px;
+        left: 850px;
+    }
+
+.UtilisateurVersLaDroite {
+    position: absolute;
+    top: 31px;
+    left: 920px;
+}
+
+.Container{
+  width:100%;
+  padding-left:50px;
+
+
+}
+
+.align{
+
+    display:inline-block;
+    position:absolute;
+    left:50px;
+
+}
+.Logo {
+    width: 80px;
+
+    
+}
+
+.Slogan {
+ 
+    width:140px;  
+}
+
+#colorHeader {
+    background-color: #30005f;
+   
+}
+header
+{
+
+height:25px;
+
+}
+
+    .MenusReduit {
+      
+        position:relative;
+        top:25px;
+        right:30px;
+        position:fixed;
+     
+    }
+
+.ContainerFooter {
+    background-color: #30005f;
+    padding-top:5px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+Footer {
+    margin-top:50px;
+}
+    
+

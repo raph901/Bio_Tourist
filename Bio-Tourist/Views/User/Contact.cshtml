@@ -1,4 +1,4 @@
-﻿@model Bio_Tourist.Models.Contact
+﻿@model Bio_Tourist.Models.User
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -82,98 +82,39 @@
 
 
                 <div class="TextForm" id="CadreFormContact">
-                    <h3 class="text-center"> Informations personnelles </h3>
+                    <h3 class="text-center"> Informations Contact </h3>
 
 
 
-                    @using (Html.BeginForm("Contact", "Contact", FormMethod.Post, new { enctype = "multipart/form-date" }))
+                    @using (Html.BeginForm("Contact", "User", FormMethod.Post, new { enctype = "multipart/form-date" }))
                     {
-
-
-
-                        <label for="Surname"> Nom </label>
-
-                        <p>
-                            @Html.TextBoxFor(model => model.Surname, new { size = "25", maxlength = "30" })
-                            @Html.ValidationMessageFor(model => model.Surname)
-                        </p>
-
-
-                        <label for="Name"> Prénom </label>
-
-                        <p>
-                            @Html.TextBoxFor(model => model.Name, new { size = "25", maxlength = "30" })
-
-                            @Html.ValidationMessageFor(Model => Model.Name)
-                        </p>
-
-
-                        <label for="NumStreet"> Numéro rue </label>
-                        <p>
-                            @Html.TextBoxFor(model => model.NumStreet, new { size = "25", maxlength = "30", style = "padding-right:42px;" })
-
-                            @Html.ValidationMessageFor(Model => Model.NumStreet)
-                        </p>
-
-
-                        <label for="NameStreet"> Nom rue  </label>
-                        <p>
-                            @Html.TextBoxFor(model => model.NameStreet, new { size = "25", maxlength = "30" })
-
-                            @Html.ValidationMessageFor(Model => Model.NameStreet)
-
-                        </p>
-
-                        <label for="City"> Ville  </label>
-                        <p>
-                            @Html.TextBoxFor(model => model.City, new { size = "25", maxlength = "30" })
-
-                            @Html.ValidationMessageFor(Model => Model.City)
-
-                        </p>
-
-
-
-
-                        <label for="NumTel"> Téléphone fixe ou portable  </label>
-
-                        <p>
-                            @Html.TextBoxFor(model => model.NumTel, new { size = "25", maxlength = "30" })
-
-                            @Html.ValidationMessageFor(Model => Model.NumTel)
-                        </p>
-
-
-                        <label for="Email"> E-mail </label>
-
-                        <p>
-
-                            @Html.TextBoxFor(model => model.Email, new { size = "25", maxlength = "30" })
-
-                            @Html.ValidationMessageFor(Model => Model.Email)
-
-                        </p>
 
                         <label for="Subject"> Sujet : </label>
                         <p>
 
-                            @Html.TextBoxFor(model => model.NameStreet, new { size = "25", maxlength = "30" })
+                            @Html.TextBoxFor(model => model.SUBJECT, new { required="" , size = "25", maxlength = "30", })
 
-                            @Html.ValidationMessageFor(Model => Model.NameStreet)
+                            @Html.ValidationMessageFor(Model => Model.SUBJECT)
 
                         </p>
 
-                        <label for="Comment"> Puis-je vous aider ? </label>
+                        <hr style="background-color:red;" />
+
+                        <label for="Comment"> Description du contact </label>
                         <p>
-                            @Html.TextBoxFor(model => model.Comment, new { rows = "10", cols = "40" })
-
-                            @Html.ValidationMessageFor(model => model.Comment)
+                            @Html.TextAreaFor(model => model.COMMENT, new { required="", placeholder = "Nom : \n Prénom : \n Adresse e-mail : \n Ville : \n Numéro de téléphone :" , rows = "10", cols = "150", });
+                    
+                            @Html.ValidationMessageFor(model => model.COMMENT)
 
                         </p>
 
-                        <input type="submit" name="SendMail" id="SendContact" alt="SendMail" value="Envoyez" />
-                        @ViewBag.message
+                        <p>
+                            <input type="submit" value="Envoyer" id="BoutonEnvoyez" />
+                            @ViewBag.message
+                        </p>
+
                     }
+
                 </div>
 
             </div>

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Bio_Tourist.Models.T_AD>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Liste des annonces </h2>
+
+<p>
+    @Html.ActionLink("Ajouter une annonce ", "Create") |  @Html.ActionLink("Ajouter une image", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.DATE_AD)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.TITLE_AD)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ADRESS_AD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPTION_AD)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.NAME_AD)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PICTURES_AD)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.QUANTITY_AD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRICE_AD)
+        </th>
+
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.DATE_AD)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.TITLE_AD)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.ADRESS_AD)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DESCRIPTION_AD)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.NAME_AD)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.PICTURES_AD)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.QUANTITY_AD)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PRICE_AD)
+    </td>
+
+
+
+    <td>
+        @Html.ActionLink("Modifier", "Edit", new { id = item.ID_AD }) |
+        @Html.ActionLink("Afficher", "Details", new { id = item.ID_AD }) |
+        @Html.ActionLink("Supprimer", "Delete", new { id = item.ID_AD })
+    </td>
+</tr>
+}
+
+</table>

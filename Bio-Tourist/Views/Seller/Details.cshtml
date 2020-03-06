@@ -1,0 +1,84 @@
+﻿@model Bio_Tourist.Models.T_AD
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Afficher une annonce </h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATE_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATE_AD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TITLE_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TITLE_AD)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADRESS_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADRESS_AD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPTION_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPTION_AD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PICTURES_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PICTURES_AD)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NAME_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAME_AD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QUANTITY_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QUANTITY_AD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRICE_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRICE_AD)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.ID_AD }) |
+    @Html.ActionLink("Retour", "ListAnnounces")
+</p>

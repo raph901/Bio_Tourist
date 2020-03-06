@@ -11,6 +11,7 @@ namespace Bio_Tourist.Models
         {
             public int ID_SELLER { get; set; }
             public int ID_USER { get; set; }
+          //  public int ID_AD { get; set; }
         }
     }
 }

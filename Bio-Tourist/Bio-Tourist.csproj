@@ -13,7 +13,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Bio_Tourist</RootNamespace>
-    <AssemblyName>Bio_Tourist</AssemblyName>
+    <AssemblyName>Bio-Tourist</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -45,10 +45,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.10.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.10.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.7.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -110,6 +132,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -120,22 +143,45 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SellerController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DbPath\DbPathController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Ad.cs" />
     <Compile Include="Models\Comments.cs" />
-    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\crud_seller.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crud_seller.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\crud_seller.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crud_seller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\crud_seller.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crud_seller.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PurchaseHistory.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\SaleHistory.cs" />
+    <Compile Include="Models\T_AD.cs">
+      <DependentUpon>crud_seller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_ROLE.cs">
+      <DependentUpon>crud_seller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_USER.cs">
+      <DependentUpon>crud_seller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserInspector.cs" />
-    <Compile Include="Models\UserRegistation.cs" />
     <Compile Include="Models\UserSeller.cs" />
     <Compile Include="Models\UserTest.cs" />
     <Compile Include="Models\UserTourist.cs" />
@@ -146,13 +192,47 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Design.css" />
+    <Content Include="Content\DesignAnnounces.css" />
+    <Content Include="Content\DesignContact.css" />
+    <Content Include="Content\DesignIndex.css" />
+    <Content Include="Images\accueil.jpg" />
+    <Content Include="Images\FondEcranContact.jpg" />
+    <Content Include="Images\HeadPageAccueil.jpg" />
+    <Content Include="Images\ImageBuyer.jpg" />
+    <Content Include="Images\ImageController.jpg" />
+    <Content Include="Images\ImagePortfolio.jpg" />
+    <Content Include="Images\ImagePortfolio1.jpg" />
+    <Content Include="Images\ImageSeller.jpg" />
+    <Content Include="Images\LogoBio.png" />
+    <Content Include="Images\LogoFormulaireContact.gif" />
+    <Content Include="Images\LogoFormulaireContact.jpg" />
+    <Content Include="Images\SloganBio.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\crud_seller.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>crud_seller.edmx</DependentUpon>
+      <LastGenOutput>crud_seller.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\crud_seller.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>crud_seller.edmx</DependentUpon>
+      <LastGenOutput>crud_seller.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\crud_seller.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>crud_seller.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\crud_seller.edmx.diagram">
+      <DependentUpon>crud_seller.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -176,11 +256,23 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Registration.cshtml" />
-    <Content Include="Views\Home\FormContact.cshtml" />
+    <Content Include="Views\User\ConnectionSuccessful.cshtml" />
+    <Content Include="Views\User\ConnectionError.cshtml" />
+    <Content Include="Views\User\Connection.cshtml" />
+    <Content Include="Views\User\Inscription.cshtml" />
+    <Content Include="Views\User\InscriptionOK.cshtml" />
+    <Content Include="Views\User\InscriptionError.cshtml" />
+    <Content Include="Views\User\Contact.cshtml" />
+    <Content Include="Views\Seller\Create.cshtml" />
+    <Content Include="Views\Seller\Delete.cshtml" />
+    <Content Include="Views\Seller\Details.cshtml" />
+    <Content Include="Views\Seller\Edit.cshtml" />
+    <Content Include="Views\Seller\ListAnnounces.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ImagesUser\" />
+    <Folder Include="Views\Image\" />
     <Folder Include="Views\Registration\" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +287,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
