@@ -1,18 +1,20 @@
-﻿@model Bio_Tourist.Models.User
-
+﻿@using System.Web.UI.WebControls
+@model Bio_Tourist.Models.User
 <script language="javascript" type="text/javascript" src="../../Scripts/javascript.js"></script>
 <h2>Inscription</h2>
 
 @using (Html.BeginForm("Register", "User"))
 {
 
+
     <div runat="server">
-        Sexes:
+
+        Genre:
 
         @Html.DropDownListFor(x => x.CIVILITY_USER, new List<SelectListItem>
         {
-            new SelectListItem() {Text = "Homme", Value="Homme"},
-            new SelectListItem() {Text = "Femme", Value="Femme"}
+            new SelectListItem() {Text = "Homme", Value="GenreH"},
+            new SelectListItem() {Text = "Femme", Value="GenreF"}
         })
         @Html.ValidationMessageFor(m => m.CIVILITY_USER)
     </div>
@@ -38,15 +40,18 @@
     </div>
 
     <div>
-        @Html.TextBoxFor(m => m.PASSWORD_USER, new { @class = "form-control", placeholder = "Mot de Passe", name = "PASSWORD_USER", id = "PASSWORD_USER", type = "PASSWORD" })
+        @Html.TextBoxFor(m => m.PASSWORD_USER, new { @class = "form-control", placeholder = "PASSWORD_USER", name = "PASSWORD_USER", id = "PASSWORD_USER", type = "PASSWORD" })
         @Html.ValidationMessageFor(m => m.PASSWORD_USER)
     </div>
 
     <div>
-        @Html.TextBoxFor(m => m.CONFIRMING_PASSWORD, new { @class = "form-control", placeholder = "Confirmer le mot de Passe", type = "PASSWORD", name = "CONFIRMING_PASSWORD", id = "CONFIRMING_PASSWORD", onblur = "checkPassword();" })
+        @Html.TextBoxFor(m => m.CONFIRMING_PASSWORD, new { @class = "form-control", placeholder = "CONFIRMING_PASSWORD", type = "PASSWORD", name = "CONFIRMING_PASSWORD", id = "CONFIRMING_PASSWORD", onblur = "checkPassword();" })
         @Html.ValidationMessageFor(m => m.CONFIRMING_PASSWORD)
-        <span id='message'></span>
     </div>
+
+    <label>
+        <span id='message'></span>
+    </label>
 
     <div>
         @Html.TextBoxFor(m => m.NUM_USER, new { @class = "form-control", placeholder = "Numero de Télephone", required = "required" })

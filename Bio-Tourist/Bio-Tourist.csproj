@@ -144,6 +144,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DbPath\DbPathController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DbPath\DbPathController.cs" />
@@ -268,6 +270,12 @@
     <Content Include="Views\Seller\Details.cshtml" />
     <Content Include="Views\Seller\Edit.cshtml" />
     <Content Include="Views\Seller\ListAnnounces.cshtml" />
+    <Content Include="Views\User\ConnectionSuccessful.cshtml" />
+    <Content Include="Views\User\ConnectionError.cshtml" />
+    <Content Include="Views\User\Connection.cshtml" />
+    <Content Include="Views\User\Inscription.cshtml" />
+    <Content Include="Views\User\InscriptionOK.cshtml" />
+    <Content Include="Views\User\InscriptionError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
