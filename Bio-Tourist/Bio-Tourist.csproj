@@ -140,9 +140,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADO\ADO_Role.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DbPath\DbPathController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
@@ -151,6 +153,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ad.cs" />
+    <Compile Include="Models\Cls_Role.cs" />
     <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\crud_seller.Context.cs">
       <AutoGen>True</AutoGen>
@@ -184,7 +188,6 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserInspector.cs" />
     <Compile Include="Models\UserSeller.cs" />
-    <Compile Include="Models\UserTest.cs" />
     <Compile Include="Models\UserTourist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -275,6 +278,12 @@
     <Content Include="Views\User\Inscription.cshtml" />
     <Content Include="Views\User\InscriptionOK.cshtml" />
     <Content Include="Views\User\InscriptionError.cshtml" />
+    <Content Include="Views\Inspector\Report.cshtml" />
+    <Content Include="Views\Inspector\ReportSendOk.cshtml" />
+    <Content Include="Views\Inspector\ReportSendError.cshtml" />
+    <Content Include="Views\Admin\ReportList.cshtml" />
+    <Content Include="Views\User\ProfileList.cshtml" />
+    <Content Include="Views\Basket\Panier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

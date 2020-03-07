@@ -14,5 +14,9 @@ namespace Bio_Tourist.Models
         public string QUANTITY { get; set; }
         public int PRICE_LOT{ get; set; }
         public int PRICE_UNITY { get; set; }
+        public string NAME_PRODUCT { get; set; }
+        public string QUANTITY_PRODUCT { get; set; }
+        public int PRICE_LOT_PRODUCT { get; set; }
+        public int UNIT_PRICE_PRODUCT { get; set; }
     }
 }

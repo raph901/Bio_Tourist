@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -12,5 +13,7 @@ namespace Bio_Tourist.Models
         public string TITLE_REPORT { get; set; }
         public string DATE_REPORT { get; set; }
         public string DESCRIPTION_REPORT { get; set; }
+
+        public List<Report> ReportModel { get; set; }
     }
 }
