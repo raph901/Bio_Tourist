@@ -144,7 +144,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DbPath\DbPathController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
