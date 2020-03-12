@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/Content/DesignIndex.css" />
     <link rel="stylesheet" href="~/Content/DesignContact.css" />
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
-    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">*@
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="~/Content/DesignAnnounces.css" />
     <title>@ViewBag.Title - BioTourist</title>
 
@@ -42,25 +42,24 @@
 
 
                     <n id="PersonnaliserMenus" class="mx-auto">
-                        s
+                        
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
                             <li class="nav-item">@Html.ActionLink("Accueil", "Index", "Home")</li>
 
-                            <li class="nav-item">@Html.ActionLink("S'inscrire", "Inscription", "User")</li>
-
-                            <li class="nav-item">@Html.ActionLink("Connexion", "Connection", "User")</li>
-
-                            @if (Session["SessionEmail"] != null)
+                            @if (Session["SessionEmail"] == null)
                             {
-                                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "User")</li>
+                                <li class="nav-item">@Html.ActionLink("S'inscrire", "Inscription", "User")</li>
+                                <li class="nav-item">@Html.ActionLink("Connexion", "Connection", "User")</li>
                             }
 
-                            @*<li class="nav-item">@Html.ActionLink("Gestion annonces", "ListAnnounces", "Seller")</li>*@
+                            <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
 
                             @if (Session["SessionEmail"] != null)
                             {
+
                                 <li>@Html.ActionLink("Ton profil", "UserProfile", "User")</li>
+                                <li>@Html.ActionLink("Deconnexion", "Deconnect", "User")</li>
                             }
 
                         </ul>

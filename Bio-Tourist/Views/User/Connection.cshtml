@@ -33,12 +33,14 @@
                     <form method="POST">
                         <div class="input-group ">
                             @Html.LabelFor(m => m.EMAIL_USER)
+                            <br />
                             @Html.TextBoxFor(m => m.EMAIL_USER, new { htmlAttributes = new { @class = "input--style-2" } })
                             @Html.ValidationMessageFor(m => m.EMAIL_USER)
                         </div>
 
                         <div class="input-group ">
                             @Html.LabelFor(m => m.PASSWORD_USER)
+                            <br/>
                             @Html.PasswordFor(m => m.PASSWORD_USER, new { htmlAttributes = new { @class = "input--style-2" } })
                             @Html.ValidationMessageFor(m => m.PASSWORD_USER)
                         </div>

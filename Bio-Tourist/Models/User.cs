@@ -44,10 +44,8 @@ namespace Bio_Tourist.Models
         public string CONFIRMING_PASSWORD { get; set; }
         [DisplayName("Civiliter")]
         public string CIVILITY_USER { get; set; }
-
         [DisplayName("Rols")]
         public string ROLE_USER { get; set; }
-
         [DisplayName("Rolr")]
         public List<User> ProfileModel { get; set; }
     }

@@ -181,6 +181,12 @@ namespace Bio_Tourist.Controllers
             return v_ListGENRE;
         }
 
+        public ActionResult Deconnect() // Return la view correspondante suite à un appel
+        {
+            Session["SessionEmail"] = null;
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult UserProfile(User us)
         {
             // Déclaration command/reader/path Connection 
