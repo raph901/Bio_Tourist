@@ -49,9 +49,8 @@
         <dt>
             @Html.DisplayNameFor(model => model.PICTURES_AD)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.PICTURES_AD)
+            <img src="@Html.DisplayFor(model => model.PICTURES_AD)" name="Fichier" id="Images" runat="server" width="100" height="80" />
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.NAME_AD)
@@ -60,14 +59,21 @@
         <dd>
             @Html.DisplayFor(model => model.NAME_AD)
         </dd>
-
         <dt>
+            @Html.DisplayNameFor(model => model.STOCK_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STOCK_AD)
+        </dd>
+
+        @*<dt>
             @Html.DisplayNameFor(model => model.QUANTITY_AD)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.QUANTITY_AD)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.PRICE_AD)

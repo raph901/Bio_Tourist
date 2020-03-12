@@ -7,7 +7,7 @@
 <h2>Ajouter une annonce </h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create","Seller", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
@@ -16,14 +16,13 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DATE_AD, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.DATE_AD, new { htmlAttributes = new {type="Date", @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DATE_AD, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.DATE_AD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DATE_AD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DATE_AD, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.TITLE_AD, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -45,7 +44,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.DESCRIPTION_AD, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.DESCRIPTION_AD, new { htmlAttributes = new {rows="150", cols="150", @class = "form-control" } })
+            @Html.TextAreaFor(model => model.DESCRIPTION_AD, new { rows = "10", cols = "150", htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.DESCRIPTION_AD, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -61,19 +60,27 @@
     <div class="form-group">
         @Html.LabelFor(model => model.PICTURES_AD, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PICTURES_AD, new { htmlAttributes = new { @class = "form-control" } })
+            @*@Html.EditorFor(model => model.PICTURES_AD, new { htmlAttributes = new { @class = "form-control" } })*@
+            <input type="file" name="PICTURES_AD" id="PICTURES_AD" runat="server" />
+
             @Html.ValidationMessageFor(model => model.PICTURES_AD, "", new { @class = "text-danger" })
         </div>
     </div>
-
-
     <div class="form-group">
+        @Html.LabelFor(model => model.STOCK_AD, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.STOCK_AD, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.STOCK_AD, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
         @Html.LabelFor(model => model.QUANTITY_AD, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.QUANTITY_AD, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.QUANTITY_AD, "", new { @class = "text-danger" })
         </div>
-    </div>
+    </div>*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.PRICE_AD, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -82,10 +89,17 @@
             @Html.ValidationMessageFor(model => model.PRICE_AD, "", new { @class = "text-danger" })
         </div>
     </div>
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.RESULT_AD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
 
+                @Html.EditorFor(model => model.RESULT_AD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RESULT_AD, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Create" runat="server" class="btn btn-default" />
         </div>
     </div>
 </div>

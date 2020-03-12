@@ -23,6 +23,7 @@ namespace Bio_Tourist.Models
         public string LAST_NAME_USER { get; set; }
         [DisplayName("Prenom")]
         public string FIRST_NAME_USER { get; set; }
+
         [DisplayName("Age")]
         public int AGE_USERS { get; set; }
         [DisplayName("Numero de la Rue")]
@@ -48,8 +49,10 @@ namespace Bio_Tourist.Models
 
         public string ROLE_USER { get; set; }
 
+        public virtual Cls_Role Cls_Role { get; set; }
 
-            public List<User> ProfileModel { get; set; }
+
+        public List<User> ProfileModel { get; set; }
 
         // Pour la page contact = A ne pas toucher
   

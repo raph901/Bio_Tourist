@@ -147,6 +147,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DbPath\DbPathController.cs" />
     <Compile Include="Global.asax.cs">
@@ -175,6 +176,7 @@
     <Compile Include="Models\PurchaseHistory.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\SaleHistory.cs" />
+    <Compile Include="Models\set.cs" />
     <Compile Include="Models\T_AD.cs">
       <DependentUpon>crud_seller.tt</DependentUpon>
     </Compile>
@@ -282,7 +284,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="ImagesUser\" />
     <Folder Include="Views\Image\" />
+    <Folder Include="Views\Picture\" />
     <Folder Include="Views\Registration\" />
+    <Folder Include="Views\Session\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

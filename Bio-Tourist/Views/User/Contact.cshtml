@@ -73,18 +73,15 @@
 
     </section>
 
-    <section class="SectionContainerContact1">
-        <!-- Section 1 -->
+    <section >
+      
+        <div class="text-center">
 
-        <div>
+       
 
-            <div class="ContainerContactSection1">
-
-
-                <div class="TextForm" id="CadreFormContact">
-                    <h3 class="text-center"> Informations Contact </h3>
-
-
+                <h3 class="text-center"> Informations Contact </h3>
+                <div class="borderContact">
+                  
 
                     @using(Html.BeginForm("Contact", "User", FormMethod.Post, new { enctype = "multipart/form-date" }))
                     {
@@ -100,9 +97,9 @@
 
                         <hr style="background-color:red;" />
 
-                        <label for="Comment"> Description du contact </label>
+                        <label for="Comment"> Description </label>
                         <p>
-                            @Html.TextAreaFor(model => model.COMMENT, new { required="", placeholder = "Nom : \n Prénom : \n Adresse e-mail : \n Ville : \n Numéro de téléphone :" , rows = "10", cols = "150", });
+                            @Html.TextAreaFor(model => model.COMMENT, new { required="", placeholder = "Nom : \n Prénom : \n Adresse e-mail : \n Ville : \n Numéro de téléphone :" , rows = "10", cols = "150", })
                     
                             @Html.ValidationMessageFor(model => model.COMMENT)
 
@@ -118,7 +115,7 @@
                 </div>
 
             </div>
-        </div>
+    
 
     </section>
 </div>

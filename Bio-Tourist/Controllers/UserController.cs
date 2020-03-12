@@ -92,7 +92,7 @@ namespace Bio_Tourist.Controllers
 
             // Insert chemin + requète sql dans la commande puis execute le reader associé à la commande
             ConnectionCommand.Connection = DbConnection;
-            ConnectionCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL ='" + p.EMAIL_USER + "' AND PASSWORD_USER='" + p.PASSWORD_USER + "'";
+            ConnectionCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL_USER ='" + p.EMAIL_USER + "' AND PASSWORD_USER='" + p.PASSWORD_USER + "'";
             ConnectionDataReader = ConnectionCommand.ExecuteReader();
 
 
@@ -100,8 +100,10 @@ namespace Bio_Tourist.Controllers
            
             {
                 DbConnection.Close();
+
                 Session["SessionEmail"] = p.EMAIL_USER;
                 Session["SessionRole"] = p.ROLE_USER;
+
                 return RedirectToAction("UserProfile", "User", new { SessionUsername = p.EMAIL_USER});              
             }
 
@@ -168,7 +170,8 @@ namespace Bio_Tourist.Controllers
             {
 
                 RegisterCommand.Connection = DbConnection;
-                RegisterCommand.CommandText = "INSERT INTO T_USER(CIVILITY_USER , FIRST_NAME_USER , LAST_NAME_USER , AGE_USERS , EMAIL_USER , PASSWORD_USER , NUM_USER , NUM_STREET , NAME_STREET , POSTAL_CODE , CITY_USER , COUNTRY_USER , ID_ROLE) VALUES('" + p.CIVILITY_USER + "' , '" + p.FIRST_NAME_USER + "' , '" + p.LAST_NAME_USER + "' , '" + p.AGE_USERS + "' , '" + p.EMAIL_USER + "' , '" + p.PASSWORD_USER + "' , '" + p.NUM_USER + "' , '" + p.NUM_STREET + "' , '" + p.NAME_STREET + "' , '" + p.POSTAL_CODE + "' , '" + p.CITY_USER + "' , '" + p.COUNTRY_USER + "' , '" + p.ID_ROLE + "' ) ";
+                p.ID_USER = 27;
+                RegisterCommand.CommandText = "INSERT INTO T_USER(CIVILITY_USER , FIRST_NAME_USER , LAST_NAME_USER , AGE_USERS , EMAIL_USER , PASSWORD_USER , NUM_USER , NUM_STREET , NAME_STREET , POSTAL_CODE , CITY_USER , COUNTRY_USER ) VALUES('" + p.CIVILITY_USER + "' , '" + p.FIRST_NAME_USER + "' , '" + p.LAST_NAME_USER + "' , '" + p.AGE_USERS + "' , '" + p.EMAIL_USER + "' , '" + p.PASSWORD_USER + "' , '" + p.NUM_USER + "' , '" + p.NUM_STREET + "' , '" + p.NAME_STREET + "' , '" + p.POSTAL_CODE + "' , '" + p.CITY_USER + "' , '" + p.COUNTRY_USER + "' ) ";
                 RegisterCommand.ExecuteNonQuery();
                 DbConnection.Close();
                 return View("InscriptionOK");
@@ -179,9 +182,10 @@ namespace Bio_Tourist.Controllers
         {
             List<SelectListItem> vdropdownlist = new List<SelectListItem>();
             List<Cls_Role> v_ListRole = RecupListcClsRoles();
+            
             foreach(Cls_Role v_Role in v_ListRole)
             {
-                vdropdownlist.Add(new SelectListItem() { Text = v_Role.NAME_ROLE, Value = v_Role.ID_ROLE.ToString()});
+                vdropdownlist.Add(new SelectListItem() { Text = v_Role.NAME_ROLE, Value = v_Role.ID_ROLE.ToString() }) ;
             }
             return vdropdownlist;
         }

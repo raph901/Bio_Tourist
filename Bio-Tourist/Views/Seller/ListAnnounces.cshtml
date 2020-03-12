@@ -1,16 +1,33 @@
-﻿@Model IEnumerable<Bio_Tourist.Models.T_AD>
+﻿@model IEnumerable<Bio_Tourist.Models.T_AD>
 
 @{
     ViewBag.Title = "Index";
 }
 
+
+@{
+
+    TimeSpan ts = DateTime.Now.Subtract(DateTime.Now);
+
+
+}
+
+@using Bio_Tourist.Models
+
+@{
+
+    T_USER t_USER = new T_USER();
+
+}
+
 <h2>Liste des annonces </h2>
 
 <p>
-    @Html.ActionLink("Ajouter une annonce ", "Create") |  @Html.ActionLink("Ajouter une image", "Create")
+    @Html.ActionLink("Ajouter une annonce ", "Create")
 </p>
 <table class="table">
     <tr>
+
 
         <th>
             @Html.DisplayNameFor(model => model.DATE_AD)
@@ -36,17 +53,26 @@
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.QUANTITY_AD)
+            @Html.DisplayNameFor(model => model.STOCK_AD)
         </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.QUANTITY_AD)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.PRICE_AD)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.RESULT_AD)
+        </th>*@
+
 
 
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
 <tr>
 
     <td>
@@ -69,15 +95,23 @@
     </td>
 
     <td>
-        @Html.DisplayFor(modelItem => item.PICTURES_AD)
+        <img src="@Html.DisplayFor(modelItem => item.PICTURES_AD)" name="Fichier" id="Images" runat="server" width="100" height="80" />
     </td>
 
     <td>
-        @Html.DisplayFor(modelItem => item.QUANTITY_AD)
+        @Html.DisplayFor(modelItem => item.STOCK_AD)
     </td>
+
+    @*<td>
+        @Html.DisplayFor(modelItem => item.QUANTITY_AD)
+    </td>*@
     <td>
         @Html.DisplayFor(modelItem => item.PRICE_AD)
     </td>
+
+    @*<td>
+            @Html.DisplayFor(modelItem => item.RESULT_AD)
+        </td>*@
 
 
 
@@ -87,6 +121,6 @@
         @Html.ActionLink("Supprimer", "Delete", new { id = item.ID_AD })
     </td>
 </tr>
-}
+    }
 
 </table>

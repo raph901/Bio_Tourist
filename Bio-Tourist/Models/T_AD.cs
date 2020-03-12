@@ -12,32 +12,55 @@ namespace Bio_Tourist.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web;
 
     public partial class T_AD
     {
         public int ID_AD { get; set; }
 
-        [Display(Name="Image")]
+        [Required(ErrorMessage = "L'image est obligatoire")]
+        [Display(Name = "Image")]
         public string PICTURES_AD { get; set; }
 
+        [Required(ErrorMessage = "Le titre est obligatoire")]
         [Display(Name = "Titre")]
         public string TITLE_AD { get; set; }
 
+        [Required(ErrorMessage = "Le nom du produit est obligatoire")]
+
         [Display(Name = "Nom du produit")]
         public string NAME_AD { get; set; }
+
+        [Required(ErrorMessage = "La quantité est obligatoire")]
         [Display(Name = "Quantités")]
         public int QUANTITY_AD { get; set; }
-        [Display(Name = "Prix")]
+
+        [Required(ErrorMessage = "Le prix est obligatoire")]
+        [Display(Name = "Prix €")]
         public int PRICE_AD { get; set; }
 
+        [Required(ErrorMessage = "L'adresse est obligatoire")]
         [Display(Name = "Adresse")]
+
         public string ADRESS_AD { get; set; }
+
+        [Required(ErrorMessage = "La description est obligatoire")]
 
         [Display(Name = "Description")]
         public string DESCRIPTION_AD { get; set; }
 
-        [Display(Name = "Date")]
-        public System.DateTime DATE_AD { get; set; }
+        [Display(Name ="Date")]
+        public DateTime DATE_AD { get; set; }
+
+
+        [Display(Name = "Stock")]
+        public int STOCK_AD { get; set; }
+
+        //[Display(Name = "Prix Total")]
+        //public int RESULT_AD { get; set; }
+
+
+
         public int ID_USER { get; set; }
     
         public virtual T_USER T_USER { get; set; }

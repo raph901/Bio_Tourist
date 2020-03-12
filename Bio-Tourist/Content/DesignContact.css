@@ -55,17 +55,18 @@
     font-size: 3em;
 }
 
-#CadreFormContact {
-    border: 7px double #30005f;
-    background-color: antiquewhite;
-    border-radius: 20px;
-    width: 490px;
-    padding-bottom: 80px;
-    padding-left: 60px;
-    padding-right: 60px;
+.borderContact{
+
+    border: 3px solid #30005f;
+    
+    height:80%;
+    padding:20px 90px 80px 80px;
+    display:inline-flex;
+    
+ 
+   border-radius:10px;
 
 }
-
 #CadreFormContact:hover {
   
     transform:scale(1.2);
