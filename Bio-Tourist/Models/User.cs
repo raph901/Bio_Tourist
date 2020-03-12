@@ -15,8 +15,9 @@ namespace Bio_Tourist.Models
     public class User
     {
             
-            public int ID_USER { get; set; }
-            public int ID_ROLE { get; set; }
+        public int ID_ROLE { get; set; }
+
+        public int ID_GENDER { get; set; }
 
         [DisplayName("Nom")]
         public string LAST_NAME_USER { get; set; }
@@ -43,11 +44,11 @@ namespace Bio_Tourist.Models
         public string CONFIRMING_PASSWORD { get; set; }
         [DisplayName("Civiliter")]
         public string CIVILITY_USER { get; set; }
-        
 
+        [DisplayName("Rols")]
         public string ROLE_USER { get; set; }
 
-
-            public List<User> ProfileModel { get; set; }
+        [DisplayName("Rolr")]
+        public List<User> ProfileModel { get; set; }
     }
 }

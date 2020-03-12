@@ -128,6 +128,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADO\ADO_GENRE.cs" />
     <Compile Include="ADO\ADO_Role.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -141,6 +142,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Ad.cs" />
+    <Compile Include="Models\Cls_GENRE.cs" />
     <Compile Include="Models\Cls_Role.cs" />
     <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\Payment.cs" />
@@ -162,6 +164,7 @@
     <Content Include="Content\Design.css" />
     <Content Include="Content\DesignContact.css" />
     <Content Include="Content\DesignIndex.css" />
+    <Content Include="Content\Images\bg-heading-02.jpg" />
     <Content Include="Content\Images\FondEcranContact.jpg" />
     <Content Include="Content\Images\HeadPageAccueil.jpg" />
     <Content Include="Content\Images\ImageBuyer.jpg" />
@@ -173,6 +176,7 @@
     <Content Include="Content\Images\LogoFormulaireContact.gif" />
     <Content Include="Content\Images\LogoFormulaireContact.jpg" />
     <Content Include="Content\Images\SloganBio.png" />
+    <Content Include="Content\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -180,6 +184,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\global.js" />
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -191,6 +196,20 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="vendor\datepicker\daterangepicker.css" />
+    <Content Include="vendor\datepicker\daterangepicker.js" />
+    <Content Include="vendor\datepicker\moment.min.js" />
+    <Content Include="vendor\font-awesome-4.7\css\font-awesome.css" />
+    <Content Include="vendor\font-awesome-4.7\css\font-awesome.min.css" />
+    <Content Include="vendor\font-awesome-4.7\fonts\fontawesome-webfont.svg" />
+    <Content Include="vendor\font-awesome-4.7\HELP-US-OUT.txt" />
+    <Content Include="vendor\jquery\jquery.js" />
+    <Content Include="vendor\jquery\jquery.min.js" />
+    <Content Include="vendor\mdi-font\css\material-design-iconic-font.css" />
+    <Content Include="vendor\mdi-font\css\material-design-iconic-font.min.css" />
+    <Content Include="vendor\mdi-font\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="vendor\select2\select2.min.css" />
+    <Content Include="vendor\select2\select2.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -217,6 +236,15 @@
     <Content Include="Views\Admin\ReportList.cshtml" />
     <Content Include="Views\User\ProfileList.cshtml" />
     <Content Include="Views\Basket\Panier.cshtml" />
+    <Content Include="vendor\font-awesome-4.7\fonts\fontawesome-webfont.eot" />
+    <Content Include="vendor\font-awesome-4.7\fonts\fontawesome-webfont.ttf" />
+    <Content Include="vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff" />
+    <Content Include="vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff2" />
+    <Content Include="vendor\font-awesome-4.7\fonts\FontAwesome.otf" />
+    <Content Include="vendor\mdi-font\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="vendor\mdi-font\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
