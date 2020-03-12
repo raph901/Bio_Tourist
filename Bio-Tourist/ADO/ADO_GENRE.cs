@@ -25,20 +25,6 @@ namespace Bio_Tourist.ADO
             }
             return v_ListGENRE;
 
-        }
-        //fonction qui permet la Recuperation Des objet GENRE
-        public static Cls_GENRE fct_RecupObjetGENRE(SqlDataReader p_DataReader)
-        {
-            while (p_DataReader.Read())
-            {
-                Cls_GENRE v_ObjGENRE = new Cls_GENRE();
-                v_ObjGENRE.ID_GENDER = Convert.ToInt32(p_DataReader["ID_GENDER"]);
-                v_ObjGENRE.NAME_GENDER = Convert.ToString(p_DataReader["NAME_GENDER"]);
-                return v_ObjGENRE;
-
-            }
-            return null;
-
-        }
+        }    
     }
 }

@@ -157,12 +157,11 @@ namespace Bio_Tourist.Controllers
             DbConnection.ConnectionString = GetDbPath();
             DbConnection.Open();
 
-
-                RegisterCommand.Connection = DbConnection;
-                RegisterCommand.CommandText = "SELECT * FROM T_ROLE";
-                SqlDataReader v_Datareader = RegisterCommand.ExecuteReader();//recupere adoRole
-                v_ListRole = ADO_Role.fct_RecupListeObjetRole(v_Datareader);
-                return v_ListRole;
+            RegisterCommand.Connection = DbConnection;
+            RegisterCommand.CommandText = "SELECT * FROM T_ROLE";
+            SqlDataReader v_Datareader = RegisterCommand.ExecuteReader();//recupere adoRole
+            v_ListRole = ADO_Role.fct_RecupListeObjetRole(v_Datareader);
+            return v_ListRole;
         }
         public static List<Cls_GENRE> RecupListcClsGENRE()
         {
