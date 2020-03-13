@@ -61,7 +61,8 @@ namespace Bio_Tourist.Controllers
             {
                 DbConnection.Close();
                 Session["SessionEmail"] = p.EMAIL_USER;
-                Session["SessionRole"] = p.ROLE_USER;
+                Session["SessionUserId"] = p.ID_USER;
+                Session["SessionUserRole"] = p.ID_ROLE;
                 return RedirectToAction("UserProfile", "User", new { SessionUsername = p.EMAIL_USER});              
             }
 
@@ -183,7 +184,7 @@ namespace Bio_Tourist.Controllers
 
         public ActionResult Deconnect() // Return la view correspondante suite à un appel
         {
-            Session["SessionEmail"] = null;
+            Session.Clear();
             return RedirectToAction("Index", "Home");
         }
 

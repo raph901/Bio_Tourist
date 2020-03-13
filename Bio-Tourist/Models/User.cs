@@ -16,6 +16,7 @@ namespace Bio_Tourist.Models
     {
             
         public int ID_ROLE { get; set; }
+        public int ID_USER { get; set; }
 
         public int ID_GENDER { get; set; }
 
@@ -45,7 +46,7 @@ namespace Bio_Tourist.Models
         [DisplayName("Civiliter")]
         public string CIVILITY_USER { get; set; }
         [DisplayName("Rols")]
-        public string ROLE_USER { get; set; }
+        public int ROLE_USER { get; set; }
         [DisplayName("Rolr")]
         public List<User> ProfileModel { get; set; }
     }
