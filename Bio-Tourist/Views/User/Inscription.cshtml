@@ -4,9 +4,6 @@
 
 <link rel="stylesheet" href="~/Content/main.css" />
 <script language="javascript" type="text/javascript" src="../../Scripts/javascript.js"></script>
-
-<h2>Inscription</h2>
-
 @using (Html.BeginForm("Register", "User"))
 {
 
@@ -17,18 +14,16 @@
                 <div class="card-body">
                     <h2 class="title">Inscription</h2>
                     <form method="POST">
-                            <div class="col-md-12 col-sm-12">
-                                <div runat="server">
+                            <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <div class="input-group">
                                             <div class="rs-select2 js-select-simple select--no-search">
-                                                @Html.DropDownListFor(m => m.ID_GENDER, UserController.DROPDOWN_LIST())
+                                                @Html.DropDownListFor(m => m.ID_GENDER, UserController.DROPDOWN_LISTS())
                                                 @Html.ValidationMessageFor(m => m.ID_GENDER)
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div runat="server">
+                                    </div>            
+
                                     <div class="col-md-6 col-sm-6">
                                         <div class="input-group">
                                             <div class="rs-select2 js-select-simple select--no-search">
@@ -37,11 +32,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
+                                
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-group">
-                                        @Html.TextBoxFor(m => m.LAST_NAME_USER, new { @class = "input--style-2", placeholder = "Nom", required = "required" })
+                                        @Html.TextBoxFor(m => m.LAST_NAME_USER, new { @class = "input--style-2", placeholder = "Nom", required = " " })
                                         @Html.ValidationMessageFor(m => m.LAST_NAME_USER)
                                     </div>
                                 </div>

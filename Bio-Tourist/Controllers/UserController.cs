@@ -129,7 +129,7 @@ namespace Bio_Tourist.Controllers
             {
 
                 RegisterCommand.Connection = DbConnection;
-                RegisterCommand.CommandText = "INSERT INTO T_USER(CIVILITY_USER , FIRST_NAME_USER , LAST_NAME_USER , AGE_USERS , EMAIL_USER , PASSWORD_USER , NUM_USER , NUM_STREET , NAME_STREET , POSTAL_CODE , CITY_USER , COUNTRY_USER , ID_ROLE) VALUES('" + p.CIVILITY_USER + "' , '" + p.FIRST_NAME_USER + "' , '" + p.LAST_NAME_USER + "' , '" + p.AGE_USERS + "' , '" + p.EMAIL_USER + "' , '" + p.PASSWORD_USER + "' , '" + p.NUM_USER + "' , '" + p.NUM_STREET + "' , '" + p.NAME_STREET + "' , '" + p.POSTAL_CODE + "' , '" + p.CITY_USER + "' , '" + p.COUNTRY_USER + "' , '" + p.ID_ROLE + "', '" + p.ID_GENDER + " ) ";
+                RegisterCommand.CommandText = "INSERT INTO T_USER(CIVILITY_USER , FIRST_NAME_USER , LAST_NAME_USER , AGE_USERS , EMAIL_USER , PASSWORD_USER , NUM_USER , NUM_STREET , NAME_STREET , POSTAL_CODE , CITY_USER , COUNTRY_USER , ID_ROLE, ID_GENDER) VALUES('" + p.CIVILITY_USER + "' , '" + p.FIRST_NAME_USER + "' , '" + p.LAST_NAME_USER + "' , '" + p.AGE_USERS + "' , '" + p.EMAIL_USER + "' , '" + p.PASSWORD_USER + "' , '" + p.NUM_USER + "' , '" + p.NUM_STREET + "' , '" + p.NAME_STREET + "' , '" + p.POSTAL_CODE + "' , '" + p.CITY_USER + "' , '" + p.COUNTRY_USER + "' , '" + p.ID_ROLE + "', '" + p.ID_GENDER + "')";
                 RegisterCommand.ExecuteNonQuery();
                 DbConnection.Close();
                 return View("InscriptionOK");
@@ -164,9 +164,19 @@ namespace Bio_Tourist.Controllers
                 v_ListRole = ADO_Role.fct_RecupListeObjetRole(v_Datareader);
                 return v_ListRole;
         }
-        public static List<Cls_GENRE> RecupListcClsGENRE()
+        public static List<SelectListItem> DROPDOWN_LISTS() //Liste du Genre
         {
-            List<Cls_GENRE> v_ListGENRE = new List<Cls_GENRE>();
+            List<SelectListItem> vdropdownlist = new List<SelectListItem>();
+            List<Cls_GENDER> v_ListGENDER = RecupListcClsGENDER();
+            foreach (Cls_GENDER v_Role in v_ListGENDER)
+            {
+                vdropdownlist.Add(new SelectListItem() { Text = v_Role.NAME_GENDER, Value = v_Role.ID_GENDER.ToString() });
+            }
+            return vdropdownlist;
+        }
+        public static List<Cls_GENDER> RecupListcClsGENDER()
+        {
+            List<Cls_GENDER> v_ListGENRE = new List<Cls_GENDER>();
             // Déclaration command/path Register 
             SqlCommand RegisterCommand = new SqlCommand();
             SqlConnection DbConnection = new SqlConnection();
@@ -178,7 +188,7 @@ namespace Bio_Tourist.Controllers
             RegisterCommand.Connection = DbConnection;
             RegisterCommand.CommandText = "SELECT * FROM T_GENDER";
             SqlDataReader v_Datareader = RegisterCommand.ExecuteReader();//recupere adoRole
-            v_ListGENRE = ADO_GENRE.fct_RecupListeObjetGENRE(v_Datareader);
+            v_ListGENRE = ADO_GENDER.fct_RecupListeObjetGENDER(v_Datareader);
             return v_ListGENRE;
         }
 

@@ -7,34 +7,34 @@ using System.Web;
 
 namespace Bio_Tourist.ADO
 {
-    public class ADO_GENRE
+    public class ADO_GENDER
     {
-        public static List<Cls_GENRE> fct_RecupListeObjetGENRE(SqlDataReader p_DataReader)
+        public static List<Cls_GENDER> fct_RecupListeObjetGENDER(SqlDataReader p_DataReader)
         {
 
 
-            List<Cls_GENRE> v_ListGENRE = new List<Cls_GENRE>();
+            List<Cls_GENDER> v_ListGENDER = new List<Cls_GENDER>();
             while (p_DataReader.Read())
             {
-                Cls_GENRE v_GENRE = new Cls_GENRE();
-                v_GENRE.ID_GENDER = Convert.ToInt32(p_DataReader["ID_GENDER"]);
-                v_GENRE.NAME_GENDER = Convert.ToString(p_DataReader["NAME_GENDER"]);
+                Cls_GENDER v_GENDER = new Cls_GENDER();
+                v_GENDER.ID_GENDER = Convert.ToInt32(p_DataReader["ID_GENDER"]);
+                v_GENDER.NAME_GENDER = Convert.ToString(p_DataReader["NAME_GENDER"]);
 
-                v_ListGENRE.Add(v_GENRE);
+                v_ListGENDER.Add(v_GENDER);
 
             }
-            return v_ListGENRE;
+            return v_ListGENDER;
 
         }
-        //fonction qui permet la Recuperation Des objet GENRE
-        public static Cls_GENRE fct_RecupObjetGENRE(SqlDataReader p_DataReader)
+        //fonction qui permet la Recuperation Des objet GENDER
+        public static Cls_GENDER fct_RecupObjetGENDER(SqlDataReader p_DataReader)
         {
             while (p_DataReader.Read())
             {
-                Cls_GENRE v_ObjGENRE = new Cls_GENRE();
-                v_ObjGENRE.ID_GENDER = Convert.ToInt32(p_DataReader["ID_GENDER"]);
-                v_ObjGENRE.NAME_GENDER = Convert.ToString(p_DataReader["NAME_GENDER"]);
-                return v_ObjGENRE;
+                Cls_GENDER v_ObjGENDER = new Cls_GENDER();
+                v_ObjGENDER.ID_GENDER = Convert.ToInt32(p_DataReader["ID_GENDER"]);
+                v_ObjGENDER.NAME_GENDER = Convert.ToString(p_DataReader["NAME_GENDER"]);
+                return v_ObjGENDER;
 
             }
             return null;
