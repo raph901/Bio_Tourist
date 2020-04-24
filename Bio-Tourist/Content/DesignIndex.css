@@ -1,21 +1,20 @@
-﻿body{
+﻿
+/*Partie Header*/
 
-    scroll-behavior: smooth;
-}
 hr{
     width:60%;
 }
 #HeadImageHome {
     background-image: url("https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80"); background-size: cover;
     background-repeat: no-repeat;
-    padding: 320px;
+    padding: 400px;
     width: 100%;
 }
 
 .ContainerHeadHome {
-    position: relative;
-    top: 80px;
-    right: 250px;
+    position: absolute;
+    bottom: 90px;
+    left: 17px;
     color: white;
 }
 
@@ -24,15 +23,32 @@ hr{
     font-weight: bold;
     font-family: 'Baskerville Old Face';
     text-decoration: overline;
-    font-size: 3em;
+    font-size: 2.8em;
 }
 
 .TextHead {
     font-weight: bold;
     font-family: 'Bahnschrift';
+    font-size: 1.5em;
 }
 
+#ButtonInfos {
+    border-radius: 500px;
+    position: absolute;
+    background-color: #30005f;
+    border: 3px dotted white;
+    padding-right: 10px;
+    font-weight: bold;
+    color: white;
+}
 
+    #ButtonInfos:hover {
+        box-shadow:8px 8px 8px white;
+        font-size:1.5em;
+    }
+
+
+/*Icones*/ 
 
 .IconePointInterrogation, .IconeOrganic, .IconeStatutes {
     text-align: center;
@@ -42,6 +58,8 @@ hr{
 
     text-align:center;
 }
+
+
 
 .TitleSectionHome0, .TitleSectionHome1, .TitleSectionHome2, .TitleSectionHome3 {
     text-align: center;
@@ -62,21 +80,7 @@ hr{
 
 
 
-
-#ButtonInfos {
-    border-radius: 500px;
-    position: absolute;
-    background-color: #30005f;
-    border: 3px dotted white;
-    padding-right: 10px;
-    font-weight: bold;
-    color: white;
-}
-
-    #ButtonInfos:hover {
-        box-shadow:8px 8px 8px white;
-        font-size:1.5em;
-    }
+/*Partie Statut*/
 
 
 #ContainerColor1 {
@@ -98,37 +102,39 @@ hr{
 #PositionStatutes {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content:space-evenly;
 }
 
 #ContainerBuyer, .ContainerController, .ContainerSeller {
     border: 3px black double;
     border-radius: 50px;
-    width: 370px;
-    padding-left: 18px;
-    padding-bottom: 30px;
-    padding-top:20px;
-}
-#ContainerBuyer:hover {
-    background-color:lightblue;
-    transition: 2s;
-    padding-top:3px;
-    border-color:ActiveBorder;
+    width: 360px;
    
-    
+    padding-left: 20px;
+    padding-bottom: 30px;
+    padding-top: 20px;
 }
-    .ContainerController:hover {
-        background-color: wheat;
+    #ContainerBuyer:hover {
+        background-color: #327f35;
         transition: 2s;
         padding-top: 3px;
         border-color: ActiveBorder;
+        color: white;
+    }
+    .ContainerController:hover {
+        background-color: #30005f;
+        transition: 2s;
+        padding-top: 3px;
+        border-color: ActiveBorder;
+        color:white;
     }
 
     .ContainerSeller:hover {
-        background-color:lightgoldenrodyellow;
+        background-color: #bae78c;
         transition: 2s;
         padding-top: 3px;
         border-color: ActiveBorder;
+        color: white;
     } 
 
 .ImageSeller, .ImageController, .ImageBuyer {
@@ -166,4 +172,3 @@ hr{
         padding: 5px;
         box-shadow: 5px 3px 3px #30005f;
     }
-

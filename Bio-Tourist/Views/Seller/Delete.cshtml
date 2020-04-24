@@ -3,6 +3,16 @@
 @{
     ViewBag.Title = "Delete";
 }
+@using Bio_Tourist.Models
+
+@{
+
+    T_PRODUCT Product = new T_PRODUCT();
+
+}
+
+@Session["SessionEmail"]
+
 
 <h2>Supprimer une annonce</h2>
 
@@ -12,14 +22,15 @@
     <hr />
     <dl class="dl-horizontal">
 
-
-
         <dt>
             @Html.DisplayNameFor(model => model.DATE_AD)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DATE_AD)
+            @if (Model != null)
+            {
+                @Html.Raw(TimeAnnounces.TimeAgo(Model.DATE_AD))
+            }
         </dd>
 
         <dt>
@@ -37,6 +48,22 @@
 
         <dd>
             @Html.DisplayFor(model => model.ADRESS_AD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CITY_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CITY_AD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COUNTRY_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COUNTRY_AD)
         </dd>
 
         <dt>
@@ -61,7 +88,13 @@
         <dd>
             @Html.DisplayFor(model => model.NAME_AD)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.T_PRODUCT.CATEGORIE_PRODUCT)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.T_PRODUCT.CATEGORIE_PRODUCT)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.STOCK_AD)
         </dt>
@@ -72,12 +105,12 @@
 
 
         @*<dt>
-            @Html.DisplayNameFor(model => model.QUANTITY_AD)
-        </dt>
+                @Html.DisplayNameFor(model => model.QUANTITY_AD)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.QUANTITY_AD)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.QUANTITY_AD)
+            </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.PRICE_AD)
@@ -88,12 +121,13 @@
         </dd>
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Retour", "ListAnnounces")
+        <div class="form-actions no-color text-center">
+            <input type="submit" value="Supprimer" class="btn btn-default" /> |
+            @Html.ActionLink("Retour à la liste des annonces", "ListAnnounces")
         </div>
     }
 </div>

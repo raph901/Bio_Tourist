@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿    <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,25 +9,36 @@
     <link rel="stylesheet" href="~/Content/DesignIndex.css" />
     <link rel="stylesheet" href="~/Content/DesignContact.css" />
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
-    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">*@
-    <link rel="stylesheet" href="~/Content/DesignAnnounces.css" />
+    <link rel="stylesheet" href="~/Content/DesignListAnnounces.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>@ViewBag.Title - BioTourist</title>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.timeago.js" type="text/javascript"></script> 
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $("abbr.timeago").timeago();
+            $("#prog_date").text(jQuery.timeago(new Date()));
+
+        </script>
+        });*@
+
+   
 
     @Styles.Render("~/Content/css") <!-- Contient le code bootstrap.css-->
     @Scripts.Render("~/bundles/modernizr") <!-- Contient le code Bootstrap.js-->
-
+        
 
 </head>
 
 
 <body>
 
-
     <header class="navbar navbar-inverse navbar-fixed-top" id="colorHeader">
-        
+
 
             <nav>
-                <div>
+                
 
                     <div class="align">
 
@@ -41,86 +52,80 @@
 
 
 
-                        <n id="PersonnaliserMenus" class="mx-auto">
-                            s
-                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <div class="container" id="PersonnaliserMenus">
 
-                                <li class="nav-item">@Html.ActionLink("Accueil", "Index", "Home")</li>
+                            <ul class="nav nav-pills">
 
-                                <li class="nav-item">@Html.ActionLink("S'inscrire", "Inscription", "User")</li>
+                                @if (Session["SessionEmail"] == null)
+                                {
 
-                                <li class="nav-item">@Html.ActionLink("Connexion", "Connection", "User")</li>
+                                    <li class="nav-item">@Html.ActionLink("Accueil", "Index", "Home")</li>
 
-                                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "User")</li>
+                                    <li class="nav-item">@Html.ActionLink("S'inscrire", "Inscription", "User")</li>
 
-                                @*<li class="nav-item">@Html.ActionLink("Gestion annonces", "ListAnnounces", "Seller")</li>*@
+                                    <li class="nav-item">@Html.ActionLink("Connexion", "Connection", "User")</li>
+
+                                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "User")</li>
+                                }
+
+
+
+
+
 
                                 @if (Session["SessionEmail"] != null)
                                 {
-                                    <li>@Html.ActionLink("Ton profil", "UserProfile", "User")</li>
+                                    <li class="nav-item">@Html.ActionLink("Accueil", "Index", "Home")</li>
+                                    <li class="nav-item">@Html.ActionLink("Mes annonces", "ListAnnounces", "Seller")</li>
+                                    <li class="nav-item">@Html.ActionLink("Mon espace vendeur", "UserProfile", "User")</li>
+                                    <li class="nav-item">@Html.ActionLink("Contacter le support", "Contact", "User")</li>
+                                    <li class="nav-item">@Html.ActionLink("Deconnexion", "", "")</li>
+
                                 }
 
                             </ul>
-                            <n/>
-
-                            @*<a href=@Url.Action("Panier", "Basket")>
-            <svg src='@Url.Content("http://www.w3.org/2000/svg")' x="0px" y="0px" width="47" height="47" viewBox="0 0 172 172" style="padding: 5px;" fill:#000000;>
-                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-size="none"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,19.35c-2.35996,0 -4.50996,0.96582 -6.07207,2.52793l-0.0084,-0.0084l-40.48047,40.48047h-20.08906c-3.53574,0 -6.45,2.91426 -6.45,6.45v8.6c0,3.53574 2.91426,6.45 6.45,6.45h-0.81465l10.88437,50.80215c0.63828,2.96465 3.27539,5.09785 6.30723,5.09785h100.54609c3.03184,0 5.67734,-2.1332 6.30722,-5.09785l10.88438,-50.80215h-0.81465c3.53574,0 6.45,-2.91426 6.45,-6.45v-8.6c0,-3.53574 -2.91426,-6.45 -6.45,-6.45h-20.08906l-40.48047,-40.48047c-1.55371,-1.55371 -3.72051,-2.51953 -6.08047,-2.51953zM86,23.65c1.20098,0 2.25918,0.47871 3.04024,1.25977l37.44023,37.44023h-12.16094l-31.35976,-31.35976c-0.78106,-0.78106 -1.25977,-1.83926 -1.25977,-3.04024c0,-1.15059 0.44512,-2.18359 1.17578,-2.95625l0.08399,-0.08398l-0.0084,-0.0084c0.77266,-0.77266 1.84766,-1.25137 3.04863,-1.25137zM77.71914,30.14199c0.39472,1.49492 1.15059,2.83867 2.20039,3.88848l3.04024,3.04024l-25.2793,25.2793h-12.16094zM86,40.11094l22.23906,22.23906h-44.47812zM19.35,66.65h133.3c1.21777,0 2.15,0.93223 2.15,2.15v8.6c0,1.21777 -0.93223,2.15 -2.15,2.15h-2.6623l-11.61504,54.19512v0.0084c-0.20996,0.99941 -1.075,1.69648 -2.09961,1.69648h-100.54609c-1.02461,0 -1.88965,-0.69707 -2.09961,-1.70488l-11.61504,-54.19512h-2.6623c-1.21777,0 -2.15,-0.93223 -2.15,-2.15v-8.6c0,-1.21777 0.93223,-2.15 2.15,-2.15zM30.1,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM38.7,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM47.3,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM55.9,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM64.5,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM73.1,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM81.7,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM90.3,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM98.9,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM107.5,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM116.1,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM124.7,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM133.3,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM141.9,79.55c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM60.2,94.6c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM73.1,94.6c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM86,94.6c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM98.9,94.6c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM111.8,94.6c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM60.2,103.2c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM73.1,103.2c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM86,103.2c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM98.9,103.2c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM111.8,103.2c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM60.2,111.8c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM73.1,111.8c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM86,111.8c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM98.9,111.8c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM111.8,111.8c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM60.2,120.4c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM73.1,120.4c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM86,120.4c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM98.9,120.4c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15zM111.8,120.4c-1.18418,0 -2.15,0.96582 -2.15,2.15c0,1.18418 0.96582,2.15 2.15,2.15c1.18418,0 2.15,-0.96582 2.15,-2.15c0,-1.18418 -0.96582,-2.15 -2.15,-2.15z"></path></g></g>
-            </svg>
-        </a>
-
-        <a href=@Url.Action("Panier", "Basket")>
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="37" height="30" viewBox="0 0 172 172" style="fill: #000000;">
-                <g fill="none" a href="https://openclassrooms.com"> fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-size="none"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,21.5c-15.83216,0 -28.66667,12.8345 -28.66667,28.66667c0,15.83216 12.8345,28.66667 28.66667,28.66667c15.83216,0 28.66667,-12.8345 28.66667,-28.66667c0,-15.83216 -12.8345,-28.66667 -28.66667,-28.66667zM86,100.33333c-21.52867,0 -64.5,10.80733 -64.5,32.25v17.91667h129v-17.91667c0,-21.44267 -42.97133,-32.25 -64.5,-32.25z"></path></g></g>
-            </svg>
-        </a>*@
-
-</div>
-
-                    <div>
-
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
+                        </div>
 
                     </div>
+                   
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
 
+                            </div>
+                        </div>
+</nav>
 
-                </div>
-            </nav>
- 
     </header>
 
 
 
+
     @RenderBody()
+        <footer>
+
+            <div class="ContainerFooter">
+                <img src="~/Images/LogoBio.png" title="BioTourist" alt="BioTourist" class="Logo" />
+               <p>&copy; @DateTime.Now.Year - BioTourist - Le bio à porter de main 2019</p>
+            </div>
+        </footer>
 
 
-<footer>
 
-    <div class="ContainerFooter">
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        
+        @RenderSection("scripts", required: false)
 
-        <img src="~/Images/LogoBio.png" title="BioTourist" alt="BioTourist" class="Logo" />
-
-
-        <p>&copy; @DateTime.Now.Year - BioTourist - Le bio à porter de main 2019</p>
-    </div>
-</footer>
-
-   
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-
-    @RenderSection("scripts", required: false)
-
-    <script>
-        function redirect() {
-            location.href = "http://localhost:44339/Home/Contact";
-        }
-    </script>
+        <script>
+            function redirect() {
+                location.href = "http://localhost:44339/Home/Contact";
+            }
+        </script>
 
 </body>
 </html>

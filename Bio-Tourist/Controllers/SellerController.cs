@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
+using System.Configuration;
 using System.Data.Entity;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Bio_Tourist.Models;
 
@@ -15,54 +16,45 @@ namespace Bio_Tourist.Controllers
     {
         private BioTouristEntities db = new BioTouristEntities();
 
-        // return how much time passed since date object
-    public static string GetTimeSince(DateTime objDateTime)
-    {
-        // here we are going to subtract the passed in DateTime from the current time converted to UTC
-        TimeSpan ts = DateTime.Now.ToUniversalTime().Subtract(objDateTime);
-        int intDays = ts.Days;
-        int intHours = ts.Hours;
-        int intMinutes = ts.Minutes;
-        int intSeconds = ts.Seconds;
 
-        if (intDays > 0)
-            return string.Format("{0} days", intDays);
-
-        if (intHours > 0)
-            return string.Format("{0} hours", intHours);
-
-        if (intMinutes > 0)
-            return string.Format("{0} minutes", intMinutes);
-
-        if (intSeconds > 0)
-            return string.Format("{0} seconds", intSeconds);
-
-        // let's handle future times..just in case
-        if (intDays < 0)
-            return string.Format("in {0} days", Math.Abs(intDays));
-
-        if (intHours < 0)
-            return string.Format("in {0} hours", Math.Abs(intHours));
-
-        if (intMinutes < 0)
-            return string.Format("in {0} minutes", Math.Abs(intMinutes));
-
-        if (intSeconds < 0)
-            return string.Format("in {0} seconds", Math.Abs(intSeconds));
-
-        return "a bit";
-    }
-
-        public ActionResult ListAnnounces() //Affiche la liste des annonces.
+        //Affiche la liste des annonces
+        public ActionResult ListAnnounces()
         {
+                return View();
+            
 
-            var t_AD = db.T_AD.Include(t => t.T_USER);
-            return View(t_AD.ToList());
+       }
+
+        // Filtrages avec la barre de recherche intégrée dans la liste des annonces.
+
+
+        [HttpGet] // Le filtrage se fait à partir de l'onglet url en get Http.
+        public ViewResult ListAnnounces(string searching)
+        {
+            var ad = db.T_AD.Include(prod => prod.T_PRODUCT);
+
+            if (!string.IsNullOrEmpty(searching)) 
+            {
+                ad = from Research in db.T_AD
+                     where
+
+            Research.NAME_AD.Contains(searching) ||
+            Research.TITLE_AD.Contains(searching) ||
+            Research.T_PRODUCT.CATEGORIE_PRODUCT.Contains(searching) ||
+            Research.CITY_AD.Contains(searching) ||
+            Research.COUNTRY_AD.Contains(searching)
+
+                     select Research;
+            }
+            return View(ad.ToList());
+         
+
         }
 
-
-        public ActionResult Details(int? id) // Permet de modifier la liste
+        // Permet d'afficher un élément, une annonce de la liste des annonces en utilisant son ID (ID_AD)
+        public ActionResult Details(int? id) 
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -76,52 +68,92 @@ namespace Bio_Tourist.Controllers
         }
 
 
-        public ActionResult Create() // Affiche le formulaire d'ajout d'annonce
+
+        [HttpGet]
+         // Affiche le formulaire d'ajout d'annonces
+        public ActionResult Create() 
+       
         {
-            ViewBag.ID_USER = new SelectList(db.T_USER, "ID_USER", "LAST_NAME_USER");
             return View();
         }
 
 
 
-       
+        //public ActionResult Create(HttpPostedFile file, T_AD emp)
+
+        //{
+        //    string filename = Path.GetFileName(file.FileName);
+        //    string _filename = DateTime.Now.ToString("yymmssfff") + filename;
+        //    string extension = Path.GetExtension(file.FileName);
+        //    string path = Path.Combine(Server.MapPath("~/ImagesUser/"), _filename);
+        //    emp.PICTURES_AD = "~/ImagesUser/" + _filename;
+
+        //    if(extension.ToLower() ==".jpg" || extension.ToLower() == ".jpeg" || extension.ToLower() == ".png")
+        //    {
+        //        if(file.ContentLength <= 1000000)
+        //        {
+        //            db.T_AD.Add(emp);
+        //            if(db.SaveChanges()>0)
+        //            {
+        //                file.SaveAs(path);
+        //                ViewBag.msg = "ok";
+        //                ModelState.Clear();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            ViewBag.msg = "KO";
+        //        }
+        //    }
+
+        //    return View();
+        //}
 
 
-        [HttpPost] // Pour permettre l'envoie du form
+
+
+
+        [HttpPost] // Pour permettre l'envoie du formulaire
         
         [ValidateAntiForgeryToken] // Protège le contenu et l'affichage de l'utilisateur face aux pirateurs.
 
 
-        // Create  : Récupére les informations du formulaire via la requete d'insertion du formulaire vers la liste des annonces.
-        public ActionResult Create([Bind(Include = "ID_AD,PICTURES_AD,TITLE_AD,NAME_AD,QUANTITY_AD,PRICE_AD,ADRESS_AD,DESCRIPTION_AD,DATE_AD, RESULT_AD, ID_USER")] T_AD t_AD)
-        {
+        // Create  : Permet d'ajouter une annonce via le formulaire avec une requête d'insertion vers la liste des annonces.
 
+
+        public ActionResult Create([Bind(Include = "ID_AD,PICTURES_AD,TITLE_AD,NAME_AD,QUANTITY_AD,STOCK_AD,PRICE_AD,ADRESS_AD,CITY_AD,COUNTRY_AD,DESCRIPTION_AD,DATE_AD, RESULT_AD, ID_USER,T_PRODUCT,CATEGORIE_PRODUCT")] T_AD p)
+        {
+            p.ID_USER = 27; //Provisoire en attente de session 
 
             if (ModelState.IsValid)
             {
-               //t_AD.RESULT_AD = t_AD.QUANTITY_AD * t_AD.PRICE_AD;
+                //var file = Request.Files[0];
+                //if (file != null && file.ContentLength > 0)
+                //{
 
-               //for(int i = t_AD.QUANTITY_AD; i <= t_AD.PRICE_AD; i++)
-               // {
-               //     t_AD.RESULT_AD += i;
-               //     Console.WriteLine(t_AD.RESULT_AD);
-                   
-               // }
-                    
-                t_AD.ID_USER = 27;
-                t_AD.PICTURES_AD = "/Images/" + t_AD.PICTURES_AD; // toujours contenu dans /images/
-                db.T_AD.Add(t_AD);        
+                //    string fileName = Path.GetFileNameWithoutExtension(p.ImageFile.FileName);
+                //    string ImageUserPath = Server.MapPath("~/ImagesUser/");
+                //    Directory.CreateDirectory(ImageUserPath + p.ID_USER.ToString());
+                //    string path = Path.Combine(ImageUserPath + p.ID_USER.ToString(),fileName);
+                //    file.SaveAs(path);
+
+                //}
+                
+                p.PICTURES_AD = "/Images/" + p.PICTURES_AD; // Image en local
+                db.T_AD.Add(p);
                 db.SaveChanges();
-                return RedirectToAction("ListAnnounces");
             }
-
-            ViewBag.ID_USER = new SelectList(db.T_USER, "ID_USER", "LAST_NAME_USER", t_AD.ID_USER); // Liste permettant de récupérer les champs de la table USER (clé étrangère) 
             
-            return View(t_AD);
+
+            ViewBag.message = "L'annonce a été ajouté avec succès =)";
+
+            return View();
+
         }
-
-
+        
+        // Permet de modifier un élément de la liste des annonces en utilisant son ID. (exemple : une annonce)
         public ActionResult Edit(int? id)
+
         {
             if (id == null)
             {
@@ -132,33 +164,43 @@ namespace Bio_Tourist.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ID_USER = new SelectList(db.T_USER, "ID_USER", "LAST_NAME_USER", t_AD.ID_USER);
             return View(t_AD);
         }
 
-        // POST: T_AD/Edit/5
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
+
+        // Permet de modifier une annonce avec la requête UPDATE d'EF
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_AD,PICTURES_AD,TITLE_AD,NAME_AD,QUANTITY_AD,PRICE_AD,ADRESS_AD,DESCRIPTION_AD,DATE_AD,ID_USER")] T_AD t_AD)
+        public ActionResult Edit([Bind(Include = "ID_AD,PICTURES_AD,TITLE_AD,NAME_AD,QUANTITY_AD,STOCK_AD,PRICE_AD,DATE_AD,ADRESS_AD,DESCRIPTION_AD,COUNTRY_AD, CITY_AD, RESULT_AD, ID_USER, T_PRODUCT, CATEGORIE_PRODUCT")] T_AD p, T_AD img, HttpPostedFileBase file)
         {
+
+            p.ID_USER = 27; //Provisoire en attente de session
+
             if (ModelState.IsValid)
             {
-                //t_AD.RESULT_AD = t_AD.QUANTITY_AD * t_AD.PRICE_AD;
-                t_AD.ID_USER = 27;
-                t_AD.PICTURES_AD = "/Images/" + t_AD.PICTURES_AD; // toujours contenu dans images
-                db.Entry(t_AD).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("ListAnnounces");
-            }
-            ViewBag.ID_USER = new SelectList(db.T_USER, "ID_USER", "LAST_NAME_USER", t_AD.ID_USER);
-            return View(t_AD);
-        }
 
-        // GET: T_AD/Delete/5
+               
+                p.PICTURES_AD = "/Images/" + p.PICTURES_AD; // toujours contenu dans image
+              
+                db.T_AD.Add(p);
+                db.Entry(p).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            ViewBag.message = "La modification a bien été effectué";
+
+            return View(p);
+        }
+        // Permet de supprimer un élément, une annonce de la liste des annonces en utilisant son ID (ID_AD)
         public ActionResult Delete(int? id)
+
+
         {
+
+            Cls_Role role_vendor = new Cls_Role
+            {
+                ID_ROLE = 6
+            };
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -171,8 +213,10 @@ namespace Bio_Tourist.Controllers
             return View(t_AD);
         }
 
-        // POST: T_AD/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // Permet de confirmer la suppression d'une annonce moyennant de ID_AD.
+
+        [HttpPost, ActionName("Delete")] // Reprend la méthode delete ci dessus.
+
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -182,7 +226,8 @@ namespace Bio_Tourist.Controllers
             return RedirectToAction("ListAnnounces");
         }
 
-        protected override void Dispose(bool disposing)
+        //Méthode permettant de libérer des ressources non utilisées pour libérer de la mémoire sur l'application.
+        protected override void Dispose(bool disposing) 
         {
             if (disposing)
             {

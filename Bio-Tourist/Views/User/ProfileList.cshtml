@@ -1,50 +1,64 @@
 ﻿@model Bio_Tourist.Models.User
 
-    <div class="container container-fluid">
 
-        @if (Session["SessionEmail"] != null)
-        {
-            <h2>Vous êtes connecté avec le compte @Session["SessionEmail"]</h2>
+@using Bio_Tourist.Models
 
-            <table class="table table-responsive table-hover table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>LAST_NAME_USER</th>
-                        <th>FIRST_NAME_USER</th>
-                        <th>AGE_USERS</th>
-                        <th>NUM_STREET</th>
-                        <th>NAME_STREET</th>
-                        <th>POSTAL_CODE</th>
-                        <th>CITY_USER</th>
-                        <th>COUNTRY_USER</th>
-                        <th>EMAIL_USER</th>
-                        <th>CIVILITY_USER</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
+@{ 
 
-                    @foreach (var ProfileDetails in Model.ProfileModel)
-                    {
-                            <tr>
-                                <td>@ProfileDetails.LAST_NAME_USER</td>
-                                <td>@ProfileDetails.FIRST_NAME_USER</td>
-                                <td>@ProfileDetails.AGE_USERS</td>
-                                <td>@ProfileDetails.NUM_STREET</td>
-                                <td>@ProfileDetails.NAME_STREET</td>
-                                <td>@ProfileDetails.POSTAL_CODE</td>
-                                <td>@ProfileDetails.CITY_USER</td>
-                                <td>@ProfileDetails.COUNTRY_USER</td>
-                                <td>@ProfileDetails.EMAIL_USER</td>
-                                <td>@ProfileDetails.CIVILITY_USER</td>
-                            </tr>
-                    }                   
-                </tbody>
-            </table>
-        }
+    Cls_Role role = new Cls_Role();
 
-        @if (Session["SessionEmail"] == null)
-        {
-            <h2 class="text-danger">Vous n'êtes pas connecter</h2>
-        }
-    </div>
+}
+
+<div class="container container-fluid">
+
+    @if (Session["SessionEmail"] != null)
+    {
+    <h2>Vous êtes connecté avec le compte @Session["SessionEmail"]</h2>
+
+        <table class="table table-responsive table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Age</th>
+                    <th>N°</th>
+                    <th>Adresse</th>
+                    <th>Code postal</th>
+                    <th>Ville</th>
+                    <th>Pays </th>
+                    <th>Adresse e-mail</th>
+                    <th>Civilité</th>
+                    <th> Statut </th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var ProfileDetails in Model.ProfileModel)
+                
+                {
+                <tr>
+                    <td>@ProfileDetails.LAST_NAME_USER</td>
+                    <td>@ProfileDetails.FIRST_NAME_USER</td>
+                    <td>@ProfileDetails.AGE_USERS</td>
+                    <td>@ProfileDetails.NUM_STREET</td>
+                    <td>@ProfileDetails.NAME_STREET</td>
+                    <td>@ProfileDetails.POSTAL_CODE</td>
+                    <td>@ProfileDetails.CITY_USER</td>
+                    <td>@ProfileDetails.COUNTRY_USER</td>
+                    <td>@ProfileDetails.EMAIL_USER</td>
+                    <td>@ProfileDetails.CIVILITY_USER</td>
+                    <td>@ProfileDetails.ID_ROLE</td>
+
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    @if (Session["SessionEmail"] == null)
+    {
+        <h2 class="text-danger">Vous n'êtes pas connecter</h2>
+    }
+</div>

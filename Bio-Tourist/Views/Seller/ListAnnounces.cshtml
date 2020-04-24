@@ -1,126 +1,176 @@
-﻿@model IEnumerable<Bio_Tourist.Models.T_AD>
+﻿
+@model IEnumerable<Bio_Tourist.Models.T_AD>
+@using Bio_Tourist.Models;
 
 @{
     ViewBag.Title = "Index";
 }
 
-
-@{
-
-    TimeSpan ts = DateTime.Now.Subtract(DateTime.Now);
-
-
-}
-
-@using Bio_Tourist.Models
-
-@{
-
-    T_USER t_USER = new T_USER();
-
-}
+@Session["SessionEmail"]
 
 <h2>Liste des annonces </h2>
 
-<p>
+<div class="text-center btn-lg">
     @Html.ActionLink("Ajouter une annonce ", "Create")
-</p>
-<table class="table">
-    <tr>
+</div>
 
+<br />
 
-        <th>
-            @Html.DisplayNameFor(model => model.DATE_AD)
-        </th>
+<div class="text-center">
 
-        <th>
-            @Html.DisplayNameFor(model => model.TITLE_AD)
-        </th>
+    @using (Html.BeginForm("ListAnnounces", "Seller", FormMethod.Get))
 
-        <th>
-            @Html.DisplayNameFor(model => model.ADRESS_AD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESCRIPTION_AD)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.NAME_AD)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.PICTURES_AD)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.STOCK_AD)
-        </th>
-
-        @*<th>
-            @Html.DisplayNameFor(model => model.QUANTITY_AD)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.PRICE_AD)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.RESULT_AD)
-        </th>*@
-
-
-
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
     {
-<tr>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.DATE_AD)
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.TITLE_AD)
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.ADRESS_AD)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DESCRIPTION_AD)
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.NAME_AD)
-    </td>
-
-    <td>
-        <img src="@Html.DisplayFor(modelItem => item.PICTURES_AD)" name="Fichier" id="Images" runat="server" width="100" height="80" />
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.STOCK_AD)
-    </td>
-
-    @*<td>
-        @Html.DisplayFor(modelItem => item.QUANTITY_AD)
-    </td>*@
-    <td>
-        @Html.DisplayFor(modelItem => item.PRICE_AD)
-    </td>
-
-    @*<td>
-            @Html.DisplayFor(modelItem => item.RESULT_AD)
-        </td>*@
-
-
-
-    <td>
-        @Html.ActionLink("Modifier", "Edit", new { id = item.ID_AD }) |
-        @Html.ActionLink("Afficher", "Details", new { id = item.ID_AD }) |
-        @Html.ActionLink("Supprimer", "Delete", new { id = item.ID_AD })
-    </td>
-</tr>
+        @Html.TextBox("searching")
+        <input type="submit" value="Filtrer" />
     }
 
+</div>
+
+<br />
+
+<table class="table" id="ResponsivTable">
+
+    <thead>
+
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.DATE_AD)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.TITLE_AD)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ADRESS_AD)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CITY_AD)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.COUNTRY_AD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DESCRIPTION_AD)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.NAME_AD)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.T_PRODUCT.CATEGORIE_PRODUCT)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.PICTURES_AD)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.STOCK_AD)
+            </th>
+
+            @*<th>
+                    @Html.DisplayNameFor(model => model.QUANTITY_AD)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.PRICE_AD)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.RESULT_AD)
+                </th>*@
+
+
+            <th></th>
+
+        </tr>
+
+    </thead>
+
+    @*Permet l'affichage des informations *@
+
+    @foreach (var item in Model)
+
+    {
+
+        <tbody>
+            <tr>
+
+                <td data-label="Date">
+
+                    @Html.Raw(TimeAnnounces.TimeAgo(item.DATE_AD)) @*Permet l'affichage de la durée des annonces*@
+
+                </td>
+
+                <td data-label="Titre">
+                    @Html.DisplayFor(modelItem => item.TITLE_AD)
+                </td>
+
+                <td data-label="Adresse">
+                    @Html.DisplayFor(modelItem => item.ADRESS_AD)
+                </td>
+
+                <td data-label="Ville">
+                    @Html.DisplayFor(modelItem => item.CITY_AD)
+                </td>
+
+                <td data-label="Pays">
+                    @Html.DisplayFor(modelItem => item.COUNTRY_AD)
+                </td>
+
+                <td data-label="Description">
+                    @Html.DisplayFor(modelItem => item.DESCRIPTION_AD)
+                </td>
+
+                <td data-label="Nom">
+                    @Html.DisplayFor(modelItem => item.NAME_AD)
+                </td>
+
+                <td data-label="Catégories">
+                    @Html.DisplayFor(modelItem => item.T_PRODUCT.CATEGORIE_PRODUCT)
+                </td>
+
+                <td data-label="Image">
+
+                    <img src="@Html.DisplayFor(modelItem => item.PICTURES_AD)" name="PICTURES_AD" id="PICTURES_AD" runat="server" width="100" height="80" />
+
+                </td>
+
+                <td data-label="Stock">
+
+                    @Html.DisplayFor(modelItem => item.STOCK_AD)
+
+                </td>
+
+                @*<td> Pour le panier
+                           @Html.DisplayFor(modelItem => item.QUANTITY_AD)
+
+                    </td>*@
+                <td data-label="Prix €">
+                    @Html.DisplayFor(modelItem => item.PRICE_AD)
+                </td>
+
+                @*<td> Pour le panier
+                            @Html.DisplayFor(modelItem => item.RESULT_AD)
+                    </td>*@
+
+                <td>
+
+                    @Html.ActionLink("Modifier", "Edit", new { id = item.ID_AD })|
+                    @Html.ActionLink("Afficher", "Details", new { id = item.ID_AD })|
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.ID_AD })|
+                    <br />
+                    @Html.ActionLink("Ajouter au panier", "", new { id = item.ID_AD })
+
+                </td>
+
+            </tr>
+
+        </tbody>
+    }
 </table>
+

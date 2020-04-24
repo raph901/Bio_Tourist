@@ -15,9 +15,11 @@ namespace Bio_Tourist.Models
 {
     public class User
     {
-            
-            public int ID_USER { get; set; }
-            public int ID_ROLE { get; set; }
+
+        public int ID_ROLE { get; set; }
+
+        public string NAME_ROLE { get; set; }
+        public int ID_USER { get; set; }
 
         [DisplayName("Nom")]
         public string LAST_NAME_USER { get; set; }
@@ -42,18 +44,18 @@ namespace Bio_Tourist.Models
         public int NUM_USER { get; set; }
         [DisplayName("Mot de Passe")]
         public string PASSWORD_USER { get; set; }
+
+        [DisplayName("Confirmé le mot de passe")]
         public string CONFIRMING_PASSWORD { get; set; }
-        [DisplayName("Civiliter")]
+        [DisplayName("Civilité")]
         public string CIVILITY_USER { get; set; }
         
-
-        public string ROLE_USER { get; set; }
-
         public virtual Cls_Role Cls_Role { get; set; }
 
 
         public List<User> ProfileModel { get; set; }
 
+    
         // Pour la page contact = A ne pas toucher
   
         public string TO { get; set; }

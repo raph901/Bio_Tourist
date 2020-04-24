@@ -4,87 +4,55 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BioTouristModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BioTouristModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="T_AD">
           <Key>
             <PropertyRef Name="ID_AD" />
           </Key>
           <Property Name="ID_AD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PICTURES_AD" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="TITLE_AD" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="NAME_AD" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PICTURES_AD" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="TITLE_AD" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="NAME_AD" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="QUANTITY_AD" Type="int" Nullable="false" />
-          <Property Name="PRICE_AD" Type="int" Nullable="false" />
-          <Property Name="ADRESS_AD" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DESCRIPTION_AD" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="DATE_AD" Type="date" Nullable="false" />
+          <Property Name="PRICE_AD" Type="float" Nullable="false" />
+          <Property Name="ADRESS_AD" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="DESCRIPTION_AD" Type="varchar" MaxLength="600" Nullable="false" />
           <Property Name="ID_USER" Type="int" Nullable="false" />
+          <Property Name="STOCK_AD" Type="int" Nullable="false" />
+          <Property Name="RESULT_AD" Type="int" Nullable="false" />
+          <Property Name="ID_PRODUCT" Type="int" />
+          <Property Name="CITY_AD" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="COUNTRY_AD" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DATE_AD" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="T_ROLE">
+        <EntityType Name="T_PRODUCT">
           <Key>
-            <PropertyRef Name="ID_ROLE" />
+            <PropertyRef Name="ID_PRODUCT" />
           </Key>
-          <Property Name="ID_ROLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NAME_ROLE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_PRODUCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORIE_PRODUCT" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="T_USER">
-          <Key>
-            <PropertyRef Name="ID_USER" />
-          </Key>
-          <Property Name="ID_USER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LAST_NAME_USER" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="FIRST_NAME_USER" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="AGE_USERS" Type="int" Nullable="false" />
-          <Property Name="NUM_STREET" Type="int" Nullable="false" />
-          <Property Name="NAME_STREET" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="POSTAL_CODE" Type="int" Nullable="false" />
-          <Property Name="CITY_USER" Type="nvarchar" MaxLength="50" />
-          <Property Name="COUNTRY_USER" Type="nvarchar" MaxLength="50" />
-          <Property Name="EMAIL_USER" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="NUM_USER" Type="int" Nullable="false" />
-          <Property Name="PASSWORD_USER" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CIVILITY_USER" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ID_ROLE" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_AD_USER">
-          <End Role="T_USER" Type="Self.T_USER" Multiplicity="1" />
+        <Association Name="FK_ID_PRODUCT">
+          <End Role="T_PRODUCT" Type="Self.T_PRODUCT" Multiplicity="0..1" />
           <End Role="T_AD" Type="Self.T_AD" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="T_USER">
-              <PropertyRef Name="ID_USER" />
+            <Principal Role="T_PRODUCT">
+              <PropertyRef Name="ID_PRODUCT" />
             </Principal>
             <Dependent Role="T_AD">
-              <PropertyRef Name="ID_USER" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ID_ROLE">
-          <End Role="T_ROLE" Type="Self.T_ROLE" Multiplicity="1" />
-          <End Role="T_USER" Type="Self.T_USER" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_ROLE">
-              <PropertyRef Name="ID_ROLE" />
-            </Principal>
-            <Dependent Role="T_USER">
-              <PropertyRef Name="ID_ROLE" />
+              <PropertyRef Name="ID_PRODUCT" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BioTouristModelStoreContainer">
           <EntitySet Name="T_AD" EntityType="Self.T_AD" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="T_ROLE" EntityType="Self.T_ROLE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="T_USER" EntityType="Self.T_USER" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_AD_USER" Association="Self.FK_AD_USER">
-            <End Role="T_USER" EntitySet="T_USER" />
+          <EntitySet Name="T_PRODUCT" EntityType="Self.T_PRODUCT" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ID_PRODUCT" Association="Self.FK_ID_PRODUCT">
+            <End Role="T_PRODUCT" EntitySet="T_PRODUCT" />
             <End Role="T_AD" EntitySet="T_AD" />
           </AssociationSet>
-          <AssociationSet Name="FK_ID_ROLE" Association="Self.FK_ID_ROLE">
-            <End Role="T_ROLE" EntitySet="T_ROLE" />
-            <End Role="T_USER" EntitySet="T_USER" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BioTouristModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -93,83 +61,50 @@
             <PropertyRef Name="ID_AD" />
           </Key>
           <Property Name="ID_AD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PICTURES_AD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TITLE_AD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NAME_AD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PICTURES_AD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TITLE_AD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME_AD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="QUANTITY_AD" Type="Int32" Nullable="false" />
-          <Property Name="PRICE_AD" Type="Int32" Nullable="false" />
-          <Property Name="ADRESS_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DESCRIPTION_AD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DATE_AD" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PRICE_AD" Type="Double" Nullable="false" />
+          <Property Name="ADRESS_AD" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPTION_AD" Type="String" MaxLength="600" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATE_AD" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ID_USER" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="T_USER" Relationship="Self.FK_AD_USER" FromRole="T_AD" ToRole="T_USER" />
+          <Property Name="STOCK_AD" Type="Int32" Nullable="false" />
+          <Property Name="RESULT_AD" Type="Int32" Nullable="false" />
+          <Property Name="ID_PRODUCT" Type="Int32" />
+          <NavigationProperty Name="T_PRODUCT" Relationship="BioTouristModel.FK_ID_PRODUCT" FromRole="T_AD" ToRole="T_PRODUCT" />
+          <Property Name="CITY_AD" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="COUNTRY_AD" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="T_ROLE">
-          <Key>
-            <PropertyRef Name="ID_ROLE" />
-          </Key>
-          <Property Name="ID_ROLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME_ROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="T_USER" Relationship="Self.FK_ID_ROLE" FromRole="T_ROLE" ToRole="T_USER" />
-        </EntityType>
-        <EntityType Name="T_USER">
-          <Key>
-            <PropertyRef Name="ID_USER" />
-          </Key>
-          <Property Name="ID_USER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LAST_NAME_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FIRST_NAME_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGE_USERS" Type="Int32" Nullable="false" />
-          <Property Name="NUM_STREET" Type="Int32" Nullable="false" />
-          <Property Name="NAME_STREET" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="POSTAL_CODE" Type="Int32" Nullable="false" />
-          <Property Name="CITY_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="COUNTRY_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EMAIL_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NUM_USER" Type="Int32" Nullable="false" />
-          <Property Name="PASSWORD_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CIVILITY_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ID_ROLE" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="T_AD" Relationship="Self.FK_AD_USER" FromRole="T_USER" ToRole="T_AD" />
-          <NavigationProperty Name="T_ROLE" Relationship="Self.FK_ID_ROLE" FromRole="T_USER" ToRole="T_ROLE" />
-        </EntityType>
-        <Association Name="FK_AD_USER">
-          <End Role="T_USER" Type="Self.T_USER" Multiplicity="1" />
-          <End Role="T_AD" Type="Self.T_AD" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_USER">
-              <PropertyRef Name="ID_USER" />
-            </Principal>
-            <Dependent Role="T_AD">
-              <PropertyRef Name="ID_USER" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ID_ROLE">
-          <End Role="T_ROLE" Type="Self.T_ROLE" Multiplicity="1" />
-          <End Role="T_USER" Type="Self.T_USER" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_ROLE">
-              <PropertyRef Name="ID_ROLE" />
-            </Principal>
-            <Dependent Role="T_USER">
-              <PropertyRef Name="ID_ROLE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="BioTouristEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="T_AD" EntityType="Self.T_AD" />
-          <EntitySet Name="T_ROLE" EntityType="Self.T_ROLE" />
-          <EntitySet Name="T_USER" EntityType="Self.T_USER" />
-          <AssociationSet Name="FK_AD_USER" Association="Self.FK_AD_USER">
-            <End Role="T_USER" EntitySet="T_USER" />
+          <EntitySet Name="T_PRODUCT" EntityType="BioTouristModel.T_PRODUCT" />
+          <AssociationSet Name="FK_ID_PRODUCT" Association="BioTouristModel.FK_ID_PRODUCT">
+            <End Role="T_PRODUCT" EntitySet="T_PRODUCT" />
             <End Role="T_AD" EntitySet="T_AD" />
           </AssociationSet>
-          <AssociationSet Name="FK_ID_ROLE" Association="Self.FK_ID_ROLE">
-            <End Role="T_ROLE" EntitySet="T_ROLE" />
-            <End Role="T_USER" EntitySet="T_USER" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
+        <EntityType Name="T_PRODUCT">
+          <Key>
+            <PropertyRef Name="ID_PRODUCT" />
+          </Key>
+          <Property Name="ID_PRODUCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORIE_PRODUCT" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_AD" Relationship="BioTouristModel.FK_ID_PRODUCT" FromRole="T_PRODUCT" ToRole="T_AD" />
+        </EntityType>
+        <Association Name="FK_ID_PRODUCT">
+          <End Type="BioTouristModel.T_PRODUCT" Role="T_PRODUCT" Multiplicity="0..1" />
+          <End Type="BioTouristModel.T_AD" Role="T_AD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_PRODUCT">
+              <PropertyRef Name="ID_PRODUCT" />
+            </Principal>
+            <Dependent Role="T_AD">
+              <PropertyRef Name="ID_PRODUCT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -179,12 +114,17 @@
           <EntitySetMapping Name="T_AD">
             <EntityTypeMapping TypeName="BioTouristModel.T_AD">
               <MappingFragment StoreEntitySet="T_AD">
+                <ScalarProperty Name="COUNTRY_AD" ColumnName="COUNTRY_AD" />
+                <ScalarProperty Name="CITY_AD" ColumnName="CITY_AD" />
+                <ScalarProperty Name="PRICE_AD" ColumnName="PRICE_AD" />
+                <ScalarProperty Name="ID_PRODUCT" ColumnName="ID_PRODUCT" />
+                <ScalarProperty Name="RESULT_AD" ColumnName="RESULT_AD" />
+                <ScalarProperty Name="STOCK_AD" ColumnName="STOCK_AD" />
                 <ScalarProperty Name="ID_AD" ColumnName="ID_AD" />
                 <ScalarProperty Name="PICTURES_AD" ColumnName="PICTURES_AD" />
                 <ScalarProperty Name="TITLE_AD" ColumnName="TITLE_AD" />
                 <ScalarProperty Name="NAME_AD" ColumnName="NAME_AD" />
                 <ScalarProperty Name="QUANTITY_AD" ColumnName="QUANTITY_AD" />
-                <ScalarProperty Name="PRICE_AD" ColumnName="PRICE_AD" />
                 <ScalarProperty Name="ADRESS_AD" ColumnName="ADRESS_AD" />
                 <ScalarProperty Name="DESCRIPTION_AD" ColumnName="DESCRIPTION_AD" />
                 <ScalarProperty Name="DATE_AD" ColumnName="DATE_AD" />
@@ -192,31 +132,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="T_ROLE">
-            <EntityTypeMapping TypeName="BioTouristModel.T_ROLE">
-              <MappingFragment StoreEntitySet="T_ROLE">
-                <ScalarProperty Name="ID_ROLE" ColumnName="ID_ROLE" />
-                <ScalarProperty Name="NAME_ROLE" ColumnName="NAME_ROLE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="T_USER">
-            <EntityTypeMapping TypeName="BioTouristModel.T_USER">
-              <MappingFragment StoreEntitySet="T_USER">
-                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
-                <ScalarProperty Name="LAST_NAME_USER" ColumnName="LAST_NAME_USER" />
-                <ScalarProperty Name="FIRST_NAME_USER" ColumnName="FIRST_NAME_USER" />
-                <ScalarProperty Name="AGE_USERS" ColumnName="AGE_USERS" />
-                <ScalarProperty Name="NUM_STREET" ColumnName="NUM_STREET" />
-                <ScalarProperty Name="NAME_STREET" ColumnName="NAME_STREET" />
-                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
-                <ScalarProperty Name="CITY_USER" ColumnName="CITY_USER" />
-                <ScalarProperty Name="COUNTRY_USER" ColumnName="COUNTRY_USER" />
-                <ScalarProperty Name="EMAIL_USER" ColumnName="EMAIL_USER" />
-                <ScalarProperty Name="NUM_USER" ColumnName="NUM_USER" />
-                <ScalarProperty Name="PASSWORD_USER" ColumnName="PASSWORD_USER" />
-                <ScalarProperty Name="CIVILITY_USER" ColumnName="CIVILITY_USER" />
-                <ScalarProperty Name="ID_ROLE" ColumnName="ID_ROLE" />
+          <EntitySetMapping Name="T_PRODUCT">
+            <EntityTypeMapping TypeName="BioTouristModel.T_PRODUCT">
+              <MappingFragment StoreEntitySet="T_PRODUCT">
+                <ScalarProperty Name="CATEGORIE_PRODUCT" ColumnName="CATEGORIE_PRODUCT" />
+                <ScalarProperty Name="ID_PRODUCT" ColumnName="ID_PRODUCT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -147,14 +147,12 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
-    <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DbPath\DbPathController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Ad.cs" />
-    <Compile Include="Models\Cls_Role.cs" />
+    <Compile Include="Models\cls_Role.cs" />
     <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\crud_seller.Context.cs">
       <AutoGen>True</AutoGen>
@@ -172,18 +170,15 @@
       <DependentUpon>crud_seller.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Payment.cs" />
-    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PurchaseHistory.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\SaleHistory.cs" />
     <Compile Include="Models\set.cs" />
+    <Compile Include="Models\Tools\TimeAnnounces.cs" />
     <Compile Include="Models\T_AD.cs">
       <DependentUpon>crud_seller.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\T_ROLE.cs">
-      <DependentUpon>crud_seller.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\T_USER.cs">
+    <Compile Include="Models\T_PRODUCT.cs">
       <DependentUpon>crud_seller.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
@@ -201,18 +196,7 @@
     <Content Include="Content\DesignAnnounces.css" />
     <Content Include="Content\DesignContact.css" />
     <Content Include="Content\DesignIndex.css" />
-    <Content Include="Images\accueil.jpg" />
-    <Content Include="Images\FondEcranContact.jpg" />
-    <Content Include="Images\HeadPageAccueil.jpg" />
-    <Content Include="Images\ImageBuyer.jpg" />
-    <Content Include="Images\ImageController.jpg" />
-    <Content Include="Images\ImagePortfolio.jpg" />
-    <Content Include="Images\ImagePortfolio1.jpg" />
-    <Content Include="Images\ImageSeller.jpg" />
-    <Content Include="Images\LogoBio.png" />
-    <Content Include="Images\LogoFormulaireContact.gif" />
-    <Content Include="Images\LogoFormulaireContact.jpg" />
-    <Content Include="Images\SloganBio.png" />
+    <Content Include="Content\DesignListAnnounces.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -237,12 +221,14 @@
       <DependentUpon>crud_seller.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\global.js" />
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.timeago.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -283,6 +269,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ImagesUser\" />
+    <Folder Include="Images\" />
     <Folder Include="Views\Image\" />
     <Folder Include="Views\Picture\" />
     <Folder Include="Views\Registration\" />

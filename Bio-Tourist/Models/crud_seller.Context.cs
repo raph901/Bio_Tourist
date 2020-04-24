@@ -26,7 +26,6 @@ namespace Bio_Tourist.Models
         }
     
         public virtual DbSet<T_AD> T_AD { get; set; }
-        public virtual DbSet<T_ROLE> T_ROLE { get; set; }
-        public virtual DbSet<T_USER> T_USER { get; set; }
+        public virtual DbSet<T_PRODUCT> T_PRODUCT { get; set; }
     }
 }

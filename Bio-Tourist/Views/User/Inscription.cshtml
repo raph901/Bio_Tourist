@@ -4,7 +4,7 @@
 @using Bio_Tourist.Models
 
 @{
-    Cls_Role _Role = new Cls_Role();
+    Cls_Role role = new Cls_Role();
 
 }
 
@@ -94,15 +94,15 @@
     <div runat="server">
 
         Statut:
-
-        @Html.DropDownListFor(x => x.Cls_Role.NAME_ROLE, new List<SelectListItem>
+            
+        @Html.DropDownListFor(x => x.Cls_Role.ID_ROLE, new List<SelectListItem>
         {
             new SelectListItem() {Text = "Vendeur", Value="GenreV"},
             new SelectListItem() {Text = "Contrôleur", Value="GenreC"},
             new SelectListItem() {Text = "Acheteur", Value="GenreA"}
         });
 
-        @Html.ValidationMessageFor(m => m.Cls_Role.NAME_ROLE)
+        @Html.ValidationMessageFor(m => m.Cls_Role.ID_ROLE)
     </div>
     <input asp:Button runat="server" type="submit" value="Inscription" />
 }

@@ -1,0 +1,49 @@
+﻿th {
+    background-color: #337ab7;
+    color: white;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    #ResponsivTable table, #ResponsivTable thead, #ResponsivTable tbody, #ResponsivTable tr, #ResponsivTable th, #ResponsivTable td {
+        display: block;
+    }
+
+    #ResponsivTable thead {
+        display: none;
+    }
+
+    #ResponsivTable td {
+        padding-left: 150px;
+        position: relative;
+        margin-top: -1px;
+        background: #FFF;
+    }
+
+        #ResponsivTable td:nth-child(odd) {
+            background-color: #eee;
+        }
+
+        #ResponsivTable td::before {
+            padding: 10px;
+            content: attr(data-label);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 130px;
+            bottom: 0;
+            background-color: #337ab7;
+            color: white;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+
+    #ResponsivTable tr { /* taille de la police*/
+        margin-bottom: 2rem;
+    }
+
+    #ResponsivTable th + td {
+        padding-left: 10px;
+    }
+}

@@ -5,12 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="cab955ca31cc4e079995625b13c0dc82" Name="Diagram1">
-        <EntityTypeShape EntityType="BioTouristModel.T_AD" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BioTouristModel.T_ROLE" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BioTouristModel.T_USER" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="BioTouristModel.FK_AD_USER" ManuallyRouted="false" />
-        <AssociationConnector Association="BioTouristModel.FK_ID_ROLE" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="BioTouristModel.T_AD" Width="3" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BioTouristModel.T_PRODUCT" Width="1.5" PointX="3" PointY="2.5" />
+        <AssociationConnector Association="BioTouristModel.FK_ID_PRODUCT" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
