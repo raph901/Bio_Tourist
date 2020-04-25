@@ -139,7 +139,7 @@ namespace Bio_Tourist.Controllers
 
                 //}
                 
-                p.PICTURES_AD = "/Images/" + p.PICTURES_AD; // Image en local
+                p.PICTURES_AD = "/ImagesUser/" + p.PICTURES_AD; // Image en local
                 db.T_AD.Add(p);
                 db.SaveChanges();
             }
@@ -179,9 +179,9 @@ namespace Bio_Tourist.Controllers
             if (ModelState.IsValid)
             {
 
-               
-                p.PICTURES_AD = "/Images/" + p.PICTURES_AD; // toujours contenu dans image
-              
+
+                p.PICTURES_AD = "/ImagesUser/" + p.PICTURES_AD; // Image en local
+
                 db.T_AD.Add(p);
                 db.Entry(p).State = EntityState.Modified;
                 db.SaveChanges();
