@@ -36,6 +36,17 @@ namespace Bio_Tourist.Controllers
             {
                 return View();
             }
+        } 
+        public ActionResult ProfileModify() // Return la view correspondante suite à un appel
+        {
+            if (Session["SessionEmail"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return View("Connection");
+            }
         }
 
         [HttpPost]
@@ -246,8 +257,25 @@ namespace Bio_Tourist.Controllers
             ModifyCommand.Connection = DbConnection;
             ModifyCommand.CommandText = "UPDATE T_USER SET EMAIL_USER = '" + p.EMAIL_USER + "' WHERE EMAIL_USER ='" + Session["SessionEmail"] + "'";
             ModifyCommand.ExecuteNonQuery();
-      
-            return View("ProfileList");
+            Session.Clear();
+            Session["SessionEmail"] = p.EMAIL_USER;
+
+            return RedirectToAction("ProfileModify", "User");
+        }
+
+        [HttpPost]
+        public ActionResult ModifyPassword(User p)
+        {
+            SqlConnection DbConnection = new SqlConnection();
+            DbConnection.ConnectionString = GetDbPath();
+            DbConnection.Open();
+
+            SqlCommand ModifyCommand = new SqlCommand();
+            ModifyCommand.Connection = DbConnection;
+            ModifyCommand.CommandText = "UPDATE T_USER SET PASSWORD_USER = '" + p.PASSWORD_USER + "' WHERE EMAIL_USER ='" + Session["SessionEmail"] + "'";
+            ModifyCommand.ExecuteNonQuery();
+
+            return RedirectToAction("ProfileModify", "User");
         }
     }
 }
