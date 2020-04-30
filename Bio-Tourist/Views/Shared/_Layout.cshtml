@@ -22,54 +22,65 @@
 
         </script>
         });*@
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/DesignAnnounces.css" />
+    <title>@ViewBag.Title - BioTourist</title>
 
    
 
     @Styles.Render("~/Content/css") <!-- Contient le code bootstrap.css-->
     @Scripts.Render("~/bundles/modernizr") <!-- Contient le code Bootstrap.js-->
-        
+    @Scripts.Render("~/bundles/JavaScript")
 
 </head>
 
 
 <body>
 
+
     <header class="navbar navbar-inverse navbar-fixed-top" id="colorHeader">
 
 
-            <nav>
-                
+        <nav>
+            <div>
 
-                    <div class="align">
+                <div class="align">
 
-                        <img src="~/Images/LogoBio.png" title="BioTourist" alt="BioTourist" class="Logo" />
-                        <img src="~/Images/SloganBio.png" title="SloganBioTourist" alt="SloganBioTourist" class="Slogan" />
+                    <img src="~/Images/LogoBio.png" title="BioTourist" alt="BioTourist" class="Logo" />
+                    <img src="~/Images/SloganBio.png" title="SloganBioTourist" alt="SloganBioTourist" class="Slogan" />
 
-                    </div>
-
-
-                    <div class="navbar-collapse collapse">
+                </div>
 
 
+                <div class="navbar-collapse collapse">
 
-                        <div class="container" id="PersonnaliserMenus">
 
-                            <ul class="nav nav-pills">
 
-                                @if (Session["SessionEmail"] == null)
-                                {
+                    <n id="PersonnaliserMenus" class="mx-auto">
+                        
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
-                                    <li class="nav-item">@Html.ActionLink("Accueil", "Index", "Home")</li>
-
-                                    <li class="nav-item">@Html.ActionLink("S'inscrire", "Inscription", "User")</li>
-
+                            <li class="nav-item">@Html.ActionLink("Accueil", "Index", "Home")</li>
                                     <li class="nav-item">@Html.ActionLink("Connexion", "Connection", "User")</li>
 
-                                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "User")</li>
-                                }
+                            @if (Session["SessionEmail"] == null)
+                            {
+                                <li class="nav-item">@Html.ActionLink("S'inscrire", "Inscription", "User")</li>
+                                <li class="nav-item">@Html.ActionLink("Connexion", "Connection", "User")</li>
+                            }
 
+                            <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
 
+                            @if (Session["SessionEmail"] != null)
+                            {
 
+                                <li>@Html.ActionLink("Ton profil", "UserProfile", "User")</li>
+                                <li>@Html.ActionLink("Modifier le profil", "ProfileModify", "User")</li>
+                                <li>@Html.ActionLink("Deconnexion", "Deconnect", "User")</li>
+                            }
+
+                        </ul>
+                        <n />
 
 
 
@@ -83,49 +94,52 @@
 
                                 }
 
-                            </ul>
-                        </div>
+                </div>
 
-                    </div>
-                   
-                        <div class="container">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
+                <div>
 
-                            </div>
-                        </div>
-</nav>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+
+            </div>
+        </nav>
 
     </header>
 
 
 
-
     @RenderBody()
-        <footer>
-
-            <div class="ContainerFooter">
-                <img src="~/Images/LogoBio.png" title="BioTourist" alt="BioTourist" class="Logo" />
-               <p>&copy; @DateTime.Now.Year - BioTourist - Le bio à porter de main 2019</p>
-            </div>
-        </footer>
 
 
+    <footer>
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        
-        @RenderSection("scripts", required: false)
+        <div class="ContainerFooter">
 
-        <script>
-            function redirect() {
-                location.href = "http://localhost:44339/Home/Contact";
-            }
-        </script>
+            <img src="~/Images/LogoBio.png" title="BioTourist" alt="BioTourist" class="Logo" />
+
+
+            <p>&copy; @DateTime.Now.Year - BioTourist - Le bio à porter de main 2019</p>
+        </div>
+    </footer>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+
+    <script>
+        function redirect() {
+            location.href = "http://localhost:44339/Home/Contact";
+        }
+    </script>
 
 </body>
 </html>

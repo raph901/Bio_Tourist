@@ -25,20 +25,6 @@ namespace Bio_Tourist.ADO
             }
             return v_ListRole;
 
-        }
-        //fonction qui permet la Recuperation Des objet Role
-        public static Cls_Role fct_RecupObjetRole(SqlDataReader p_DataReader)
-        {
-            while (p_DataReader.Read())
-            {
-                Cls_Role v_ObjRole = new Cls_Role();
-                v_ObjRole.ID_ROLE = Convert.ToInt32(p_DataReader["ID_ROLE"]);
-                v_ObjRole.NAME_ROLE = Convert.ToString(p_DataReader["NAME_ROLE"]);
-                return v_ObjRole;
-
-            }
-            return null;
-
-        }
+        }      
     }
 }

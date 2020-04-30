@@ -72,6 +72,18 @@ namespace Bio_Tourist.Controllers
  
             return View();
         }
+        } 
+        public ActionResult ProfileModify() // Return la view correspondante suite à un appel
+        {
+            if (Session["SessionEmail"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return View("Connection");
+            }
+        }
 
 
         //public ActionResult Panier()
@@ -117,8 +129,8 @@ namespace Bio_Tourist.Controllers
 
 
                 Session["SessionEmail"] = p.EMAIL_USER;
-           
-
+                Session["SessionUserId"] = p.ID_USER;
+                Session["SessionUserRole"] = p.ID_ROLE;
                 return RedirectToAction("UserProfile", "User", new { SessionUsername = p.EMAIL_USER});              
             }
 
@@ -167,7 +179,7 @@ namespace Bio_Tourist.Controllers
 
 
         [HttpPost]
-        public ActionResult Register(Models.User p)
+        public ActionResult Register(User p)
         // INSCRIPTION ENREGISTRE LES DONNÉES UTILISATEUR DANS LA DB
         {
             // Déclaration command/path Register 
@@ -188,8 +200,7 @@ namespace Bio_Tourist.Controllers
             {
 
                 RegisterCommand.Connection = DbConnection;
-               
-                RegisterCommand.CommandText = "INSERT INTO T_USER(CIVILITY_USER , FIRST_NAME_USER , LAST_NAME_USER , AGE_USERS , EMAIL_USER , PASSWORD_USER , NUM_USER , NUM_STREET , NAME_STREET , POSTAL_CODE , CITY_USER , COUNTRY_USER, Cls_Role ) VALUES('" + p.CIVILITY_USER + "' , '" + p.FIRST_NAME_USER + "' , '" + p.LAST_NAME_USER + "' , '" + p.AGE_USERS + "' , '" + p.EMAIL_USER + "' , '" + p.PASSWORD_USER + "' , '" + p.NUM_USER + "' , '" + p.NUM_STREET + "' , '" + p.NAME_STREET + "' , '" + p.POSTAL_CODE + "' , '" + p.CITY_USER + "' , '" + p.COUNTRY_USER + "',  '" + p.Cls_Role + "' ) ";
+                RegisterCommand.CommandText = "INSERT INTO T_USER(CIVILITY_USER , FIRST_NAME_USER , LAST_NAME_USER , AGE_USERS , EMAIL_USER , PASSWORD_USER , NUM_USER , NUM_STREET , NAME_STREET , POSTAL_CODE , CITY_USER , COUNTRY_USER , ID_ROLE) VALUES('" + p.CIVILITY_USER + "' , '" + p.FIRST_NAME_USER + "' , '" + p.LAST_NAME_USER + "' , '" + p.AGE_USERS + "' , '" + p.EMAIL_USER + "' , '" + p.PASSWORD_USER + "' , '" + p.NUM_USER + "' , '" + p.NUM_STREET + "' , '" + p.NAME_STREET + "' , '" + p.POSTAL_CODE + "' , '" + p.CITY_USER + "' , '" + p.COUNTRY_USER + "' , '" + p.ID_ROLE + "', '" + p.ID_GENDER + " ) ";
                 RegisterCommand.ExecuteNonQuery();
                 DbConnection.Close();
                 return View("InscriptionOK");
@@ -218,19 +229,37 @@ namespace Bio_Tourist.Controllers
             DbConnection.ConnectionString = GetDbPath();
             DbConnection.Open();
 
+            RegisterCommand.Connection = DbConnection;
+            RegisterCommand.CommandText = "SELECT * FROM T_ROLE";
+            SqlDataReader v_Datareader = RegisterCommand.ExecuteReader();//recupere adoRole
+            v_ListRole = ADO_Role.fct_RecupListeObjetRole(v_Datareader);
+            return v_ListRole;
+        }
+        public static List<Cls_GENRE> RecupListcClsGENRE()
+        {
+            List<Cls_GENRE> v_ListGENRE = new List<Cls_GENRE>();
+            // Déclaration command/path Register 
+            SqlCommand RegisterCommand = new SqlCommand();
+            SqlConnection DbConnection = new SqlConnection();
+            // Récup + Open --> Connection à la DB
+            DbConnection.ConnectionString = GetDbPath();
+            DbConnection.Open();
 
-            
 
             RegisterCommand.Connection = DbConnection;
-                SqlDataReader v_Datareader = RegisterCommand.ExecuteReader();//recupere adoRole
-                v_ListRole = ADO_Role.fct_RecupListeObjetRole(v_Datareader);
-                return v_ListRole;
+            RegisterCommand.CommandText = "SELECT * FROM T_GENDER";
+            SqlDataReader v_Datareader = RegisterCommand.ExecuteReader();//recupere adoRole
+            v_ListGENRE = ADO_GENRE.fct_RecupListeObjetGENRE(v_Datareader);
+            return v_ListGENRE;
         }
 
+        public ActionResult Deconnect() 
+        { 
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
 
-        //UTILISATION DE PROFIL
-        
-        public ActionResult UserProfile(User us)
+        public ActionResult UserProfile(User p)
         {
             // Déclaration command/reader/path Connection 
             SqlCommand ConnectionCommand = new SqlCommand(); // Créé la commande SQL de connection
@@ -274,44 +303,42 @@ namespace Bio_Tourist.Controllers
 
                     PfModel.Add(ProfileDetails);
                 }
-                us.ProfileModel = PfModel;
+                p.ProfileModel = PfModel;
                 DbConnection.Close();
             }
-            return View("ProfileList", us);
+            return View("ProfileList", p);
         }
 
-        //[HttpPost]
-        //public ActionResult ModifyUser(Models.User p)
-        //// CONNECTION : VERIFIE QUE LE LOGIN/MDP EXISTE DANS LA DB
-        //{
-        //    // Déclaration command/reader/path Connection 
-        //    SqlCommand ConnectionCommand = new SqlCommand(); // Créé la commande SQL de connection
-        //    SqlDataReader ConnectionDataReader;
+        [HttpPost]
+        public ActionResult ModifyEmail(User p)
+        {           
+            SqlConnection DbConnection = new SqlConnection();
+            DbConnection.ConnectionString = GetDbPath();
+            DbConnection.Open();
 
-        //    // Récup + Open --> Connection à la DB
-        //    SqlConnection DbConnection = new SqlConnection();
-        //    DbConnection.ConnectionString = GetDbPath();
-        //    DbConnection.Open();
+            SqlCommand ModifyCommand = new SqlCommand();
+            ModifyCommand.Connection = DbConnection;
+            ModifyCommand.CommandText = "UPDATE T_USER SET EMAIL_USER = '" + p.EMAIL_USER + "' WHERE EMAIL_USER ='" + Session["SessionEmail"] + "'";
+            ModifyCommand.ExecuteNonQuery();
+            Session.Clear();
+            Session["SessionEmail"] = p.EMAIL_USER;
 
-        //    // Insert chemin + requète sql dans la commande puis execute le reader associé à la commande
-        //    ConnectionCommand.Connection = DbConnection;
-        //    ConnectionCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL_USER ='" + p.EMAIL_USER + "' AND PASSWORD_USER='" + p.PASSWORD_USER + "'";
-        //    ConnectionDataReader = ConnectionCommand.ExecuteReader();
+            return RedirectToAction("ProfileModify", "User");
+        }
 
+        [HttpPost]
+        public ActionResult ModifyPassword(User p)
+        {
+            SqlConnection DbConnection = new SqlConnection();
+            DbConnection.ConnectionString = GetDbPath();
+            DbConnection.Open();
 
-        //    if (ConnectionDataReader.Read()) // Si le DR contient 1 ligne --> Connection + Close DbPath
-        //    {
-        //        DbConnection.Close();
-        //        Session["SessionUsername"] = p.EMAIL_USER;
-        //        return RedirectToAction("ConnectionSuccessful", "User", new { SessionUsername = p.EMAIL_USER });
-        //    }
+            SqlCommand ModifyCommand = new SqlCommand();
+            ModifyCommand.Connection = DbConnection;
+            ModifyCommand.CommandText = "UPDATE T_USER SET PASSWORD_USER = '" + p.PASSWORD_USER + "' WHERE EMAIL_USER ='" + Session["SessionEmail"] + "'";
+            ModifyCommand.ExecuteNonQuery();
 
-        //    else // Sinon erreur de connection (travaillé sur les =/= possibilités d'erreur et message) + Close DbPath
-        //    {
-        //        DbConnection.Close();
-        //        return View("ConnectionError");
-        //    }
-        //}
-
+            return RedirectToAction("ProfileModify", "User");
+        }
     }
 }
