@@ -12,7 +12,7 @@ namespace Bio_Tourist.Controllers
 {
     public class UserController : Controller
     {
-        //private object elseif;
+        //private object elseif
 
 
         public ActionResult Inscription() // Return la view correspondante suite à un appel
