@@ -108,7 +108,7 @@ namespace Bio_Tourist.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(Models.User p)
+        public ActionResult Register(User p)
         // INSCRIPTION ENREGISTRE LES DONNÉES UTILISATEUR DANS LA DB
         {
             // Déclaration command/connexion Register 
@@ -182,13 +182,13 @@ namespace Bio_Tourist.Controllers
             return v_ListGENRE;
         }
 
-        public ActionResult Deconnect() // Return la view correspondante suite à un appel
-        {
+        public ActionResult Deconnect() 
+        { 
             Session.Clear();
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult UserProfile(User us)
+        public ActionResult UserProfile(User p)
         {
             // Déclaration command/reader/path Connection 
             SqlCommand ConnectionCommand = new SqlCommand(); // Créé la commande SQL de connection
@@ -229,44 +229,25 @@ namespace Bio_Tourist.Controllers
 
                     PfModel.Add(ProfileDetails);
                 }
-                us.ProfileModel = PfModel;
+                p.ProfileModel = PfModel;
                 DbConnection.Close();
             }
-            return View("ProfileList", us);
+            return View("ProfileList", p);
         }
 
-        //[HttpPost]
-        //public ActionResult ModifyUser(Models.User p)
-        //// CONNECTION : VERIFIE QUE LE LOGIN/MDP EXISTE DANS LA DB
-        //{
-        //    // Déclaration command/reader/path Connection 
-        //    SqlCommand ConnectionCommand = new SqlCommand(); // Créé la commande SQL de connection
-        //    SqlDataReader ConnectionDataReader;
+        [HttpPost]
+        public ActionResult ModifyEmail(User p)
+        {           
+            SqlConnection DbConnection = new SqlConnection();
+            DbConnection.ConnectionString = GetDbPath();
+            DbConnection.Open();
 
-        //    // Récup + Open --> Connection à la DB
-        //    SqlConnection DbConnection = new SqlConnection();
-        //    DbConnection.ConnectionString = GetDbPath();
-        //    DbConnection.Open();
-
-        //    // Insert chemin + requète sql dans la commande puis execute le reader associé à la commande
-        //    ConnectionCommand.Connection = DbConnection;
-        //    ConnectionCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL_USER ='" + p.EMAIL_USER + "' AND PASSWORD_USER='" + p.PASSWORD_USER + "'";
-        //    ConnectionDataReader = ConnectionCommand.ExecuteReader();
-
-
-        //    if (ConnectionDataReader.Read()) // Si le DR contient 1 ligne --> Connection + Close DbPath
-        //    {
-        //        DbConnection.Close();
-        //        Session["SessionUsername"] = p.EMAIL_USER;
-        //        return RedirectToAction("ConnectionSuccessful", "User", new { SessionUsername = p.EMAIL_USER });
-        //    }
-
-        //    else // Sinon erreur de connection (travaillé sur les =/= possibilités d'erreur et message) + Close DbPath
-        //    {
-        //        DbConnection.Close();
-        //        return View("ConnectionError");
-        //    }
-        //}
-
+            SqlCommand ModifyCommand = new SqlCommand();
+            ModifyCommand.Connection = DbConnection;
+            ModifyCommand.CommandText = "UPDATE T_USER SET EMAIL_USER = '" + p.EMAIL_USER + "' WHERE EMAIL_USER ='" + Session["SessionEmail"] + "'";
+            ModifyCommand.ExecuteNonQuery();
+      
+            return View("ProfileList");
+        }
     }
 }

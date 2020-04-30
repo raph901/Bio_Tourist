@@ -1,50 +1,90 @@
 ﻿@model Bio_Tourist.Models.User
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
-    <div class="container container-fluid">
+<br />
+<div class="container container-fluid">
 
-        @if (Session["SessionEmail"] != null)
-        {
-            <h2>Vous êtes connecté avec le compte @Session["SessionEmail"]</h2>
+    @if (Session["SessionEmail"] != null)
+    {
 
-            <table class="table table-responsive table-hover table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>LAST_NAME_USER</th>
-                        <th>FIRST_NAME_USER</th>
-                        <th>AGE_USERS</th>
-                        <th>NUM_STREET</th>
-                        <th>NAME_STREET</th>
-                        <th>POSTAL_CODE</th>
-                        <th>CITY_USER</th>
-                        <th>COUNTRY_USER</th>
-                        <th>EMAIL_USER</th>
-                        <th>CIVILITY_USER</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
+            <div class="row">
 
+                <div class="col-6">
+                    <h1>Profile</h1>
+                </div>
+
+                <div class="col-6">
+
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <p>Prénom</p>
+                    <p>Nom de famille</p>
+                    <p>Age</p>
+                    <p>Numéro de rue</p>
+                    <p>Nom de rue</p>
+                    <p>Code postale</p>
+                    <p>Ville</p>
+                    <p>Pays</p>
+                    <p>E-mail</p>
+                    <p>Civilité</p>
+                </div>
+
+                <div class="col-3">
                     @foreach (var ProfileDetails in Model.ProfileModel)
                     {
-                            <tr>
-                                <td>@ProfileDetails.LAST_NAME_USER</td>
-                                <td>@ProfileDetails.FIRST_NAME_USER</td>
-                                <td>@ProfileDetails.AGE_USERS</td>
-                                <td>@ProfileDetails.NUM_STREET</td>
-                                <td>@ProfileDetails.NAME_STREET</td>
-                                <td>@ProfileDetails.POSTAL_CODE</td>
-                                <td>@ProfileDetails.CITY_USER</td>
-                                <td>@ProfileDetails.COUNTRY_USER</td>
-                                <td>@ProfileDetails.EMAIL_USER</td>
-                                <td>@ProfileDetails.CIVILITY_USER</td>
-                            </tr>
-                    }                   
-                </tbody>
-            </table>
-        }
+                        <p>@ProfileDetails.LAST_NAME_USER</p>
+                        <p>@ProfileDetails.FIRST_NAME_USER</p>
+                        <p>@ProfileDetails.AGE_USERS</p>
+                        <p>@ProfileDetails.NUM_STREET</p>
+                        <p>@ProfileDetails.NAME_STREET</p>
+                        <p>@ProfileDetails.POSTAL_CODE</p>
+                        <p>@ProfileDetails.CITY_USER</p>
+                        <p>@ProfileDetails.COUNTRY_USER</p>
+                        <p>@ProfileDetails.EMAIL_USER</p>
+                        <p>@ProfileDetails.CIVILITY_USER</p>
+                    }
+                </div>
 
-        @if (Session["SessionEmail"] == null)
-        {
-            <h2 class="text-danger">Vous n'êtes pas conneter</h2>
+                <div class="col-6">
+                    @using (Html.BeginForm("ModifyEmail", "User"))
+                    {
+
+                        @Html.LabelFor(p => p.EMAIL_USER)
+                        <br />
+                        @Html.EditorFor(p => p.EMAIL_USER, new {required = "required" })
+                        @Html.ValidationMessageFor(p => p.EMAIL_USER)
+
+                        <input type="submit" value="Modifier l'Email" class="" />
+
+                    }
+                </div>
+
+                <div class="col-6">
+                    @using (Html.BeginForm("ModifyPassword", "User"))
+                    {
+                        @Html.LabelFor(p => p.PASSWORD_USER)
+                        <br />
+                        @Html.EditorFor(p => p.PASSWORD_USER, new {required = "required" })
+                        @Html.ValidationMessageFor(p => p.PASSWORD_USER)
+
+                        <input type="submit" value="Modifier le mot de passe" class="" />
+                    }
+                </div>              
+            </div>
         }
-    </div>
+    }
+
+    @if (Session["SessionEmail"] == null)
+    {
+        <br />
+        <br />
+        <h2 class="text-danger">Vous n'êtes pas conneter</h2>
+        <br />
+        <br />
+    }
+</div>
