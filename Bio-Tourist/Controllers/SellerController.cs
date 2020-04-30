@@ -70,56 +70,18 @@ namespace Bio_Tourist.Controllers
 
 
         [HttpGet]
-         // Affiche le formulaire d'ajout d'annonces
+        // Affiche le formulaire d'ajout d'annonces
         public ActionResult Create() 
        
         {
             return View();
         }
 
-
-
-        //public ActionResult Create(HttpPostedFile file, T_AD emp)
-
-        //{
-        //    string filename = Path.GetFileName(file.FileName);
-        //    string _filename = DateTime.Now.ToString("yymmssfff") + filename;
-        //    string extension = Path.GetExtension(file.FileName);
-        //    string path = Path.Combine(Server.MapPath("~/ImagesUser/"), _filename);
-        //    emp.PICTURES_AD = "~/ImagesUser/" + _filename;
-
-        //    if(extension.ToLower() ==".jpg" || extension.ToLower() == ".jpeg" || extension.ToLower() == ".png")
-        //    {
-        //        if(file.ContentLength <= 1000000)
-        //        {
-        //            db.T_AD.Add(emp);
-        //            if(db.SaveChanges()>0)
-        //            {
-        //                file.SaveAs(path);
-        //                ViewBag.msg = "ok";
-        //                ModelState.Clear();
-        //            }
-        //        }
-        //        else
-        //        {
-        //            ViewBag.msg = "KO";
-        //        }
-        //    }
-
-        //    return View();
-        //}
-
-
-
-
-
         [HttpPost] // Pour permettre l'envoie du formulaire
         
         [ValidateAntiForgeryToken] // Protège le contenu et l'affichage de l'utilisateur face aux pirateurs.
 
-
         // Create  : Permet d'ajouter une annonce via le formulaire avec une requête d'insertion vers la liste des annonces.
-
 
         public ActionResult Create([Bind(Include = "ID_AD,PICTURES_AD,TITLE_AD,NAME_AD,QUANTITY_AD,STOCK_AD,PRICE_AD,ADRESS_AD,CITY_AD,COUNTRY_AD,DESCRIPTION_AD,DATE_AD, RESULT_AD, ID_USER,T_PRODUCT,CATEGORIE_PRODUCT")] T_AD p)
         {
@@ -127,25 +89,22 @@ namespace Bio_Tourist.Controllers
 
             if (ModelState.IsValid)
             {
-                //var file = Request.Files[0];
-                //if (file != null && file.ContentLength > 0)
+                //if (postedFile != null)
+                //{ 
+                //string path = Server.MapPath("~/ImagesUserServer/");
+                //if (!Directory.Exists(path))
                 //{
-
-                //    string fileName = Path.GetFileNameWithoutExtension(p.ImageFile.FileName);
-                //    string ImageUserPath = Server.MapPath("~/ImagesUser/");
-                //    Directory.CreateDirectory(ImageUserPath + p.ID_USER.ToString());
-                //    string path = Path.Combine(ImageUserPath + p.ID_USER.ToString(),fileName);
-                //    file.SaveAs(path);
-
+                //    Directory.CreateDirectory(path);
                 //}
-                
+                //postedFile.SaveAs(path + Path.GetFileName(postedFile.FileName));
+                //ViewBag.Messagee = "Image ajouté";
+                //}
                 p.PICTURES_AD = "/ImagesUser/" + p.PICTURES_AD; // Image en local
-                db.T_AD.Add(p);
-                db.SaveChanges();
-            }
-            
 
-            ViewBag.message = "L'annonce a été ajouté avec succès =)";
+                db.T_AD.Add(p);
+                    db.SaveChanges();
+                    ViewBag.message = "L'annonce a été ajouté avec succès =)";
+            }
 
             return View();
 

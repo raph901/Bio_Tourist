@@ -268,6 +268,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ImagesUserServer\" />
     <Folder Include="ImagesUser\" />
     <Folder Include="Images\" />
     <Folder Include="Views\Image\" />

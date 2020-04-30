@@ -1,9 +1,9 @@
-﻿
-@model IEnumerable<Bio_Tourist.Models.T_AD>
+﻿@model IEnumerable<Bio_Tourist.Models.T_AD>
 @using Bio_Tourist.Models;
 
 @{
     ViewBag.Title = "Index";
+  
 }
 
 <h2>Liste des annonces </h2>
@@ -135,10 +135,10 @@
                 <td data-label="Image">
 
                     <img src="@Html.DisplayFor(modelItem => item.PICTURES_AD)" name="PICTURES_AD" id="PICTURES_AD" runat="server" width="100" height="80" />
-
+                          
                 </td>
 
-                <td data-label="Stock">
+                <td data-label="Stock"> 
 
                     @Html.DisplayFor(modelItem => item.STOCK_AD)
 

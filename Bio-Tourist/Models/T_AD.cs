@@ -10,8 +10,6 @@ namespace Bio_Tourist.Models
     {
         public int ID_AD { get; set; }
 
-        public HttpPostedFileBase ImageFile { get; set; }
-
         [DisplayName("Image")]
         public string PICTURES_AD { get; set; }
 
