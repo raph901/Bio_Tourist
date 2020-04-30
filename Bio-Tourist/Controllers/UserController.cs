@@ -76,11 +76,16 @@ namespace Bio_Tourist.Controllers
                 Session["SessionUserRole"] = p.ID_ROLE;
                 return RedirectToAction("UserProfile", "User", new { SessionUsername = p.EMAIL_USER});              
             }
-
+            if (CheckExist(p) == true)
+            {
+                ModelState.AddModelError("PASSWORD_USER", "Mot de passe incorrect");
+                return View("Connection");
+            }
             else // Sinon erreur de connection (travaillé sur les =/= possibilités d'erreur et message) + Close DbPath
             {
-                DbConnection.Close();
-                return View("ConnectionError");
+                DbConnection.Close();          
+                ModelState.AddModelError("EMAIL_USER", "L'Email n'est pas associé à un compte");              
+                return View("Connection");
             }
         }
 
