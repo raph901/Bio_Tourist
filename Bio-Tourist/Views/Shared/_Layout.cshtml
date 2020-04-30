@@ -60,39 +60,27 @@
                         
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
-                            <li class="nav-item">@Html.ActionLink("Accueil", "Index", "Home")</li>
-                                    <li class="nav-item">@Html.ActionLink("Connexion", "Connection", "User")</li>
+                            <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "User")</li>
 
                             @if (Session["SessionEmail"] == null)
                             {
-                                <li class="nav-item">@Html.ActionLink("S'inscrire", "Inscription", "User")</li>
-                                <li class="nav-item">@Html.ActionLink("Connexion", "Connection", "User")</li>
+                                
+                                <li>@Html.ActionLink("S'inscrire", "Inscription", "User")</li>
+                                <li>@Html.ActionLink("Connexion", "Connection", "User")</li>
+                                
                             }
-
-                            <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
 
                             @if (Session["SessionEmail"] != null)
                             {
-
-                                <li>@Html.ActionLink("Ton profil", "UserProfile", "User")</li>
+                                <li>@Html.ActionLink("Mes annonces", "ListAnnounces", "Seller")</li>
+                                <li>@Html.ActionLink("Ton profil", "UserProfile", "User")</li>                 
                                 <li>@Html.ActionLink("Modifier le profil", "ProfileModify", "User")</li>
                                 <li>@Html.ActionLink("Deconnexion", "Deconnect", "User")</li>
                             }
 
                         </ul>
                         <n />
-
-
-
-                                @if (Session["SessionEmail"] != null)
-                                {
-                                    <li class="nav-item">@Html.ActionLink("Accueil", "Index", "Home")</li>
-                                    <li class="nav-item">@Html.ActionLink("Mes annonces", "ListAnnounces", "Seller")</li>
-                                    <li class="nav-item">@Html.ActionLink("Mon espace vendeur", "UserProfile", "User")</li>
-                                    <li class="nav-item">@Html.ActionLink("Contacter le support", "Contact", "User")</li>
-                                    <li class="nav-item">@Html.ActionLink("Deconnexion", "", "")</li>
-
-                                }
 
                 </div>
 

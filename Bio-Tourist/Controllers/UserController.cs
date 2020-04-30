@@ -72,8 +72,16 @@ namespace Bio_Tourist.Controllers
  
             return View();
         }
-        } 
-        public ActionResult ProfileModify() // Return la view correspondante suite à un appel
+        }
+
+    public ActionResult ProfileModify() // Return la view correspondante suite à un appel
+    {
+        
+        
+      return View();
+        
+    }
+    public ActionResult ProfileModify() // Return la view correspondante suite à un appel
         {
             if (Session["SessionEmail"] != null)
             {
@@ -341,4 +349,4 @@ namespace Bio_Tourist.Controllers
             return RedirectToAction("ProfileModify", "User");
         }
     }
-}
+
