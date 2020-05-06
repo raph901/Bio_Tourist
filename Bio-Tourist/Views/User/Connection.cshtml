@@ -35,14 +35,16 @@
                             @Html.LabelFor(m => m.EMAIL_USER)
                             <br />
                             @Html.TextBoxFor(m => m.EMAIL_USER, new { @class = "input--style-2", required = "required" })
-                            @Html.ValidationMessageFor(m => m.EMAIL_USER)
+                            <br />
+                            @Html.ValidationMessageFor(m => m.EMAIL_USER, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="input-group ">
                             @Html.LabelFor(m => m.PASSWORD_USER)
-                            <br/>
+                            <br />
                             @Html.PasswordFor(m => m.PASSWORD_USER, new { @class = "input--style-2", required = "required" })
-                            @Html.ValidationMessageFor(m => m.PASSWORD_USER)
+                            <br />
+                            @Html.ValidationMessageFor(m => m.PASSWORD_USER, "", new { @class = "text-danger" })
                         </div>
                         <div class="p-t-30">
                             <input type="submit" value="Connexion" class="btn btn--radius btn--green" />
