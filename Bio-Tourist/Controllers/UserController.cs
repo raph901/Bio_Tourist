@@ -253,7 +253,7 @@ namespace Bio_Tourist.Controllers
             DbConnection.ConnectionString = GetDbPath();
             DbConnection.Open();
 
-
+        
             RegisterCommand.Connection = DbConnection;
             RegisterCommand.CommandText = "SELECT * FROM T_GENDER";
             SqlDataReader v_Datareader = RegisterCommand.ExecuteReader();//recupere adoRole
@@ -262,7 +262,7 @@ namespace Bio_Tourist.Controllers
         }
 
         public ActionResult Deconnect() 
-        { 
+        {
             Session.Clear();
             return RedirectToAction("Index", "Home");
         }
@@ -349,4 +349,3 @@ namespace Bio_Tourist.Controllers
             return RedirectToAction("ProfileModify", "User");
         }
     }
-

@@ -18,9 +18,10 @@ namespace Bio_Tourist.Controllers
 
 
         //Affiche la liste des annonces
-        public ActionResult ListAnnounces()
+        public ActionResult ListAnnounces(User p)
         {
-                return View();
+           
+            return View();
             
 
        }
@@ -85,7 +86,7 @@ namespace Bio_Tourist.Controllers
 
         public ActionResult Create([Bind(Include = "ID_AD,PICTURES_AD,TITLE_AD,NAME_AD,QUANTITY_AD,STOCK_AD,PRICE_AD,ADRESS_AD,CITY_AD,COUNTRY_AD,DESCRIPTION_AD,DATE_AD, RESULT_AD, ID_USER,T_PRODUCT,CATEGORIE_PRODUCT")] T_AD p)
         {
-            p.ID_USER = 27; //Provisoire en attente de session 
+            //Session["SessionEmail"] = p.ID_USER;//Provisoire en attente de session 
 
             if (ModelState.IsValid)
             {
@@ -133,7 +134,7 @@ namespace Bio_Tourist.Controllers
         public ActionResult Edit([Bind(Include = "ID_AD,PICTURES_AD,TITLE_AD,NAME_AD,QUANTITY_AD,STOCK_AD,PRICE_AD,DATE_AD,ADRESS_AD,DESCRIPTION_AD,COUNTRY_AD, CITY_AD, RESULT_AD, ID_USER, T_PRODUCT, CATEGORIE_PRODUCT")] T_AD p, T_AD img, HttpPostedFileBase file)
         {
 
-            p.ID_USER = 27; //Provisoire en attente de session
+            //p.ID_USER = 27; //Provisoire en attente de session
 
             if (ModelState.IsValid)
             {
