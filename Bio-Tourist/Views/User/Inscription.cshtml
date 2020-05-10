@@ -1,95 +1,131 @@
 ﻿@using System.Web.UI.WebControls
-@using Bio_Tourist.Controllers
 @model Bio_Tourist.Models.User
 
-
+<link rel="stylesheet" href="~/Content/main.css" />
 <script language="javascript" type="text/javascript" src="../../Scripts/javascript.js"></script>
+
 <h2>Inscription</h2>
 
 @using (Html.BeginForm("Register", "User"))
 {
 
-    <div runat="server">
-        Sexes:
+    <div class="page-wrapper Color_User p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Inscription</h2>
+                    <form method="POST">
+                        <div class="col-md-12 col-sm-12">
+                            <div runat="server">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            @*@Html.DropDownListFor(m => m.ID_GENDER, UserController.DROPDOWN_LIST())
+                                                @Html.ValidationMessageFor(m => m.ID_GENDER)*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div runat="server">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            @*@Html.DropDownListFor(m => m.ID_ROLE,UserController.DROPDOWN_LIST())
+                                                @Html.ValidationMessageFor(m => m.ID_ROLE)*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-        @Html.DropDownListFor(m => m.CIVILITY_USER, new List<SelectListItem>
-        {
-            new SelectListItem() {Text = "Homme", Value="Homme"},
-            new SelectListItem() {Text = "Femme", Value="Femme"}
-        })
-        @Html.ValidationMessageFor(m => m.CIVILITY_USER)
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.LAST_NAME_USER, new { @class = "input--style-2", placeholder = "Nom", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.LAST_NAME_USER)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.FIRST_NAME_USER, new { @class = "input--style-2", placeholder = "Prénom", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.FIRST_NAME_USER)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.AGE_USERS, new { @class = "input--style-2", placeholder = "Age", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.AGE_USERS)
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.EMAIL_USER, new { @class = "input--style-2", placeholder = "Email", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.EMAIL_USER)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.PASSWORD_USER, new { @class = "input--style-2", placeholder = "Mot de Passe", name = "PASSWORD_USER", id = "PASSWORD_USER", type = "PASSWORD" })
+                                    @Html.ValidationMessageFor(m => m.PASSWORD_USER)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.CONFIRMING_PASSWORD, new { @class = "input--style-2", placeholder = "Confirmer le mot de Passe", type = "PASSWORD", name = "CONFIRMING_PASSWORD", id = "CONFIRMING_PASSWORD", onblur = "checkPassword();" })
+                                    @Html.ValidationMessageFor(m => m.CONFIRMING_PASSWORD)
+                                    <span id='message'></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.NUM_USER, new { @class = "input--style-2", placeholder = "Numéro de Télephone", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.NUM_USER)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.NUM_STREET, new { @class = "input--style-2", placeholder = "Numero de la Rue", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.NUM_STREET)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.NAME_STREET, new { @class = "input--style-2", placeholder = "Nom de la Rue", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.NAME_STREET)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.POSTAL_CODE, new { @class = "input--style-2", placeholder = "Code Postal", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.POSTAL_CODE)
+                                </div>
+                            </div>
+
+                            <div class=" col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.CITY_USER, new { @class = "input--style-2", placeholder = "Ville", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.CITY_USER)
+                                </div>
+                            </div>
+
+                            <div class=" col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.COUNTRY_USER, new { @class = "input--style-2", placeholder = "Pays", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.COUNTRY_USER)
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Inscription" class="btn btn--radius btn--green" />
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div>
-        @Html.LabelFor(m => m.ID_ROLE)
-        @Html.DropDownListFor(m => m.ID_ROLE, UserController.DROPDOWN_LIST())
-        @Html.ValidationMessageFor(m => m.ID_ROLE)
-    </div>
-
-    <div>
-        @Html.TextBoxFor(m => m.LAST_NAME_USER, new { @class = "form-control", placeholder = "Nom", required = "required", TextReader = "holala" })
-        @Html.ValidationMessageFor(m => m.LAST_NAME_USER)
-    </div>
-
-    <div>
-        @Html.TextBoxFor(m => m.FIRST_NAME_USER, new { @class = "form-control", placeholder = "Prénom", required = "required" })
-        @Html.ValidationMessageFor(m => m.FIRST_NAME_USER)
-    </div>
-
-    <div>
-        @Html.TextBoxFor(m => m.AGE_USERS, new { @class = "form-control", placeholder = "Age", required = "required" })
-        @Html.ValidationMessageFor(m => m.AGE_USERS)
-    </div>
-
-    <div>
-        @Html.TextBoxFor(m => m.EMAIL_USER, new { @class = "form-control", placeholder = "Email", required = "required" })
-        @Html.ValidationMessageFor(m => m.EMAIL_USER)
-    </div>
-
-    <div>
-        @Html.TextBoxFor(m => m.PASSWORD_USER, new { @class = "form-control", placeholder = "Mot de Passe", name = "PASSWORD_USER", id = "PASSWORD_USER", type = "PASSWORD" })
-        @Html.ValidationMessageFor(m => m.PASSWORD_USER)
-    </div>
-
-    <div>
-        @Html.TextBoxFor(m => m.CONFIRMING_PASSWORD, new { @class = "form-control", placeholder = "Confirmer le mot de Passe", type = "PASSWORD", name = "CONFIRMING_PASSWORD", id = "CONFIRMING_PASSWORD", onblur = "checkPassword();" })
-        @Html.ValidationMessageFor(m => m.CONFIRMING_PASSWORD)
-        <span id='message'></span>
-    </div>
-
-    <div>
-        @Html.TextBoxFor(m => m.NUM_USER, new { @class = "form-control", placeholder = "Numéro de Télephone", required = "required" })
-        @Html.ValidationMessageFor(m => m.NUM_USER)
-    </div>
-
-    <div>
-        @Html.TextBoxFor(m => m.NUM_STREET, new { @class = "form-control", placeholder = "Numero de la Rue", required = "required" })
-        @Html.ValidationMessageFor(m => m.NUM_STREET)
-    </div>
-
-    <div>
-        @Html.TextBoxFor(m => m.NAME_STREET, new { @class = "form-control", placeholder = "Nom de la Rue", required = "required" })
-        @Html.ValidationMessageFor(m => m.NAME_STREET)
-    </div>
-
-    <div>
-        @Html.TextBoxFor(m => m.POSTAL_CODE, new { @class = "form-control", placeholder = "Code Postal", required = "required" })
-        @Html.ValidationMessageFor(m => m.POSTAL_CODE)
-    </div>
-
-    <div>
-        @Html.TextBoxFor(m => m.CITY_USER, new { @class = "form-control", placeholder = "Ville", required = "required" })
-        @Html.ValidationMessageFor(m => m.CITY_USER)
-    </div>
-
-    <div>
-        @Html.TextBoxFor(m => m.COUNTRY_USER, new { @class = "form-control", placeholder = "Pays", required = "required" })
-        @Html.ValidationMessageFor(m => m.COUNTRY_USER)
-    </div>
-
-    <input asp:Button runat="server" type="submit" value="Inscription" />
-
 }
-
-
-
