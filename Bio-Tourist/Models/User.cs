@@ -53,9 +53,6 @@ namespace Bio_Tourist.Models
         public virtual Cls_Role Cls_Role { get; set; }
 
 
-        public List<User> ProfileModel { get; set; }
-
-
         // Pour la page contact = A ne pas toucher
 
         public string TO { get; set; }
@@ -67,10 +64,6 @@ namespace Bio_Tourist.Models
 
         [Required(ErrorMessage = "Le sujet est obligatoire !")]
         public string SUBJECT { get; set; }
-
-
-
-
 
         [DisplayName("Rols")]
         public int ROLE_USER { get; set; }
