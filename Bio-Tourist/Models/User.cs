@@ -4,28 +4,24 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;   
+using System.Web;
 using System.Web.Mvc;
 using CompareAttribute = System.ComponentModel.DataAnnotations.CompareAttribute;
 using CompareObsolete = System.Web.Mvc.CompareAttribute;
-using System.Net;
-using System.Net.Mail;
+
 
 namespace Bio_Tourist.Models
 {
     public class User
     {
 
-        public int ID_ROLE { get; set; }
-
-        public string NAME_ROLE { get; set; }
         public int ID_USER { get; set; }
+        public int ID_ROLE { get; set; }
 
         [DisplayName("Nom")]
         public string LAST_NAME_USER { get; set; }
         [DisplayName("Prenom")]
         public string FIRST_NAME_USER { get; set; }
-
         [DisplayName("Age")]
         public int AGE_USERS { get; set; }
         [DisplayName("Numero de la Rue")]
@@ -44,33 +40,14 @@ namespace Bio_Tourist.Models
         public int NUM_USER { get; set; }
         [DisplayName("Mot de Passe")]
         public string PASSWORD_USER { get; set; }
-
-        [DisplayName("Confirmé le mot de passe")]
         public string CONFIRMING_PASSWORD { get; set; }
-        [DisplayName("Civilité")]
+        [DisplayName("Civiliter")]
         public string CIVILITY_USER { get; set; }
-        
-        public virtual Cls_Role Cls_Role { get; set; }
+
+
+        public string ROLE_USER { get; set; }
 
 
         public List<User> ProfileModel { get; set; }
-
-    
-        // Pour la page contact = A ne pas toucher
-  
-        public string TO { get; set; }
-
-        public string FROM  { get; set; }
-
-        [Required(ErrorMessage = "La description est obligatoire !")]
-        public string COMMENT { get; set; }
-
-        [Required(ErrorMessage = "Le sujet est obligatoire !")]
-        public string SUBJECT { get; set; }
-
-            
-    
-
-
     }
 }
