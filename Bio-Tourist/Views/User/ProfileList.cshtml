@@ -1,54 +1,53 @@
 ﻿@model Bio_Tourist.Models.User
 
-<br />
-<br />
+<br /><br />
 
 <div class="container container-fluid">
 
     @if (Session["SessionEmail"] != null)
     {
 
-        <div class="row">
+            <div class="row">
 
-            <div class="col-6">
-                <h1>Profile</h1>
+                <div class="col-6">
+                    <h1>Profile</h1>
+                </div>
+
             </div>
 
-        </div>
+            <br/><br /><br />
 
-        <br /><br /><br />
+            <div class="row">
+                <div class="col-6">
+                    <p>Prénom</p>
+                    <p>Nom de famille</p>
+                    <p>Age</p>
+                    <p>Numéro de rue</p>
+                    <p>Nom de rue</p>
+                    <p>Code postale</p>
+                    <p>Ville</p>
+                    <p>Pays</p>
+                    <p>E-mail</p>
+                    <p>Civilité</p>
+                </div>
 
-        <div class="row">
-            <div class="col-6">
-                <p>Prénom</p>
-                <p>Nom de famille</p>
-                <p>Age</p>
-                <p>Numéro de rue</p>
-                <p>Nom de rue</p>
-                <p>Code postale</p>
-                <p>Ville</p>
-                <p>Pays</p>
-                <p>E-mail</p>
-                <p>Civilité</p>
+                <div class="col-6">
+                    @foreach (var ProfileDetails in Model.ProfileModel)
+                    {
+                        <p>@ProfileDetails.LAST_NAME_USER</p>
+                        <p>@ProfileDetails.FIRST_NAME_USER</p>
+                        <p>@ProfileDetails.AGE_USERS</p>
+                        <p>@ProfileDetails.NUM_STREET</p>
+                        <p>@ProfileDetails.NAME_STREET</p>
+                        <p>@ProfileDetails.POSTAL_CODE</p>
+                        <p>@ProfileDetails.CITY_USER</p>
+                        <p>@ProfileDetails.COUNTRY_USER</p>
+                        <p>@ProfileDetails.EMAIL_USER</p>
+                        <p>@ProfileDetails.CIVILITY_USER</p>
+                    }
+                </div>               
             </div>
-
-            <div class="col-6">
-                @foreach (var ProfileDetails in Model.ProfileModel)
-                {
-                    <p>@ProfileDetails.LAST_NAME_USER</p>
-                    <p>@ProfileDetails.FIRST_NAME_USER</p>
-                    <p>@ProfileDetails.AGE_USERS</p>
-                    <p>@ProfileDetails.NUM_STREET</p>
-                    <p>@ProfileDetails.NAME_STREET</p>
-                    <p>@ProfileDetails.POSTAL_CODE</p>
-                    <p>@ProfileDetails.CITY_USER</p>
-                    <p>@ProfileDetails.COUNTRY_USER</p>
-                    <p>@ProfileDetails.EMAIL_USER</p>
-                    <p>@ProfileDetails.CIVILITY_USER</p>
-                }
-            </div>
-        </div>
-
+        
     }
 
     @if (Session["SessionEmail"] == null)

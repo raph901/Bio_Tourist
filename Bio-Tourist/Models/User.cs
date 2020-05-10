@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;
+using System.Web;   
 using System.Web.Mvc;
 using CompareAttribute = System.ComponentModel.DataAnnotations.CompareAttribute;
 using CompareObsolete = System.Web.Mvc.CompareAttribute;
@@ -15,7 +15,7 @@ namespace Bio_Tourist.Models
 {
     public class User
     {
-
+            
         public int ID_ROLE { get; set; }
         public int ID_USER { get; set; }
 
@@ -49,7 +49,7 @@ namespace Bio_Tourist.Models
         public string CONFIRMING_PASSWORD { get; set; }
         [DisplayName("Civilité")]
         public string CIVILITY_USER { get; set; }
-
+        
         public virtual Cls_Role Cls_Role { get; set; }
 
 
@@ -64,6 +64,10 @@ namespace Bio_Tourist.Models
 
         [Required(ErrorMessage = "Le sujet est obligatoire !")]
         public string SUBJECT { get; set; }
+
+            
+    
+
 
         [DisplayName("Rols")]
         public int ROLE_USER { get; set; }

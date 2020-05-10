@@ -141,8 +141,8 @@ namespace Bio_Tourist.Controllers
             }
             else // Sinon erreur de connection (travaillé sur les =/= possibilités d'erreur et message) + Close DbPath
             {
-                DbConnection.Close();
-                ModelState.AddModelError("EMAIL_USER", "L'Email n'est pas associé à un compte");
+                DbConnection.Close();          
+                ModelState.AddModelError("EMAIL_USER", "L'Email n'est pas associé à un compte");              
                 return View("Connection");
             }
         }
@@ -225,39 +225,39 @@ namespace Bio_Tourist.Controllers
         //    return vdropdownlist;
         //}
 
-        //public static List<Cls_Role> RecupListcClsRoles()
-        //{
-        //    List<Cls_Role> v_ListRole = new List<Cls_Role>();
-        //    // Déclaration command/path Register 
-        //    SqlCommand RegisterCommand = new SqlCommand();
-        //    SqlConnection DbConnection = new SqlConnection();
-        //    // Récup + Open --> Connection à la DB
-        //    DbConnection.ConnectionString = GetDbPath();
-        //    DbConnection.Open();
+        public static List<Cls_Role> RecupListcClsRoles()
+        {
+            List<Cls_Role> v_ListRole = new List<Cls_Role>();
+            // Déclaration command/path Register 
+            SqlCommand RegisterCommand = new SqlCommand();
+            SqlConnection DbConnection = new SqlConnection();
+             // Récup + Open --> Connection à la DB
+            DbConnection.ConnectionString = GetDbPath();
+            DbConnection.Open();
 
-        //    RegisterCommand.Connection = DbConnection;
-        //    RegisterCommand.CommandText = "SELECT * FROM T_ROLE";
-        //    SqlDataReader v_Datareader = RegisterCommand.ExecuteReader();//recupere adoRole
-        //    v_ListRole = ADO_Role.fct_RecupListeObjetRole(v_Datareader);
-        //    return v_ListRole;
-        //}
-        //public static List<Cls_GENRE> RecupListcClsGENRE()
-        //{
-        //    List<Cls_GENRE> v_ListGENRE = new List<Cls_GENRE>();
-        //    // Déclaration command/path Register 
-        //    SqlCommand RegisterCommand = new SqlCommand();
-        //    SqlConnection DbConnection = new SqlConnection();
-        //    // Récup + Open --> Connection à la DB
-        //    DbConnection.ConnectionString = GetDbPath();
-        //    DbConnection.Open();
+            RegisterCommand.Connection = DbConnection;
+            RegisterCommand.CommandText = "SELECT * FROM T_ROLE";
+            SqlDataReader v_Datareader = RegisterCommand.ExecuteReader();//recupere adoRole
+            v_ListRole = ADO_Role.fct_RecupListeObjetRole(v_Datareader);
+            return v_ListRole;
+        }
+        public static List<Cls_GENRE> RecupListcClsGENRE()
+        {
+            List<Cls_GENRE> v_ListGENRE = new List<Cls_GENRE>();
+            // Déclaration command/path Register 
+            SqlCommand RegisterCommand = new SqlCommand();
+            SqlConnection DbConnection = new SqlConnection();
+            // Récup + Open --> Connection à la DB
+            DbConnection.ConnectionString = GetDbPath();
+            DbConnection.Open();
 
-
-        //    RegisterCommand.Connection = DbConnection;
-        //    RegisterCommand.CommandText = "SELECT * FROM T_GENDER";
-        //    SqlDataReader v_Datareader = RegisterCommand.ExecuteReader();//recupere adoRole
-        //    v_ListGENRE = ADO_GENRE.fct_RecupListeObjetGENRE(v_Datareader);
-        //    return v_ListGENRE;
-        //}
+        
+            RegisterCommand.Connection = DbConnection;
+            RegisterCommand.CommandText = "SELECT * FROM T_GENDER";
+            SqlDataReader v_Datareader = RegisterCommand.ExecuteReader();//recupere adoRole
+            v_ListGENRE = ADO_GENRE.fct_RecupListeObjetGENRE(v_Datareader);
+            return v_ListGENRE;
+        }
 
         public ActionResult Deconnect()
         {
@@ -281,7 +281,7 @@ namespace Bio_Tourist.Controllers
             ConnectionCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL_USER = '" + Session["SessionEmail"] + "'";
             ProfileListDataReader = ConnectionCommand.ExecuteReader();
 
-
+          
 
             List<User> PfModel = new List<User>();
 
@@ -317,7 +317,7 @@ namespace Bio_Tourist.Controllers
 
         [HttpPost]
         public ActionResult ModifyEmail(User p)
-        {
+        {           
             SqlConnection DbConnection = new SqlConnection();
             DbConnection.ConnectionString = GetDbPath();
             DbConnection.Open();
@@ -347,4 +347,3 @@ namespace Bio_Tourist.Controllers
             return RedirectToAction("ProfileModify", "User");
         }
     }
-}

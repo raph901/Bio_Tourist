@@ -17,3 +17,4 @@ namespace Bio_Tourist.Models
         public List<Report> ReportModel { get; set; }
     }
 }
+
