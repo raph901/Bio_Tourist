@@ -1,31 +1,29 @@
 ﻿@using System.Web.UI.WebControls
+@using Bio_Tourist.Controllers
 @model Bio_Tourist.Models.User
 
-@using Bio_Tourist.Models
-
-@{
-    Cls_Role role = new Cls_Role();
-
-}
 
 <script language="javascript" type="text/javascript" src="../../Scripts/javascript.js"></script>
 <h2>Inscription</h2>
 
-@using(Html.BeginForm("Register", "User"))
-
+@using (Html.BeginForm("Register", "User"))
 {
 
-
     <div runat="server">
+        Sexes:
 
-        Genre:
-
-        @Html.DropDownListFor(x => x.CIVILITY_USER, new List<SelectListItem>
+        @Html.DropDownListFor(m => m.CIVILITY_USER, new List<SelectListItem>
         {
-            new SelectListItem() {Text = "Homme", Value="GenreH"},
-            new SelectListItem() {Text = "Femme", Value="GenreF"}
+            new SelectListItem() {Text = "Homme", Value="Homme"},
+            new SelectListItem() {Text = "Femme", Value="Femme"}
         })
         @Html.ValidationMessageFor(m => m.CIVILITY_USER)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.ID_ROLE)
+        @Html.DropDownListFor(m => m.ID_ROLE, UserController.DROPDOWN_LIST())
+        @Html.ValidationMessageFor(m => m.ID_ROLE)
     </div>
 
     <div>
@@ -49,21 +47,18 @@
     </div>
 
     <div>
-        @Html.TextBoxFor(m => m.PASSWORD_USER, new { @class = "form-control", placeholder = "PASSWORD_USER", name = "PASSWORD_USER", id = "PASSWORD_USER", type = "PASSWORD" })
+        @Html.TextBoxFor(m => m.PASSWORD_USER, new { @class = "form-control", placeholder = "Mot de Passe", name = "PASSWORD_USER", id = "PASSWORD_USER", type = "PASSWORD" })
         @Html.ValidationMessageFor(m => m.PASSWORD_USER)
     </div>
 
     <div>
-        @Html.TextBoxFor(m => m.CONFIRMING_PASSWORD, new { @class = "form-control", placeholder = "CONFIRMING_PASSWORD", type = "PASSWORD", name = "CONFIRMING_PASSWORD", id = "CONFIRMING_PASSWORD", onblur = "checkPassword();" })
+        @Html.TextBoxFor(m => m.CONFIRMING_PASSWORD, new { @class = "form-control", placeholder = "Confirmer le mot de Passe", type = "PASSWORD", name = "CONFIRMING_PASSWORD", id = "CONFIRMING_PASSWORD", onblur = "checkPassword();" })
         @Html.ValidationMessageFor(m => m.CONFIRMING_PASSWORD)
+        <span id='message'></span>
     </div>
 
-    <label>
-        <span id='message'></span>
-    </label>
-
     <div>
-        @Html.TextBoxFor(m => m.NUM_USER, new { @class = "form-control", placeholder = "Numero de Télephone", required = "required" })
+        @Html.TextBoxFor(m => m.NUM_USER, new { @class = "form-control", placeholder = "Numéro de Télephone", required = "required" })
         @Html.ValidationMessageFor(m => m.NUM_USER)
     </div>
 
@@ -91,18 +86,10 @@
         @Html.TextBoxFor(m => m.COUNTRY_USER, new { @class = "form-control", placeholder = "Pays", required = "required" })
         @Html.ValidationMessageFor(m => m.COUNTRY_USER)
     </div>
-    <div runat="server">
 
-        Statut:
-            
-        @Html.DropDownListFor(x => x.Cls_Role.ID_ROLE, new List<SelectListItem>
-        {
-            new SelectListItem() {Text = "Vendeur", Value="GenreV"},
-            new SelectListItem() {Text = "Contrôleur", Value="GenreC"},
-            new SelectListItem() {Text = "Acheteur", Value="GenreA"}
-        });
-
-        @Html.ValidationMessageFor(m => m.Cls_Role.ID_ROLE)
-    </div>
     <input asp:Button runat="server" type="submit" value="Inscription" />
+
 }
+
+
+
