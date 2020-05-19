@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="~/Content/DesignContact.css" />
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/DesignListAnnounces.css" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>@ViewBag.Title - BioTourist</title>
     @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -33,7 +34,12 @@
     @Scripts.Render("~/bundles/JavaScript")
 
 </head>
+@using Bio_Tourist.Models
 
+@{ 
+    User Users = new User();
+
+}
 
 <body>
 
@@ -47,7 +53,7 @@
                 <div class="align">
 
                     <img src="~/Images/LogoBio.png" title="BioTourist" alt="BioTourist" class="Logo" />
-                    <img src="~/Images/SloganBio.png" title="SloganBioTourist" alt="SloganBioTourist" class="Slogan" />
+                    <img src="~/Images/SloganBioo.png" title="SloganBioTourist" alt="SloganBioTourist" class="Slogan" />
 
                 </div>
 
@@ -65,10 +71,10 @@
 
                             @if (Session["SessionEmail"] == null)
                             {
-                                
+
                                 <li>@Html.ActionLink("S'inscrire", "Inscription", "User")</li>
                                 <li>@Html.ActionLink("Connexion", "Connection", "User")</li>
-                                
+
                             }
 
                             @if (Session["SessionEmail"] != null)
@@ -99,7 +105,6 @@
         </nav>
 
     </header>
-
 
 
     @RenderBody()

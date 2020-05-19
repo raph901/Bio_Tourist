@@ -1,13 +1,12 @@
-﻿body {
-}
-
+﻿
 .dl-horizontal dt {
     white-space: normal;
 }
 
 header {
-    height: 50px;
+    height: 0px;
 }
+
 
 input,
 select,

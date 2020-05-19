@@ -127,8 +127,6 @@ namespace Bio_Tourist.Controllers
             {
                 DbConnection.Close();
 
-
-
                 Session["SessionEmail"] = p.EMAIL_USER;
                 Session["SessionUserId"] = p.ID_USER;
                 Session["SessionUserRole"] = p.ID_ROLE;
@@ -141,8 +139,8 @@ namespace Bio_Tourist.Controllers
             }
             else // Sinon erreur de connection (travaillé sur les =/= possibilités d'erreur et message) + Close DbPath
             {
-                DbConnection.Close();          
-                ModelState.AddModelError("EMAIL_USER", "L'Email n'est pas associé à un compte");              
+                DbConnection.Close();
+                ModelState.AddModelError("EMAIL_USER", "L'Email n'est pas associé à un compte");
                 return View("Connection");
             }
         }
@@ -231,7 +229,7 @@ namespace Bio_Tourist.Controllers
             // Déclaration command/path Register 
             SqlCommand RegisterCommand = new SqlCommand();
             SqlConnection DbConnection = new SqlConnection();
-             // Récup + Open --> Connection à la DB
+            // Récup + Open --> Connection à la DB
             DbConnection.ConnectionString = GetDbPath();
             DbConnection.Open();
 
@@ -251,7 +249,7 @@ namespace Bio_Tourist.Controllers
             DbConnection.ConnectionString = GetDbPath();
             DbConnection.Open();
 
-        
+
             RegisterCommand.Connection = DbConnection;
             RegisterCommand.CommandText = "SELECT * FROM T_GENDER";
             SqlDataReader v_Datareader = RegisterCommand.ExecuteReader();//recupere adoRole
@@ -281,7 +279,7 @@ namespace Bio_Tourist.Controllers
             ConnectionCommand.CommandText = "SELECT * FROM T_USER WHERE EMAIL_USER = '" + Session["SessionEmail"] + "'";
             ProfileListDataReader = ConnectionCommand.ExecuteReader();
 
-          
+
 
             List<User> PfModel = new List<User>();
 
@@ -317,7 +315,7 @@ namespace Bio_Tourist.Controllers
 
         [HttpPost]
         public ActionResult ModifyEmail(User p)
-        {           
+        {
             SqlConnection DbConnection = new SqlConnection();
             DbConnection.ConnectionString = GetDbPath();
             DbConnection.Open();
@@ -347,3 +345,4 @@ namespace Bio_Tourist.Controllers
             return RedirectToAction("ProfileModify", "User");
         }
     }
+}

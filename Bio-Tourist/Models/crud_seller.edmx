@@ -13,14 +13,12 @@
           <Property Name="PICTURES_AD" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="TITLE_AD" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="NAME_AD" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="QUANTITY_AD" Type="int" Nullable="false" />
           <Property Name="PRICE_AD" Type="float" Nullable="false" />
           <Property Name="ADRESS_AD" Type="varchar" MaxLength="400" Nullable="false" />
           <Property Name="DESCRIPTION_AD" Type="varchar" MaxLength="600" Nullable="false" />
           <Property Name="ID_USER" Type="int" Nullable="false" />
           <Property Name="STOCK_AD" Type="int" Nullable="false" />
-          <Property Name="RESULT_AD" Type="int" Nullable="false" />
-          <Property Name="ID_PRODUCT" Type="int" />
+          <Property Name="ID_PRODUCT" Type="int" Nullable="false" />
           <Property Name="CITY_AD" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="COUNTRY_AD" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="DATE_AD" Type="datetime" Nullable="false" />
@@ -31,9 +29,10 @@
           </Key>
           <Property Name="ID_PRODUCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CATEGORIE_PRODUCT" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="QUANTITE_PRODUCT" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_ID_PRODUCT">
-          <End Role="T_PRODUCT" Type="Self.T_PRODUCT" Multiplicity="0..1" />
+          <End Role="T_PRODUCT" Type="Self.T_PRODUCT" Multiplicity="1" />
           <End Role="T_AD" Type="Self.T_AD" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="T_PRODUCT">
@@ -64,38 +63,29 @@
           <Property Name="PICTURES_AD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TITLE_AD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NAME_AD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="QUANTITY_AD" Type="Int32" Nullable="false" />
           <Property Name="PRICE_AD" Type="Double" Nullable="false" />
           <Property Name="ADRESS_AD" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DESCRIPTION_AD" Type="String" MaxLength="600" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DATE_AD" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ID_USER" Type="Int32" Nullable="false" />
           <Property Name="STOCK_AD" Type="Int32" Nullable="false" />
-          <Property Name="RESULT_AD" Type="Int32" Nullable="false" />
-          <Property Name="ID_PRODUCT" Type="Int32" />
-          <NavigationProperty Name="T_PRODUCT" Relationship="BioTouristModel.FK_ID_PRODUCT" FromRole="T_AD" ToRole="T_PRODUCT" />
-          <Property Name="CITY_AD" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="COUNTRY_AD" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ID_PRODUCT" Type="Int32" Nullable="false" />
+          <Property Name="CITY_AD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COUNTRY_AD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATE_AD" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="T_PRODUCT" Relationship="Self.FK_ID_PRODUCT" FromRole="T_AD" ToRole="T_PRODUCT" />
         </EntityType>
-        <EntityContainer Name="BioTouristEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="T_AD" EntityType="Self.T_AD" />
-          <EntitySet Name="T_PRODUCT" EntityType="BioTouristModel.T_PRODUCT" />
-          <AssociationSet Name="FK_ID_PRODUCT" Association="BioTouristModel.FK_ID_PRODUCT">
-            <End Role="T_PRODUCT" EntitySet="T_PRODUCT" />
-            <End Role="T_AD" EntitySet="T_AD" />
-          </AssociationSet>
-          </EntityContainer>
         <EntityType Name="T_PRODUCT">
           <Key>
             <PropertyRef Name="ID_PRODUCT" />
           </Key>
           <Property Name="ID_PRODUCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CATEGORIE_PRODUCT" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="T_AD" Relationship="BioTouristModel.FK_ID_PRODUCT" FromRole="T_PRODUCT" ToRole="T_AD" />
+          <Property Name="CATEGORIE_PRODUCT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_AD" Relationship="Self.FK_ID_PRODUCT" FromRole="T_PRODUCT" ToRole="T_AD" />
+          <Property Name="QUANTITE_PRODUCT" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_ID_PRODUCT">
-          <End Type="BioTouristModel.T_PRODUCT" Role="T_PRODUCT" Multiplicity="0..1" />
-          <End Type="BioTouristModel.T_AD" Role="T_AD" Multiplicity="*" />
+          <End Role="T_PRODUCT" Type="Self.T_PRODUCT" Multiplicity="1" />
+          <End Role="T_AD" Type="Self.T_AD" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="T_PRODUCT">
               <PropertyRef Name="ID_PRODUCT" />
@@ -105,6 +95,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="BioTouristEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_AD" EntityType="Self.T_AD" />
+          <EntitySet Name="T_PRODUCT" EntityType="Self.T_PRODUCT" />
+          <AssociationSet Name="FK_ID_PRODUCT" Association="Self.FK_ID_PRODUCT">
+            <End Role="T_PRODUCT" EntitySet="T_PRODUCT" />
+            <End Role="T_AD" EntitySet="T_AD" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -114,29 +112,28 @@
           <EntitySetMapping Name="T_AD">
             <EntityTypeMapping TypeName="BioTouristModel.T_AD">
               <MappingFragment StoreEntitySet="T_AD">
-                <ScalarProperty Name="COUNTRY_AD" ColumnName="COUNTRY_AD" />
-                <ScalarProperty Name="CITY_AD" ColumnName="CITY_AD" />
-                <ScalarProperty Name="PRICE_AD" ColumnName="PRICE_AD" />
-                <ScalarProperty Name="ID_PRODUCT" ColumnName="ID_PRODUCT" />
-                <ScalarProperty Name="RESULT_AD" ColumnName="RESULT_AD" />
-                <ScalarProperty Name="STOCK_AD" ColumnName="STOCK_AD" />
                 <ScalarProperty Name="ID_AD" ColumnName="ID_AD" />
                 <ScalarProperty Name="PICTURES_AD" ColumnName="PICTURES_AD" />
                 <ScalarProperty Name="TITLE_AD" ColumnName="TITLE_AD" />
                 <ScalarProperty Name="NAME_AD" ColumnName="NAME_AD" />
-                <ScalarProperty Name="QUANTITY_AD" ColumnName="QUANTITY_AD" />
+                <ScalarProperty Name="PRICE_AD" ColumnName="PRICE_AD" />
                 <ScalarProperty Name="ADRESS_AD" ColumnName="ADRESS_AD" />
                 <ScalarProperty Name="DESCRIPTION_AD" ColumnName="DESCRIPTION_AD" />
-                <ScalarProperty Name="DATE_AD" ColumnName="DATE_AD" />
                 <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="STOCK_AD" ColumnName="STOCK_AD" />
+                <ScalarProperty Name="ID_PRODUCT" ColumnName="ID_PRODUCT" />
+                <ScalarProperty Name="CITY_AD" ColumnName="CITY_AD" />
+                <ScalarProperty Name="COUNTRY_AD" ColumnName="COUNTRY_AD" />
+                <ScalarProperty Name="DATE_AD" ColumnName="DATE_AD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="T_PRODUCT">
             <EntityTypeMapping TypeName="BioTouristModel.T_PRODUCT">
               <MappingFragment StoreEntitySet="T_PRODUCT">
-                <ScalarProperty Name="CATEGORIE_PRODUCT" ColumnName="CATEGORIE_PRODUCT" />
+                <ScalarProperty Name="QUANTITE_PRODUCT" ColumnName="QUANTITE_PRODUCT" />
                 <ScalarProperty Name="ID_PRODUCT" ColumnName="ID_PRODUCT" />
+                <ScalarProperty Name="CATEGORIE_PRODUCT" ColumnName="CATEGORIE_PRODUCT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

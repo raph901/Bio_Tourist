@@ -153,8 +153,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\cls_Role.cs" />
-    <Compile Include="Models\Ad.cs" />
     <Compile Include="Models\Cls_GENRE.cs" />
     <Compile Include="Models\Cls_Role.cs" />
     <Compile Include="Models\Comments.cs" />
@@ -178,6 +176,7 @@
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\SaleHistory.cs" />
     <Compile Include="Models\set.cs" />
+    <Compile Include="Models\Tools\DownloadPicture.cs" />
     <Compile Include="Models\Tools\TimeAnnounces.cs" />
     <Compile Include="Models\T_AD.cs">
       <DependentUpon>crud_seller.tt</DependentUpon>
@@ -222,6 +221,7 @@
       <DependentUpon>crud_seller.edmx</DependentUpon>
       <LastGenOutput>crud_seller.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\crud_seller.edmx.sql" />
     <Content Include="Models\crud_seller.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>crud_seller.edmx</DependentUpon>
@@ -305,6 +305,7 @@
     <Content Include="vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
     <Content Include="Views\User\ProfileModify.cshtml" />
+    <Content Include="Views\Seller\DownloadImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -315,6 +316,8 @@
     <Folder Include="Views\Picture\" />
     <Folder Include="Views\Registration\" />
     <Folder Include="Views\Session\" />
+    <Folder Include="Views\T_AD\" />
+    <Folder Include="Views\T_PRODUCT\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

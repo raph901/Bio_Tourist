@@ -50,7 +50,7 @@ namespace Bio_Tourist.Models
         [DisplayName("Civilité")]
         public string CIVILITY_USER { get; set; }
         
-        public virtual Cls_Role Cls_Role { get; set; }
+        public virtual List<Cls_Role> ROLES { get; set; }
 
 
         // Pour la page contact = A ne pas toucher

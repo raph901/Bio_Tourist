@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "DownloadImage";
+}
+
+
+<h2 class="text-center" style="text-decoration:underline;">Télécharger votre image</h2>
+<br />
+<div class="container-fluid text-center">
+
+    @using (Html.BeginForm("DownloadImage", "Seller", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken() //Sécurise le formulaire contre les contrefacons.
+
+    <h3 style="font-weight:bold; font-family:'Bahnschrift'">Télécharger une image de votre choix</h3>
+        <hr />
+        <input style="margin:auto;"  type="file" name="postedFile" />
+        <hr />
+        <input class="btn-info" type="submit" value="Télécharger" />
+        <br />
+        <br />
+        <span class="alert-info">@ViewBag.Message</span>    
+    }
+
+</div>
+
+<br/>
+<br />
+<br />
+<br />
+<br />
+<div class="text-center">@Html.ActionLink("Poursuivre l'ajout de votre annonce", "Create") | @Html.ActionLink("Revenir vers liste des annonces pour modifier votre image", "ListAnnounces") </div>

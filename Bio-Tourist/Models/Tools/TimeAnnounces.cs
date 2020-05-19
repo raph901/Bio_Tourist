@@ -19,25 +19,25 @@ namespace Bio_Tourist.Models
             {
                 result = string.Format("il y a {0} secondes", timeSpan.Seconds);
             }
-            else if (timeSpan <= TimeSpan.FromMinutes(60))
+            else if (timeSpan <= TimeSpan.FromMinutes(60)) // 1 heure
             {
                 result = timeSpan.Minutes > 1 ?
                     String.Format("il y a {0} minutes", timeSpan.Minutes) :
                     "il y a plus d'une minute";
             }
-            else if (timeSpan <= TimeSpan.FromHours(24))
+            else if (timeSpan <= TimeSpan.FromHours(24)) //1 jours
             {
                 result = timeSpan.Hours > 1 ?
                     String.Format("il y a {0} heures", timeSpan.Hours) :
-                    "il y a plus d'une heure";
+                    "il y a plus d'un jour";
             }
-            else if (timeSpan <= TimeSpan.FromDays(30))
+            else if (timeSpan <= TimeSpan.FromDays(30)) // 1Mois
             {
                 result = timeSpan.Days > 1 ?
                     String.Format("il y a {0} jours", timeSpan.Days) :
                     "Hier";
             }
-            else if (timeSpan <= TimeSpan.FromDays(365))
+            else if (timeSpan <= TimeSpan.FromDays(365)) // 1ans
             {
                 result = timeSpan.Days > 30 ?
                     String.Format("Il y a {0} mois", timeSpan.Days / 30) :
@@ -45,7 +45,7 @@ namespace Bio_Tourist.Models
             }
             else
             {
-                result = timeSpan.Days > 365 ?
+                result = timeSpan.Days > 365 ? // Au delà d'un an.
                     String.Format("il y a {0} ans", timeSpan.Days / 365) :
                     "il y a plus d'un an";
             }
