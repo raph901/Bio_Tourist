@@ -1,4 +1,6 @@
 ﻿@model Bio_Tourist.Models.User
+@using Bio_Tourist.Controllers
+
 <link rel="stylesheet" href="~/Content/main.css" />
 <script language="javascript" type="text/javascript" src="../../Scripts/javascript.js"></script>
 @using (Html.BeginForm("Verify", "User"))
@@ -7,32 +9,29 @@
         <div class="wrapper wrapper--w960">
             <div class="card card-2">
                 <div class="card-heading"></div>
-                <div class="card-body">
-                    <h2 class="title">Connection</h2>
-                    <form method="POST">
-                        <div class="row">
+                    <div class="card-body">
+                        <h2 class="title">Connection</h2>
+                        <form method="POST">
+                            <div class="row">
 
-                            <div class="input-group ">
-                                <div class="rs-select2 js-select-simple select--no-search">
-                                    @Html.LabelFor(m => m.EMAIL_USER)
-                                    @Html.TextBoxFor(m => m.EMAIL_USER, new { htmlAttributes = new { @class = "input--style-2" } })
-                                    @Html.ValidationMessageFor(m => m.EMAIL_USER)
+                                
+                                    <div class="input-group ">
+                                        @Html.TextBoxFor(m => m.EMAIL_USER, new { @class = "input--style-2", placeholder = "Email", required = "required" })
+                                        @Html.ValidationMessageFor(m => m.EMAIL_USER)
+                                    </div>
+                                
+
+                                
+                                    <div class="input-group ">
+                                        @Html.PasswordFor(m => m.PASSWORD_USER, new { @class = "input--style-2", placeholder = "Mot de passe", required = "required" })
+                                        @Html.ValidationMessageFor(m => m.PASSWORD_USER)
+                                    </div>
+                                
+                                    <div class="p-t-30">
+                                        <input type="submit" value="Connexion" class="btn btn--radius btn--green" />
+                                    </div>
                                 </div>
-                            </div>
-
-
-                            <div class="input-group ">
-                                <div class="rs-select2 js-select-simple select--no-search">
-                                    @Html.LabelFor(m => m.PASSWORD_USER)
-                                    @Html.PasswordFor(m => m.PASSWORD_USER, new { htmlAttributes = new { @class = "input--style-2" } })
-                                    @Html.ValidationMessageFor(m => m.PASSWORD_USER)
-                                </div>
-                            </div>
-                            <div class="p-t-30">
-                                <input type="submit" value="Connexion" class="btn btn--radius btn--green" />
-                            </div>
-                        </div>
-                    </form>
+</form>
                 </div>
             </div>
         </div>

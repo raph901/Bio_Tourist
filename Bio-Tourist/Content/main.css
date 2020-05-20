@@ -5,6 +5,9 @@
 .font-robo {
   font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
 }
+#map { /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+    height: 400px;
+}
 
 /* ==========================================================================
    #GRID

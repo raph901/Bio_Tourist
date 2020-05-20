@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bio-Tourist", "Bio-Tourist\Bio-Tourist.csproj", "{CAD9A351-E639-4308-B7EA-3EE36695E708}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sondage", "Sondage\Sondage.csproj", "{9753AA1B-DA9A-4D9B-BE1C-17079A50216F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CAD9A351-E639-4308-B7EA-3EE36695E708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAD9A351-E639-4308-B7EA-3EE36695E708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAD9A351-E639-4308-B7EA-3EE36695E708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9753AA1B-DA9A-4D9B-BE1C-17079A50216F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9753AA1B-DA9A-4D9B-BE1C-17079A50216F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9753AA1B-DA9A-4D9B-BE1C-17079A50216F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9753AA1B-DA9A-4D9B-BE1C-17079A50216F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

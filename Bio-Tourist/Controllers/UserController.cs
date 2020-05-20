@@ -192,6 +192,7 @@ namespace Bio_Tourist.Controllers
             return v_ListGENRE;
         }
 
+
         public ActionResult UserProfile(User us)
         {
             // Déclaration command/reader/path Connection 

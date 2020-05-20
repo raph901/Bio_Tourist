@@ -136,6 +136,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InspectorController.cs" />
+    <Compile Include="Controllers\maptest.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DbPath\DbPathController.cs" />
     <Compile Include="Global.asax.cs">
@@ -150,6 +151,7 @@
     <Compile Include="Models\PurchaseHistory.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\SaleHistory.cs" />
+    <Compile Include="Models\testmap.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserInspector.cs" />
     <Compile Include="Models\UserSeller.cs" />
@@ -166,6 +168,7 @@
     <Content Include="Content\Design.css" />
     <Content Include="Content\DesignContact.css" />
     <Content Include="Content\DesignIndex.css" />
+    <Content Include="Content\leaflet.css" />
     <Content Include="Images\bg-heading-02.jpg" />
     <Content Include="Images\FondEcranContact.jpg" />
     <Content Include="Images\HeadPageAccueil.jpg" />
@@ -174,9 +177,14 @@
     <Content Include="Images\ImagePortfolio.jpg" />
     <Content Include="Images\ImagePortfolio1.jpg" />
     <Content Include="Images\ImageSeller.jpg" />
+    <Content Include="Images\layers-2x.png" />
+    <Content Include="Images\layers.png" />
     <Content Include="Images\LogoBio.png" />
     <Content Include="Images\LogoFormulaireContact.gif" />
     <Content Include="Images\LogoFormulaireContact.jpg" />
+    <Content Include="Images\marker-icon-2x.png" />
+    <Content Include="Images\marker-icon.png" />
+    <Content Include="Images\marker-shadow.png" />
     <Content Include="Images\SloganBio.png" />
     <Content Include="Content\main.css" />
     <Content Include="favicon.ico" />
@@ -201,6 +209,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\global.js" />
     <Content Include="Scripts\JavaScript.js" />
+    <Content Include="Scripts\JavaScript1.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -210,6 +219,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\leaflet-src.esm.js" />
+    <Content Include="Scripts\leaflet-src.js" />
+    <Content Include="Scripts\leaflet.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="vendor\datepicker\daterangepicker.css" />
     <Content Include="vendor\datepicker\daterangepicker.js" />
@@ -260,6 +272,9 @@
     <Content Include="vendor\mdi-font\fonts\Material-Design-Iconic-Font.ttf" />
     <Content Include="vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Scripts\leaflet-src.esm.js.map" />
+    <Content Include="Scripts\leaflet-src.js.map" />
+    <Content Include="Scripts\leaflet.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
