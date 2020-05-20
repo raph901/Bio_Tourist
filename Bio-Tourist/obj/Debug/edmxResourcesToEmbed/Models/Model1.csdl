@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BioTouristModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="T_AD">
+    <Key>
+      <PropertyRef Name="ID_AD" />
+    </Key>
+    <Property Name="ID_AD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TITLE_AD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NUM_AD" Type="Int32" Nullable="false" />
+    <Property Name="ADRESS_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DATE_AD" Type="Int32" Nullable="false" />
+    <Property Name="DESCRIPTION_AD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_CONTACT">
+    <Key>
+      <PropertyRef Name="ID_CONTACT" />
+    </Key>
+    <Property Name="ID_CONTACT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME_CONTACT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NUM_STREET_CONTACT" Type="Int32" Nullable="false" />
+    <Property Name="NAME_STREET_CONTACT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CITY_CONTACT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NUM_TEL_CONTACT" Type="Int32" Nullable="false" />
+    <Property Name="EMAIL_CONTACT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="COMMENT_CONTACT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_GENDER">
+    <Key>
+      <PropertyRef Name="ID_GENDER" />
+    </Key>
+    <Property Name="ID_GENDER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME_GENDER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="T_USER" Relationship="Self.ID_GENDER" FromRole="T_GENDER" ToRole="T_USER" />
+  </EntityType>
+  <EntityType Name="T_PAYMENT">
+    <Key>
+      <PropertyRef Name="ID_PAYMENT" />
+    </Key>
+    <Property Name="ID_PAYMENT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DATE_PAYMENT" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_PURCHASE_HISTORY">
+    <Key>
+      <PropertyRef Name="ID_PURCHASE_HISTORY" />
+    </Key>
+    <Property Name="ID_PURCHASE_HISTORY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME_PRODUCT_PURCHASE_HISTORY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PRICE_PRODUCT_PURCHASE_HISTORY" Type="Int32" Nullable="false" />
+    <Property Name="QUANTITY_PRODUCT_PURCHASE_HISTORY" Type="Int32" Nullable="false" />
+    <Property Name="DATE_PURCHASE_HISTORY" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_REPORT">
+    <Key>
+      <PropertyRef Name="ID_REPORT" />
+    </Key>
+    <Property Name="ID_REPORT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NUM_REPORT" Type="Int32" Nullable="false" />
+    <Property Name="TITLE_REPORT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DATE_REPORT" Type="Int32" Nullable="false" />
+    <Property Name="DESCRIPTION_REPORT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_ROLE">
+    <Key>
+      <PropertyRef Name="ID_ROLE" />
+    </Key>
+    <Property Name="ID_ROLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME_ROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="T_USER" Relationship="Self.FK_ID_ROLE" FromRole="T_ROLE" ToRole="T_USER" />
+  </EntityType>
+  <EntityType Name="T_SALE_HISTORY">
+    <Key>
+      <PropertyRef Name="ID_SALE_HISTORY" />
+    </Key>
+    <Property Name="ID_SALE_HISTORY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME_PRODUCT_SALE_HISTORY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PRICE_PRODUCT_SALE_HISTORY" Type="Int32" Nullable="false" />
+    <Property Name="QUANTITY_PRODUCT_SALE_HISTORY" Type="Int32" Nullable="false" />
+    <Property Name="DATE_SALE_HISTORY" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_USER">
+    <Key>
+      <PropertyRef Name="ID_USER" />
+    </Key>
+    <Property Name="ID_USER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LAST_NAME_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FIRST_NAME_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AGE_USERS" Type="Int32" Nullable="false" />
+    <Property Name="NUM_STREET" Type="Int32" Nullable="false" />
+    <Property Name="NAME_STREET" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="POSTAL_CODE" Type="Int32" Nullable="false" />
+    <Property Name="CITY_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="COUNTRY_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NUM_USER" Type="Int32" Nullable="false" />
+    <Property Name="PASSWORD_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CIVILITY_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_ROLE" Type="Int32" Nullable="false" />
+    <Property Name="ID_GENDER" Type="Int32" />
+    <NavigationProperty Name="T_GENDER" Relationship="Self.ID_GENDER" FromRole="T_USER" ToRole="T_GENDER" />
+    <NavigationProperty Name="T_ROLE" Relationship="Self.FK_ID_ROLE" FromRole="T_USER" ToRole="T_ROLE" />
+  </EntityType>
+  <Association Name="ID_GENDER">
+    <End Role="T_GENDER" Type="Self.T_GENDER" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="T_USER" Type="Self.T_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_GENDER">
+        <PropertyRef Name="ID_GENDER" />
+      </Principal>
+      <Dependent Role="T_USER">
+        <PropertyRef Name="ID_GENDER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_ROLE">
+    <End Role="T_ROLE" Type="Self.T_ROLE" Multiplicity="1" />
+    <End Role="T_USER" Type="Self.T_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_ROLE">
+        <PropertyRef Name="ID_ROLE" />
+      </Principal>
+      <Dependent Role="T_USER">
+        <PropertyRef Name="ID_ROLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BioTouristEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="T_AD" EntityType="Self.T_AD" />
+    <EntitySet Name="T_CONTACT" EntityType="Self.T_CONTACT" />
+    <EntitySet Name="T_GENDER" EntityType="Self.T_GENDER" />
+    <EntitySet Name="T_PAYMENT" EntityType="Self.T_PAYMENT" />
+    <EntitySet Name="T_PURCHASE_HISTORY" EntityType="Self.T_PURCHASE_HISTORY" />
+    <EntitySet Name="T_REPORT" EntityType="Self.T_REPORT" />
+    <EntitySet Name="T_ROLE" EntityType="Self.T_ROLE" />
+    <EntitySet Name="T_SALE_HISTORY" EntityType="Self.T_SALE_HISTORY" />
+    <EntitySet Name="T_USER" EntityType="Self.T_USER" />
+    <AssociationSet Name="ID_GENDER" Association="Self.ID_GENDER">
+      <End Role="T_GENDER" EntitySet="T_GENDER" />
+      <End Role="T_USER" EntitySet="T_USER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_ROLE" Association="Self.FK_ID_ROLE">
+      <End Role="T_ROLE" EntitySet="T_ROLE" />
+      <End Role="T_USER" EntitySet="T_USER" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

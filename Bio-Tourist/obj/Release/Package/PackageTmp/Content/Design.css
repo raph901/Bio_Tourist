@@ -1,0 +1,85 @@
+﻿body {
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+header {
+    height: 50px;
+}
+
+input,
+select,
+textarea {
+    max-width: 400px;
+}
+
+#PersonnaliserMenus li:hover {
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+#PersonnaliserMenus li {
+    padding: 0px 10px 0px 0px;
+    position: relative;
+    left: 72%;
+    font-size: medium;
+    font-family: 'Bahnschrift';
+}
+
+.PanierVersLaDroite {
+    position: absolute;
+    top: 20px;
+    left: 850px;
+}
+
+.UtilisateurVersLaDroite {
+    position: absolute;
+    top: 31px;
+    left: 920px;
+}
+
+.Container {
+    width: 100%;
+    padding-left: 50px;
+}
+
+.align {
+    display: inline-block;
+    position: absolute;
+    left: 30px;
+}
+
+.Logo {
+    width: 70px;
+}
+
+.Slogan {
+    width: 140px;
+}
+
+#colorHeader {
+    background-color: #30005f;
+    padding-bottom: 70px;
+}
+
+
+.MenusReduit {
+    position: relative;
+    top: 25px;
+    right: 30px;
+}
+
+.ContainerFooter {
+    background-color: #30005f;
+    padding-top: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    padding: 90px;
+}
+
+Footer {
+    margin-top: 100px;
+}
